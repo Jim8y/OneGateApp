@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<og:MyPopup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:og="http://schemas.neoorder.org/onegate/controls"
+            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+            x:Class="NeoOrder.OneGate.Controls.Popups.WalletAuthorizationPopup"
+            x:TypeArguments="x:Boolean"
+            SafeAreaEdges="All"
+            BindingContext="{Binding Source={RelativeSource Self}}">
+    <og:MyPopup.Resources>
+        <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
+    </og:MyPopup.Resources>
+    <VerticalStackLayout Spacing="15">
+        <Grid ColumnDefinitions="*,auto">
+            <Label Text="{Binding Title}" FontAttributes="Bold" MaxLines="1" />
+            <Button Grid.Column="1" StyleClass="Icon" Text="&#xe6b5;" FontSize="24" Margin="-10" Padding="10" Clicked="OnCancel" />
+        </Grid>
+        <Label Text="{Binding Message}" IsVisible="{Binding Message, Converter={StaticResource IsNotNullConverter}}" />
+        <Label IsVisible="{Binding Domain, Converter={StaticResource IsNotNullConverter}}">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{x:Static og:Strings.Domain}" />
+                    <Span Text=": " />
+                    <Span Text="{Binding Domain}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label Text="{x:Static og:Strings.VerifyPasswordToContinue}" />
+        <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="{x:Static og:Strings.Password}" IsPassword="True" />
+        <og:ValidationMessage x:Name="errMsg" Title="{x:Static og:Strings.Password}" Margin="0,-15,0,0" Target="{x:Reference entryPassword}">
+            <og:Required />
+        </og:ValidationMessage>
+        <Grid ColumnDefinitions="*,auto,*" Margin="-15,0,-15,-15">
+            <BoxView Grid.ColumnSpan="3" HeightRequest="1" VerticalOptions="Start" />
+            <Button Grid.Column="0" StyleClass="Secondary" Text="{x:Static og:Strings.Cancel}" BorderWidth="0" Clicked="OnCancel" />
+            <BoxView Grid.Column="1" WidthRequest="1" VerticalOptions="Fill" />
+            <og:Submit Grid.Column="2" Text="{Binding AuthorizeText}" TextColor="#5676e7" ButtonColor="Transparent" Submitted="OnAuthorize" />
+        </Grid>
+    </VerticalStackLayout>
+</og:MyPopup>

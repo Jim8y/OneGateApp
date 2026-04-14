@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             x:Class="NeoOrder.OneGate.Controls.Views.SpinnerButton">
+    <ContentView.Resources>
+        <og:SpinnerButtonTextConverter x:Key="SpinnerButtonTextConverter" />
+    </ContentView.Resources>
+    <Grid BindingContext="{Binding Source={RelativeSource AncestorType={x:Type og:SpinnerButton}}}">
+        <Button x:Name="Button" TextColor="{Binding TextColor}" FontSize="{Binding FontSize}" FontAttributes="{Binding FontAttributes}" BackgroundColor="{Binding ButtonColor}" BorderWidth="{Binding BorderWidth}" BorderColor="{Binding BorderColor}" Clicked="Button_Clicked">
+            <Button.Text>
+                <MultiBinding Converter="{StaticResource SpinnerButtonTextConverter}">
+                    <Binding Path="Text" />
+                    <Binding Path="IsBusy" />
+                </MultiBinding>
+            </Button.Text>
+        </Button>
+        <ActivityIndicator Color="{Binding TextColor}" WidthRequest="{Binding FontSize}" HeightRequest="{Binding FontSize}" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+    </Grid>
+</ContentView>

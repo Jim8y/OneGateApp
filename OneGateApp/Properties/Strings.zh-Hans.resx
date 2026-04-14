@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apps" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="BackupMnemonicCheckBoxText" xml:space="preserve">
+    <value>我已抄写并妥善备份上述助记词</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>创建密码</value>
+  </data>
+  <data name="CreateWallet" xml:space="preserve">
+    <value>创建钱包</value>
+  </data>
+  <data name="DefaultCompareErrorMessage" xml:space="preserve">
+    <value>{0}不一致</value>
+  </data>
+  <data name="DefaultRequiredErrorMessage" xml:space="preserve">
+    <value>{0}不能为空</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageLength" xml:space="preserve">
+    <value>{0}长度必须为{1}个字符</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMax" xml:space="preserve">
+    <value>{0}长度最多为{2}个字符</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMinMax" xml:space="preserve">
+    <value>{0}长度需在{1}到{2}个字符之间</value>
+  </data>
+  <data name="DefaultValidatorErrorMessage" xml:space="preserve">
+    <value>{0}不正确</value>
+  </data>
+  <data name="ErrorMessageMnemonicBackup" xml:space="preserve">
+    <value>请务必抄写并妥善备份上述助记词，否则资产将永久丢失且无法找回。</value>
+  </data>
+  <data name="ErrorMessageMnemonicMismatch" xml:space="preserve">
+    <value>助记词不正确，请按正确顺序输入</value>
+  </data>
+  <data name="ErrorMessagePasswordsMismatch" xml:space="preserve">
+    <value>两次输入的密码不一致</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>字段</value>
+  </data>
+  <data name="GenerateMnemonic" xml:space="preserve">
+    <value>生成助记词</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="ImportWallet" xml:space="preserve">
+    <value>导入钱包</value>
+  </data>
+  <data name="MnemonicImportanceContent" xml:space="preserve">
+    <value>您的助记词由24个单词组成，可用于恢复您的资金。请务必将其抄写并妥善保管，切勿与他人分享。</value>
+  </data>
+  <data name="MnemonicImportanceTitle" xml:space="preserve">
+    <value>助记词的重要性</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PasswordImportanceContent" xml:space="preserve">
+    <value>请注意：如果您忘记钱包密码，将无法找回。请务必牢记您的密码。</value>
+  </data>
+  <data name="PasswordImportanceTitle" xml:space="preserve">
+    <value>密码的重要性</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>请再次输入密码</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>设置密码</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>未知错误</value>
+  </data>
+  <data name="VerifyMnemonic" xml:space="preserve">
+    <value>验证助记词</value>
+  </data>
+  <data name="VerifyMnemonicPrompt" xml:space="preserve">
+    <value>请按正确顺序选择单词进行验证。</value>
+  </data>
+  <data name="WalletName" xml:space="preserve">
+    <value>钱包名称</value>
+  </data>
+  <data name="WelcomePageTitle" xml:space="preserve">
+    <value>欢迎使用 OneGate</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>最近</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="DefaultEmptyViewMessage" xml:space="preserve">
+    <value>暂无内容</value>
+  </data>
+  <data name="ImportViaMnemonicCode" xml:space="preserve">
+    <value>通过助记词导入</value>
+  </data>
+  <data name="ImportViaPrivateKey" xml:space="preserve">
+    <value>通过私钥导入</value>
+  </data>
+  <data name="ImportViaNep2" xml:space="preserve">
+    <value>通过 NEP-2 导入</value>
+  </data>
+  <data name="EnterMnemonicPrompt" xml:space="preserve">
+    <value>请输入您的助记词，用空格分隔</value>
+  </data>
+  <data name="Mnemonic" xml:space="preserve">
+    <value>助记词</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>私钥</value>
+  </data>
+  <data name="Nep2Key" xml:space="preserve">
+    <value>NEP-2 密钥</value>
+  </data>
+  <data name="ShowOriginalText" xml:space="preserve">
+    <value>查看原文</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>应用详情</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>简介</value>
+  </data>
+  <data name="ScanQRCode" xml:space="preserve">
+    <value>扫一扫</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="ErrorMessageCameraFailure" xml:space="preserve">
+    <value>无法访问摄像头</value>
+  </data>
+  <data name="ErrorMessageUnsupportedQRCode" xml:space="preserve">
+    <value>不支持的二维码内容：{0}</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="ScanFromPhotoLibrary" xml:space="preserve">
+    <value>从相册识别二维码</value>
+  </data>
+  <data name="ErrorMessageUnableReadQRCode" xml:space="preserve">
+    <value>无法识别二维码</value>
+  </data>
+  <data name="RecognizeQRCode" xml:space="preserve">
+    <value>扫描二维码</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>安全</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>当前密码</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>密码已更新</value>
+  </data>
+  <data name="ShareAppText" xml:space="preserve">
+    <value>我在 OneGate 上发现了好玩的内容：{0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="LoginRequest" xml:space="preserve">
+    <value>登录请求</value>
+  </data>
+  <data name="LoginRequestText" xml:space="preserve">
+    <value>应用正在请求使用您的钱包地址登录，是否允许？</value>
+  </data>
+  <data name="CreateBiometricCredential" xml:space="preserve">
+    <value>创建生物识别凭证</value>
+  </data>
+  <data name="CreateBiometricCredentialText" xml:space="preserve">
+    <value>检测到您的设备支持生物识别，是否创建生物识别凭证以简化登录？</value>
+  </data>
+  <data name="RedirectionBlockedText" xml:space="preserve">
+    <value>已阻止外部链接跳转</value>
+  </data>
+  <data name="BiometricAuthentication" xml:space="preserve">
+    <value>生物识别</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="BiometricIntroductionText" xml:space="preserve">
+    <value>创建生物识别凭据后，您可以通过生物识别解锁钱包、登录应用或进行支付。
+
+您可以随时关闭生物识别功能。</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>验证密码</value>
+  </data>
+  <data name="VerifyBiometricText" xml:space="preserve">
+    <value>请验证您的生物信息以继续操作</value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>操作已取消</value>
+  </data>
+  <data name="BiometricUnavailableText" xml:space="preserve">
+    <value>暂时无法使用生物识别</value>
+  </data>
+  <data name="BiometricCredentialCreatedText" xml:space="preserve">
+    <value>生物识别凭据已创建</value>
+  </data>
+  <data name="BiometricResetText" xml:space="preserve">
+    <value>密码已修改，生物识别凭据已重置</value>
+  </data>
+  <data name="VerifyPasswordToContinue" xml:space="preserve">
+    <value>请输入钱包密码以继续。</value>
+  </data>
+  <data name="ErrorMessageIncorrectPassword" xml:space="preserve">
+    <value>密码错误</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>跳过</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>授权</value>
+  </data>
+  <data name="DisableBiometric" xml:space="preserve">
+    <value>关闭生物识别验证</value>
+  </data>
+  <data name="DisableBiometricText" xml:space="preserve">
+    <value>您当前已启用生物识别验证用于授权应用访问钱包。是否关闭生物识别验证？
+
+关闭后，您需要手动输入钱包密码进行授权。</value>
+  </data>
+  <data name="BiometricDisabledText" xml:space="preserve">
+    <value>生物识别已禁用</value>
+  </data>
+  <data name="PickAddress" xml:space="preserve">
+    <value>选择地址</value>
+  </data>
+  <data name="PickAddressText" xml:space="preserve">
+    <value>应用请求您选择或输入一个地址：</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="SendTransaction" xml:space="preserve">
+    <value>发送交易</value>
+  </data>
+  <data name="SendTransactionText" xml:space="preserve">
+    <value>应用正在请求发送交易：</value>
+  </data>
+  <data name="SelectAddressFromWallet" xml:space="preserve">
+    <value>从钱包中选择一个地址</value>
+  </data>
+  <data name="EnterCustomAddress" xml:space="preserve">
+    <value>输入自定义地址</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>转账</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>转出地址</value>
+  </data>
+  <data name="Fee" xml:space="preserve">
+    <value>手续费</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="ContractInvocation" xml:space="preserve">
+    <value>合约调用</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>方法</value>
+  </data>
+  <data name="NoParameters" xml:space="preserve">
+    <value>无参数</value>
+  </data>
+  <data name="SignMessage" xml:space="preserve">
+    <value>消息签名</value>
+  </data>
+  <data name="SignMessageText" xml:space="preserve">
+    <value>应用正在请求对消息进行签名：</value>
+  </data>
+  <data name="SigningAccount" xml:space="preserve">
+    <value>签名账户</value>
+  </data>
+  <data name="SignMessageRequestText" xml:space="preserve">
+    <value>应用正在请求对消息进行签名，是否允许？</value>
+  </data>
+  <data name="SignTransaction" xml:space="preserve">
+    <value>交易签名</value>
+  </data>
+  <data name="SignTransactionText" xml:space="preserve">
+    <value>应用正在请求对一笔交易进行签名：</value>
+  </data>
+  <data name="ExecutionResult" xml:space="preserve">
+    <value>执行结果</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>钱包</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>收款</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>转账</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>交易记录</value>
+  </data>
+  <data name="Asset" xml:space="preserve">
+    <value>资产</value>
+  </data>
+  <data name="WalletSettings" xml:space="preserve">
+    <value>钱包设置</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="ReceiveQRCodeTitle" xml:space="preserve">
+    <value>请扫描二维码向我转账</value>
+  </data>
+  <data name="ReceiveQRCodeText" xml:space="preserve">
+    <value>该地址可接收 Neo 平台上的所有资产。</value>
+  </data>
+  <data name="SaveToPhotoLibrary" xml:space="preserve">
+    <value>保存到相册</value>
+  </data>
+  <data name="QRCodeSaved" xml:space="preserve">
+    <value>二维码已保存</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>无权限</value>
+  </data>
+  <data name="SelectAsset" xml:space="preserve">
+    <value>选择资产</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>余额</value>
+  </data>
+  <data name="DefaultOutOfRangeErrorMessage" xml:space="preserve">
+    <value>{0}超出范围</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>值</value>
+  </data>
+  <data name="ReceivingAddress" xml:space="preserve">
+    <value>收款地址</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>地址簿</value>
+  </data>
+  <data name="NoAddress" xml:space="preserve">
+    <value>暂无地址</value>
+  </data>
+  <data name="NoAddressText" xml:space="preserve">
+    <value>您的地址簿为空</value>
+  </data>
+  <data name="AddNewAddress" xml:space="preserve">
+    <value>添加地址</value>
+  </data>
+  <data name="ScreenshotFailed" xml:space="preserve">
+    <value>截图失败</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="ContactAddedSuccessfully" xml:space="preserve">
+    <value>地址已添加</value>
+  </data>
+  <data name="AddressAlreadyExists" xml:space="preserve">
+    <value>地址已存在</value>
+  </data>
+  <data name="EditContact" xml:space="preserve">
+    <value>编辑地址</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="ContactUpdatedSuccessfully" xml:space="preserve">
+    <value>地址已更新</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>确认删除</value>
+  </data>
+  <data name="DeleteContactText" xml:space="preserve">
+    <value>确定要删除该地址吗？</value>
+  </data>
+  <data name="ContactDeletedSuccessfully" xml:space="preserve">
+    <value>地址已删除</value>
+  </data>
+  <data name="SelectContact" xml:space="preserve">
+    <value>选择收款地址</value>
+  </data>
+  <data name="SignTransactionFailed" xml:space="preserve">
+    <value>交易签名失败</value>
+  </data>
+  <data name="SendTransactionByUserText" xml:space="preserve">
+    <value>您正在发起一笔转账交易：</value>
+  </data>
+  <data name="UnknownAddress" xml:space="preserve">
+    <value>陌生地址</value>
+  </data>
+  <data name="SendingTransaction" xml:space="preserve">
+    <value>正在发送交易</value>
+  </data>
+  <data name="TransactionConfirming" xml:space="preserve">
+    <value>交易确认中</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>交易详情</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="Confirming" xml:space="preserve">
+    <value>正在确认</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="TxID" xml:space="preserve">
+    <value>交易 ID</value>
+  </data>
+  <data name="TransactionSucceeded" xml:space="preserve">
+    <value>交易成功</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>加载中</value>
+  </data>
+  <data name="NoNftText" xml:space="preserve">
+    <value>您的钱包中暂无 NFT</value>
+  </data>
+  <data name="OpenNFTLink" xml:space="preserve">
+    <value>打开 NFT 链接</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Contract" xml:space="preserve">
+    <value>合约</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>标识</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>合集</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>代币</value>
+  </data>
+  <data name="HiddenAssets" xml:space="preserve">
+    <value>隐藏的资产</value>
+  </data>
+  <data name="NoHiddenAssets" xml:space="preserve">
+    <value>暂无隐藏资产</value>
+  </data>
+  <data name="NoHiddenAssetsText" xml:space="preserve">
+    <value>可在钱包中打开资产详情进行设置</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="AssetHidden" xml:space="preserve">
+    <value>资产已隐藏</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>取消隐藏</value>
+  </data>
+  <data name="NewsCategories" xml:space="preserve">
+    <value>新闻分类</value>
+  </data>
+  <data name="NoAssetText" xml:space="preserve">
+    <value>您的钱包中暂无资产</value>
+  </data>
+  <data name="NoRssText" xml:space="preserve">
+    <value>暂无新闻源</value>
+  </data>
+  <data name="AgreeToTermsAndPrivacy" xml:space="preserve">
+    <value>选择任一选项，即表示您同意 {0} 和 {1} 。</value>
+  </data>
+  <data name="TermsOfServiceWithBrackets" xml:space="preserve">
+    <value>《服务条款》</value>
+  </data>
+  <data name="PrivacyPolicyWithBrackets" xml:space="preserve">
+    <value>《隐私政策》</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>跟随系统</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>更改语言</value>
+  </data>
+  <data name="ChangeLanguageConfirmation" xml:space="preserve">
+    <value>更改语言后，应用将重新启动。
+是否继续？</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>语言已更新</value>
+  </data>
+  <data name="SignInWithNeo" xml:space="preserve">
+    <value>使用 Neo 登录</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>正在登录</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>域名</value>
+  </data>
+  <data name="OpenDAppFailedText" xml:space="preserve">
+    <value>无法返回 DApp</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>分享</value>
+  </data>
+  <data name="InvalidCallbackURLFormat" xml:space="preserve">
+    <value>回调地址格式错误</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>联系我们</value>
+  </data>
+  <data name="DeleteWallet" xml:space="preserve">
+    <value>删除钱包</value>
+  </data>
+  <data name="DeleteWalletWarningText" xml:space="preserve">
+    <value>删除钱包是不可撤销的高风险操作。一旦删除，当前设备中与该钱包相关的所有数据（包括账户信息、交易记录及本地缓存）将被永久清除，且无法恢复。
+
+请务必确认您已安全备份该钱包的助记词或私钥，并确保备份信息准确无误且妥善保管。若未完成备份或备份信息丢失，删除后将无法重新导入该钱包，钱包内资产也将永久丢失且无法找回。
+
+继续操作即表示您已充分理解并愿意承担由此带来的全部风险。</value>
+  </data>
+  <data name="DeleteWalletConfirmation" xml:space="preserve">
+    <value>我已了解上述风险，并确认已备份助记词或私钥</value>
+  </data>
+  <data name="ConfirmSecurityRiskAcknowledgement" xml:space="preserve">
+    <value>请确认您已了解相关安全风险</value>
+  </data>
+  <data name="WalletDeletionIrreversibleWarning" xml:space="preserve">
+    <value>此操作不可撤销。删除钱包将永久清除本地数据；若未备份助记词或私钥，您将无法恢复钱包及其中资产。</value>
+  </data>
+  <data name="WalletDeleted" xml:space="preserve">
+    <value>钱包已删除</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AboutOneGate" xml:space="preserve">
+    <value>关于 OneGate</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>网站</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>服务条款</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>隐私政策</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>截图</value>
+  </data>
+  <data name="SupportedLanguages" xml:space="preserve">
+    <value>支持的语言</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>正在检查更新</value>
+  </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>暂无更新</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>发现新版本</value>
+  </data>
+  <data name="UpdateNow" xml:space="preserve">
+    <value>立即更新</value>
+  </data>
+  <data name="UpdateApp" xml:space="preserve">
+    <value>更新应用</value>
+  </data>
+  <data name="UpdateDownloadedRestartToInstall" xml:space="preserve">
+    <value>更新已下载完成，是否立即重启并安装？</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="UpdateInstalledRestartNow" xml:space="preserve">
+    <value>更新已安装完成。重启应用后生效，是否现在重启？</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>重启</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="Gaming" xml:space="preserve">
+    <value>游戏</value>
+  </data>
+  <data name="Marketplace" xml:space="preserve">
+    <value>市场</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>社交</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>消息</value>
+  </data>
+  <data name="LoadingWalletData" xml:space="preserve">
+    <value>正在加载钱包数据</value>
+  </data>
+  <data name="ExportPrivateKey" xml:space="preserve">
+    <value>导出私钥</value>
+  </data>
+  <data name="PrivateKeySecurity" xml:space="preserve">
+    <value>私钥安全说明</value>
+  </data>
+  <data name="PrivateKeyExportWarning" xml:space="preserve">
+    <value>导出私钥会暴露对钱包资产的完全控制权。一旦私钥泄露，任何人都可转移您的资产，且无法撤销或找回。
+
+请务必在安全、离线且无他人窥视的环境中操作。不要截屏、拍照、复制到聊天工具、邮箱或云端存储，也不要向任何人透露私钥。
+
+请注意：我们不会存储或保管您的私钥。一旦私钥丢失、遗忘或损坏，将无法恢复。
+
+导出完成后，请立即妥善保管，并确认当前环境安全。</value>
+  </data>
+  <data name="SelectPrivateKeyFormat" xml:space="preserve">
+    <value>选择导出格式</value>
+  </data>
+  <data name="PlaintextPrivateKeyWif" xml:space="preserve">
+    <value>明文私钥（WIF）</value>
+  </data>
+  <data name="PasswordProtectedPrivateKeyNep2" xml:space="preserve">
+    <value>受密码保护的私钥（NEP-2）</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>格式</value>
+  </data>
+  <data name="WifPrivateKeyWarning" xml:space="preserve">
+    <value>WIF 是未加密的明文私钥。任何获取该内容的人都可直接控制并转移您的资产，无需额外验证。
+
+请务必仅在安全、离线且无他人窥视的环境中查看和保存。建议手写或存放于可靠的离线介质，并做好异地备份。
+
+请勿截屏、拍照、复制到聊天工具、邮箱、备忘录、网盘或任何联网环境，也不要向任何人透露。</value>
+  </data>
+  <data name="Nep2PrivateKeyWarning" xml:space="preserve">
+    <value>NEP-2 是经过密码保护的加密私钥，使用时需输入钱包密码，适合用于存储和备份。
+
+请注意：NEP-2 私钥与对应密码缺一不可。若他人同时获得 NEP-2 和密码，仍可控制并转移您的资产；若遗失 NEP-2 或忘记密码，资产将无法恢复。
+
+建议将 NEP-2 与密码分开保管，并分别进行安全备份，避免同时存放在同一设备或同一联网环境中。</value>
+  </data>
+  <data name="ShownAfterSettingPassword" xml:space="preserve">
+    <value>设置密码后即可显示</value>
+  </data>
+  <data name="SelectImportType" xml:space="preserve">
+    <value>选择导入类型</value>
+  </data>
+  <data name="ImportTypeRequired" xml:space="preserve">
+    <value>请选择导入类型</value>
+  </data>
+  <data name="SensitiveDataSecurityNotice" xml:space="preserve">
+    <value>敏感信息安全提示</value>
+  </data>
+  <data name="LocalSensitiveDataNotice" xml:space="preserve">
+    <value>您的私钥、助记词和密码等敏感信息仅保存在本地设备中。OneGate 不会上传、同步或保存任何副本。</value>
+  </data>
+  <data name="SelectAddressToImportFromMnemonic" xml:space="preserve">
+    <value>该助记词可能对应多个地址，请选择要导入的地址。</value>
+  </data>
+  <data name="ImportAddress" xml:space="preserve">
+    <value>导入地址</value>
+  </data>
+</root>

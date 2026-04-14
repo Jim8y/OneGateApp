@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package
+	xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+	xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+	xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+	xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+	xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+	xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+	xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+	IgnorableNamespaces="uap uap3 rescap com desktop">
+
+	<Identity Name="TheNeoOrder.OneGate" Publisher="CN=5BD5D113-749C-4C46-955E-05EDC4C2B266" Version="2.0.0.0" />
+
+	<mp:PhoneIdentity PhoneProductId="61ceeb24-bdfa-49dc-a9c1-f50a41ae4912" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+	<Properties>
+		<DisplayName>OneGate</DisplayName>
+		<PublisherDisplayName>The Neo Order</PublisherDisplayName>
+		<Logo>$placeholder$.png</Logo>
+	</Properties>
+
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+	</Dependencies>
+
+	<Resources>
+		<Resource Language="de" />
+		<Resource Language="en" />
+		<Resource Language="es" />
+		<Resource Language="fr" />
+		<Resource Language="id" />
+		<Resource Language="it" />
+		<Resource Language="ja" />
+		<Resource Language="ko" />
+		<Resource Language="nl" />
+		<Resource Language="pt-BR" />
+		<Resource Language="ru" />
+		<Resource Language="tr" />
+		<Resource Language="vi" />
+		<Resource Language="zh-Hans" />
+		<Resource Language="zh-Hant" />
+	</Resources>
+
+	<Applications>
+		<Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+			<uap:VisualElements
+				DisplayName="OneGate"
+				Description="$placeholder$"
+				Square150x150Logo="$placeholder$.png"
+				Square44x44Logo="$placeholder$.png"
+				BackgroundColor="transparent">
+				<uap:DefaultTile Square71x71Logo="$placeholder$.png" Wide310x150Logo="$placeholder$.png" Square310x310Logo="$placeholder$.png" />
+				<uap:SplashScreen Image="$placeholder$.png" />
+			</uap:VisualElements>
+			<Extensions>
+				<uap:Extension Category="windows.protocol">
+					<uap:Protocol Name="neo">
+						<uap:Logo>Assets\logo_black.png</uap:Logo>
+						<uap:DisplayName>NEO Payment Protocol</uap:DisplayName>
+					</uap:Protocol>
+				</uap:Extension>
+				<uap:Extension Category="windows.protocol">
+					<uap:Protocol Name="neoauth">
+						<uap:Logo>Assets\logo_black.png</uap:Logo>
+						<uap:DisplayName>NEO Authentication Protocol</uap:DisplayName>
+					</uap:Protocol>
+				</uap:Extension>
+				<uap3:Extension Category="windows.appUriHandler">
+					<uap3:AppUriHandler>
+						<uap3:Host Name="onegate.space" />
+					</uap3:AppUriHandler>
+				</uap3:Extension>
+				<desktop:Extension Category="windows.toastNotificationActivation">
+					<desktop:ToastNotificationActivation ToastActivatorCLSID="6e919706-2634-4d97-a93c-2213b2acc334" />
+				</desktop:Extension>
+				<com:Extension Category="windows.comServer">
+					<com:ComServer>
+						<com:ExeServer Executable="OneGateApp\OneGateApp.exe" DisplayName="$targetnametoken$" Arguments="----AppNotificationActivated:">
+							<com:Class Id="6e919706-2634-4d97-a93c-2213b2acc334" />
+						</com:ExeServer>
+					</com:ComServer>
+				</com:Extension>
+			</Extensions>
+		</Application>
+	</Applications>
+
+	<Capabilities>
+		<rescap:Capability Name="runFullTrust" />
+	</Capabilities>
+
+</Package>

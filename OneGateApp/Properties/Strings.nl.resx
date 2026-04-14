@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apps" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="BackupMnemonicCheckBoxText" xml:space="preserve">
+    <value>Ik heb de bovenstaande herstelzin opgeschreven en veilig opgeslagen</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>Wachtwoord maken</value>
+  </data>
+  <data name="CreateWallet" xml:space="preserve">
+    <value>Wallet maken</value>
+  </data>
+  <data name="DefaultCompareErrorMessage" xml:space="preserve">
+    <value>{0} komen niet overeen</value>
+  </data>
+  <data name="DefaultRequiredErrorMessage" xml:space="preserve">
+    <value>{0} mag niet leeg zijn</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageLength" xml:space="preserve">
+    <value>{0} moet {1} tekens lang zijn</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMax" xml:space="preserve">
+    <value>{0} mag maximaal {2} tekens bevatten</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMinMax" xml:space="preserve">
+    <value>{0} moet tussen {1} en {2} tekens lang zijn</value>
+  </data>
+  <data name="DefaultValidatorErrorMessage" xml:space="preserve">
+    <value>{0} is ongeldig</value>
+  </data>
+  <data name="ErrorMessageMnemonicBackup" xml:space="preserve">
+    <value>U moet de bovenstaande herstelzin opschrijven en correct back-uppen, anders gaan uw activa permanent verloren en kunnen ze niet worden hersteld.</value>
+  </data>
+  <data name="ErrorMessageMnemonicMismatch" xml:space="preserve">
+    <value>Onjuiste herstelzin. Voer deze in de juiste volgorde in</value>
+  </data>
+  <data name="ErrorMessagePasswordsMismatch" xml:space="preserve">
+    <value>De wachtwoorden komen niet overeen</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>Veld</value>
+  </data>
+  <data name="GenerateMnemonic" xml:space="preserve">
+    <value>Herstelzin genereren</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ImportWallet" xml:space="preserve">
+    <value>Wallet importeren</value>
+  </data>
+  <data name="MnemonicImportanceContent" xml:space="preserve">
+    <value>Uw herstelzin bestaat uit 24 woorden en kan worden gebruikt om uw tegoeden te herstellen. Schrijf deze op en bewaar hem veilig. Deel hem nooit met iemand.</value>
+  </data>
+  <data name="MnemonicImportanceTitle" xml:space="preserve">
+    <value>Belang van de herstelzin</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="PasswordImportanceContent" xml:space="preserve">
+    <value>Let op: als u het wachtwoord van uw wallet vergeet, kan het niet worden hersteld. Zorg ervoor dat u uw wachtwoord onthoudt.</value>
+  </data>
+  <data name="PasswordImportanceTitle" xml:space="preserve">
+    <value>Belang van het wachtwoord</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Wachtwoord opnieuw invoeren</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Wachtwoord instellen</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Onbekende fout</value>
+  </data>
+  <data name="VerifyMnemonic" xml:space="preserve">
+    <value>Herstelzin verifiëren</value>
+  </data>
+  <data name="VerifyMnemonicPrompt" xml:space="preserve">
+    <value>Selecteer de woorden in de juiste volgorde ter verificatie.</value>
+  </data>
+  <data name="WalletName" xml:space="preserve">
+    <value>Walletnaam</value>
+  </data>
+  <data name="WelcomePageTitle" xml:space="preserve">
+    <value>Welkom bij OneGate</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Favorieten</value>
+  </data>
+  <data name="DefaultEmptyViewMessage" xml:space="preserve">
+    <value>Geen inhoud</value>
+  </data>
+  <data name="ImportViaMnemonicCode" xml:space="preserve">
+    <value>Importeren via herstelzin</value>
+  </data>
+  <data name="ImportViaPrivateKey" xml:space="preserve">
+    <value>Importeren via privésleutel</value>
+  </data>
+  <data name="ImportViaNep2" xml:space="preserve">
+    <value>Importeren via NEP-2</value>
+  </data>
+  <data name="EnterMnemonicPrompt" xml:space="preserve">
+    <value>Voer uw herstelzin in, gescheiden door spaties</value>
+  </data>
+  <data name="Mnemonic" xml:space="preserve">
+    <value>Herstelzin</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>Privésleutel</value>
+  </data>
+  <data name="Nep2Key" xml:space="preserve">
+    <value>NEP-2-sleutel</value>
+  </data>
+  <data name="ShowOriginalText" xml:space="preserve">
+    <value>Origineel bekijken</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Alles</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Openen</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>Appdetails</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Beschrijving</value>
+  </data>
+  <data name="ScanQRCode" xml:space="preserve">
+    <value>Scannen</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="ErrorMessageCameraFailure" xml:space="preserve">
+    <value>Geen toegang tot de camera</value>
+  </data>
+  <data name="ErrorMessageUnsupportedQRCode" xml:space="preserve">
+    <value>Niet-ondersteunde QR-code-inhoud: {0}</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ScanFromPhotoLibrary" xml:space="preserve">
+    <value>QR-code uit galerij scannen</value>
+  </data>
+  <data name="ErrorMessageUnableReadQRCode" xml:space="preserve">
+    <value>QR-code kan niet worden herkend</value>
+  </data>
+  <data name="RecognizeQRCode" xml:space="preserve">
+    <value>QR-code scannen</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Beveiliging</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Wachtwoord wijzigen</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Huidig wachtwoord</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Wachtwoord bijgewerkt</value>
+  </data>
+  <data name="ShareAppText" xml:space="preserve">
+    <value>Ik heb iets interessants gevonden op OneGate: {0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="LoginRequest" xml:space="preserve">
+    <value>Aanmeldingsverzoek</value>
+  </data>
+  <data name="LoginRequestText" xml:space="preserve">
+    <value>De app vraagt om met uw walletadres in te loggen. Toestaan?</value>
+  </data>
+  <data name="CreateBiometricCredential" xml:space="preserve">
+    <value>Biometrische verificatie instellen</value>
+  </data>
+  <data name="CreateBiometricCredentialText" xml:space="preserve">
+    <value>Uw apparaat ondersteunt biometrische verificatie. Een biometrische verificatie instellen om inloggen te vereenvoudigen?</value>
+  </data>
+  <data name="RedirectionBlockedText" xml:space="preserve">
+    <value>Navigatie naar externe link geblokkeerd</value>
+  </data>
+  <data name="BiometricAuthentication" xml:space="preserve">
+    <value>Biometrische verificatie</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Ingeschakeld</value>
+  </data>
+  <data name="BiometricIntroductionText" xml:space="preserve">
+    <value>Na het instellen van biometrische verificatie kunt u biometrie gebruiken om uw wallet te ontgrendelen, in te loggen in de app of betalingen te doen.
+
+U kunt biometrische verificatie op elk moment uitschakelen.</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Wachtwoord verifiëren</value>
+  </data>
+  <data name="VerifyBiometricText" xml:space="preserve">
+    <value>Verifieer uw biometrie om door te gaan</value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>Handeling geannuleerd</value>
+  </data>
+  <data name="BiometricUnavailableText" xml:space="preserve">
+    <value>Biometrische verificatie is tijdelijk niet beschikbaar</value>
+  </data>
+  <data name="BiometricCredentialCreatedText" xml:space="preserve">
+    <value>Biometrische verificatie is succesvol ingesteld</value>
+  </data>
+  <data name="BiometricResetText" xml:space="preserve">
+    <value>Wachtwoord gewijzigd. Biometrische verificatie is gereset.</value>
+  </data>
+  <data name="VerifyPasswordToContinue" xml:space="preserve">
+    <value>Voer het wachtwoord van uw wallet in om door te gaan.</value>
+  </data>
+  <data name="ErrorMessageIncorrectPassword" xml:space="preserve">
+    <value>Onjuist wachtwoord</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Overslaan</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Toestaan</value>
+  </data>
+  <data name="DisableBiometric" xml:space="preserve">
+    <value>Biometrische verificatie uitschakelen</value>
+  </data>
+  <data name="DisableBiometricText" xml:space="preserve">
+    <value>Biometrische verificatie is momenteel ingeschakeld om apptoegang tot uw wallet te autoriseren. Biometrische verificatie uitschakelen?
+
+Na het uitschakelen moet u handmatig uw walletwachtwoord invoeren om toegang te autoriseren.</value>
+  </data>
+  <data name="BiometricDisabledText" xml:space="preserve">
+    <value>Biometrische verificatie is uitgeschakeld</value>
+  </data>
+  <data name="PickAddress" xml:space="preserve">
+    <value>Adres selecteren</value>
+  </data>
+  <data name="PickAddressText" xml:space="preserve">
+    <value>De app vraagt u om een adres te selecteren of in te voeren:</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="SendTransaction" xml:space="preserve">
+    <value>Transactie verzenden</value>
+  </data>
+  <data name="SendTransactionText" xml:space="preserve">
+    <value>De app vraagt om een transactie te verzenden:</value>
+  </data>
+  <data name="SelectAddressFromWallet" xml:space="preserve">
+    <value>Een adres uit uw wallet selecteren</value>
+  </data>
+  <data name="EnterCustomAddress" xml:space="preserve">
+    <value>Aangepast adres invoeren</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Overboeken</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Van adres</value>
+  </data>
+  <data name="Fee" xml:space="preserve">
+    <value>Transactiekosten</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Doorgaan</value>
+  </data>
+  <data name="ContractInvocation" xml:space="preserve">
+    <value>Contractaanroep</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Methode</value>
+  </data>
+  <data name="NoParameters" xml:space="preserve">
+    <value>Geen parameters</value>
+  </data>
+  <data name="SignMessage" xml:space="preserve">
+    <value>Bericht ondertekenen</value>
+  </data>
+  <data name="SignMessageText" xml:space="preserve">
+    <value>De app vraagt om een bericht te ondertekenen:</value>
+  </data>
+  <data name="SigningAccount" xml:space="preserve">
+    <value>Ondertekenend account</value>
+  </data>
+  <data name="SignMessageRequestText" xml:space="preserve">
+    <value>De app vraagt om een bericht te ondertekenen. Toestaan?</value>
+  </data>
+  <data name="SignTransaction" xml:space="preserve">
+    <value>Transactie ondertekenen</value>
+  </data>
+  <data name="SignTransactionText" xml:space="preserve">
+    <value>De app vraagt om een transactie te ondertekenen:</value>
+  </data>
+  <data name="ExecutionResult" xml:space="preserve">
+    <value>Uitvoeringsresultaat</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Geslaagd</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>Wallet</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>Ontvangen</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Verzenden</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Transactiegeschiedenis</value>
+  </data>
+  <data name="Asset" xml:space="preserve">
+    <value>Asset</value>
+  </data>
+  <data name="WalletSettings" xml:space="preserve">
+    <value>Walletinstellingen</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Algemeen</value>
+  </data>
+  <data name="ReceiveQRCodeTitle" xml:space="preserve">
+    <value>Scan de QR-code om mij een overboeking te sturen</value>
+  </data>
+  <data name="ReceiveQRCodeText" xml:space="preserve">
+    <value>Dit adres kan alle assets op het Neo-platform ontvangen.</value>
+  </data>
+  <data name="SaveToPhotoLibrary" xml:space="preserve">
+    <value>Opslaan in galerij</value>
+  </data>
+  <data name="QRCodeSaved" xml:space="preserve">
+    <value>QR-code opgeslagen</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>Geen toestemming</value>
+  </data>
+  <data name="SelectAsset" xml:space="preserve">
+    <value>Asset selecteren</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Zoeken</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Aantal</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Saldo</value>
+  </data>
+  <data name="DefaultOutOfRangeErrorMessage" xml:space="preserve">
+    <value>{0} valt buiten het bereik</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Waarde</value>
+  </data>
+  <data name="ReceivingAddress" xml:space="preserve">
+    <value>Ontvangstadres</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Adresboek</value>
+  </data>
+  <data name="NoAddress" xml:space="preserve">
+    <value>Geen adressen</value>
+  </data>
+  <data name="NoAddressText" xml:space="preserve">
+    <value>Uw adresboek is leeg</value>
+  </data>
+  <data name="AddNewAddress" xml:space="preserve">
+    <value>Adres toevoegen</value>
+  </data>
+  <data name="ScreenshotFailed" xml:space="preserve">
+    <value>Screenshot mislukt</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="ContactAddedSuccessfully" xml:space="preserve">
+    <value>Adres toegevoegd</value>
+  </data>
+  <data name="AddressAlreadyExists" xml:space="preserve">
+    <value>Adres bestaat al</value>
+  </data>
+  <data name="EditContact" xml:space="preserve">
+    <value>Adres bewerken</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="ContactUpdatedSuccessfully" xml:space="preserve">
+    <value>Adres succesvol bijgewerkt</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Verwijderen bevestigen</value>
+  </data>
+  <data name="DeleteContactText" xml:space="preserve">
+    <value>Weet u zeker dat u dit adres wilt verwijderen?</value>
+  </data>
+  <data name="ContactDeletedSuccessfully" xml:space="preserve">
+    <value>Adres verwijderd</value>
+  </data>
+  <data name="SelectContact" xml:space="preserve">
+    <value>Adres van ontvanger selecteren</value>
+  </data>
+  <data name="SignTransactionFailed" xml:space="preserve">
+    <value>Ondertekenen van transactie mislukt</value>
+  </data>
+  <data name="SendTransactionByUserText" xml:space="preserve">
+    <value>U gaat een overboeking starten:</value>
+  </data>
+  <data name="UnknownAddress" xml:space="preserve">
+    <value>Onbekend adres</value>
+  </data>
+  <data name="SendingTransaction" xml:space="preserve">
+    <value>Transactie verzenden</value>
+  </data>
+  <data name="TransactionConfirming" xml:space="preserve">
+    <value>Transactie wacht op bevestiging</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>Transactiedetails</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Confirming" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Tijd</value>
+  </data>
+  <data name="TxID" xml:space="preserve">
+    <value>Transactie-ID</value>
+  </data>
+  <data name="TransactionSucceeded" xml:space="preserve">
+    <value>Transactie geslaagd</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="NoNftText" xml:space="preserve">
+    <value>Geen NFT's in uw wallet</value>
+  </data>
+  <data name="OpenNFTLink" xml:space="preserve">
+    <value>NFT-link openen</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="Contract" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschrijving</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Collectie</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="HiddenAssets" xml:space="preserve">
+    <value>Verborgen assets</value>
+  </data>
+  <data name="NoHiddenAssets" xml:space="preserve">
+    <value>Geen verborgen assets</value>
+  </data>
+  <data name="NoHiddenAssetsText" xml:space="preserve">
+    <value>Open assetdetails in uw wallet om de instellingen te beheren</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Verbergen</value>
+  </data>
+  <data name="AssetHidden" xml:space="preserve">
+    <value>Assets verborgen</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Zichtbaar maken</value>
+  </data>
+  <data name="NewsCategories" xml:space="preserve">
+    <value>Nieuwscategorieën</value>
+  </data>
+  <data name="NoAssetText" xml:space="preserve">
+    <value>Geen assets in uw wallet</value>
+  </data>
+  <data name="NoRssText" xml:space="preserve">
+    <value>Geen nieuwsbronnen</value>
+  </data>
+  <data name="AgreeToTermsAndPrivacy" xml:space="preserve">
+    <value>Door een optie te selecteren gaat u akkoord met {0} en {1}.</value>
+  </data>
+  <data name="TermsOfServiceWithBrackets" xml:space="preserve">
+    <value>Gebruiksvoorwaarden</value>
+  </data>
+  <data name="PrivacyPolicyWithBrackets" xml:space="preserve">
+    <value>Privacybeleid</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Taal</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>Systeemtaal volgen</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Taal wijzigen</value>
+  </data>
+  <data name="ChangeLanguageConfirmation" xml:space="preserve">
+    <value>De app wordt opnieuw gestart nadat de taal is gewijzigd.
+Wilt u doorgaan?</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>Taal bijgewerkt</value>
+  </data>
+  <data name="SignInWithNeo" xml:space="preserve">
+    <value>Inloggen met Neo</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>Bezig met inloggen</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Domeinnaam</value>
+  </data>
+  <data name="OpenDAppFailedText" xml:space="preserve">
+    <value>Kan niet terugkeren naar de DApp</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Delen</value>
+  </data>
+  <data name="InvalidCallbackURLFormat" xml:space="preserve">
+    <value>Ongeldige callback-URL-indeling</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Overig</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact opnemen</value>
+  </data>
+  <data name="DeleteWallet" xml:space="preserve">
+    <value>Wallet verwijderen</value>
+  </data>
+  <data name="DeleteWalletWarningText" xml:space="preserve">
+    <value>Het verwijderen van een wallet is een onomkeerbare handeling met een hoog risico. Na verwijdering worden alle gegevens met betrekking tot deze wallet op het huidige apparaat (inclusief accountinformatie, transactiegeschiedenis en lokale cache) permanent verwijderd en kunnen deze niet worden hersteld.
+
+Controleer of u de herstelzin of privésleutel van de wallet veilig hebt geback-upt en of de back-up correct is en veilig wordt bewaard. Als u de back-up niet hebt voltooid of deze bent kwijtgeraakt, kunt u de wallet na verwijdering niet herstellen en gaan de assets in de wallet permanent verloren.
+
+Door door te gaan bevestigt u dat u alle bijbehorende risico's volledig begrijpt en accepteert.</value>
+  </data>
+  <data name="DeleteWalletConfirmation" xml:space="preserve">
+    <value>Ik begrijp bovenstaande risico's en bevestig dat ik mijn herstelzin of privésleutel heb geback-upt</value>
+  </data>
+  <data name="ConfirmSecurityRiskAcknowledgement" xml:space="preserve">
+    <value>Bevestig dat u de bijbehorende beveiligingsrisico's begrijpt</value>
+  </data>
+  <data name="WalletDeletionIrreversibleWarning" xml:space="preserve">
+    <value>Deze handeling kan niet ongedaan worden gemaakt. Het verwijderen van de wallet wist lokale gegevens permanent. Als u uw herstelzin of privésleutel niet hebt geback-upt, kunt u uw wallet of de assets daarin niet herstellen.</value>
+  </data>
+  <data name="WalletDeleted" xml:space="preserve">
+    <value>Wallet verwijderd</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Over</value>
+  </data>
+  <data name="AboutOneGate" xml:space="preserve">
+    <value>Over OneGate</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Gebruiksvoorwaarden</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacybeleid</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Screenshots</value>
+  </data>
+  <data name="SupportedLanguages" xml:space="preserve">
+    <value>Ondersteunde talen</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>Controleren op updates</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>Controleren op updates</value>
+  </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>Geen updates beschikbaar</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>Nieuwe versie beschikbaar</value>
+  </data>
+  <data name="UpdateNow" xml:space="preserve">
+    <value>Nu bijwerken</value>
+  </data>
+  <data name="UpdateApp" xml:space="preserve">
+    <value>App bijwerken</value>
+  </data>
+  <data name="UpdateDownloadedRestartToInstall" xml:space="preserve">
+    <value>De update is gedownload. Nu opnieuw starten om te installeren?</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Installeren</value>
+  </data>
+  <data name="UpdateInstalledRestartNow" xml:space="preserve">
+    <value>De update is geïnstalleerd. Start de app opnieuw om de wijzigingen toe te passen. Nu opnieuw starten?</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>Opnieuw starten</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Gaming" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Marketplace" xml:space="preserve">
+    <value>Marketplace</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>Sociaal</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Bericht</value>
+  </data>
+  <data name="LoadingWalletData" xml:space="preserve">
+    <value>Walletgegevens laden</value>
+  </data>
+  <data name="ExportPrivateKey" xml:space="preserve">
+    <value>Privésleutel exporteren</value>
+  </data>
+  <data name="PrivateKeySecurity" xml:space="preserve">
+    <value>Beveiligingsmelding privésleutel</value>
+  </data>
+  <data name="PrivateKeyExportWarning" xml:space="preserve">
+    <value>Het exporteren van uw privésleutel geeft volledige controle over de assets in uw wallet. Als de privésleutel wordt gecompromitteerd, kan iedereen uw assets overdragen, en dit kan niet ongedaan worden gemaakt of worden hersteld.
+
+Zorg ervoor dat u dit doet in een veilige, offline omgeving waar niemand u kan observeren. Maak geen screenshots of foto's en kopieer de sleutel niet naar chatapps, e-mail of cloudopslag. Deel uw privésleutel nooit met iemand.
+
+Let op: wij slaan uw privésleutel niet op en beheren deze ook niet. Als deze verloren gaat, wordt vergeten of beschadigd raakt, kan deze niet worden hersteld.
+
+Bewaar de sleutel na het exporteren veilig en zorg ervoor dat uw huidige omgeving veilig is.</value>
+  </data>
+  <data name="SelectPrivateKeyFormat" xml:space="preserve">
+    <value>Exportindeling selecteren</value>
+  </data>
+  <data name="PlaintextPrivateKeyWif" xml:space="preserve">
+    <value>Onversleutelde privésleutel (WIF)</value>
+  </data>
+  <data name="PasswordProtectedPrivateKeyNep2" xml:space="preserve">
+    <value>Met wachtwoord beveiligde privésleutel (NEP-2)</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Indeling</value>
+  </data>
+  <data name="WifPrivateKeyWarning" xml:space="preserve">
+    <value>WIF is een onversleutelde privésleutel in platte tekst. Iedereen die deze verkrijgt, kan uw assets direct beheren en overdragen zonder aanvullende verificatie.
+
+Bekijk en bewaar deze alleen in een veilige, offline omgeving waar niemand kan meekijken. Het wordt aanbevolen om deze op te schrijven of op een betrouwbaar offline medium op te slaan en back-ups op verschillende locaties te bewaren.
+
+Maak geen screenshots of foto's en kopieer deze niet naar chatapps, e-mail, notities, cloudopslag of een andere online omgeving. Deel deze nooit met iemand.</value>
+  </data>
+  <data name="Nep2PrivateKeyWarning" xml:space="preserve">
+    <value>NEP-2 is een versleutelde privésleutel die met een wachtwoord is beveiligd. U hebt uw walletwachtwoord nodig om deze te gebruiken, waardoor deze geschikt is voor opslag en back-up.
+
+Let op: zowel de NEP-2-sleutel als het bijbehorende wachtwoord zijn vereist. Als iemand beide verkrijgt, kan diegene uw assets beheren en overdragen. Als u de NEP-2-sleutel verliest of het wachtwoord vergeet, kunnen uw assets niet worden hersteld.
+
+Het wordt aanbevolen om de NEP-2-sleutel en het wachtwoord apart op te slaan en veilig te back-uppen. Bewaar ze niet op hetzelfde apparaat of in dezelfde online omgeving.</value>
+  </data>
+  <data name="ShownAfterSettingPassword" xml:space="preserve">
+    <value>Wordt weergegeven nadat u een wachtwoord hebt ingesteld</value>
+  </data>
+  <data name="SelectImportType" xml:space="preserve">
+    <value>Importtype selecteren</value>
+  </data>
+  <data name="ImportTypeRequired" xml:space="preserve">
+    <value>Selecteer een importtype</value>
+  </data>
+  <data name="SensitiveDataSecurityNotice" xml:space="preserve">
+    <value>Beveiligingsmelding gevoelige gegevens</value>
+  </data>
+  <data name="LocalSensitiveDataNotice" xml:space="preserve">
+    <value>Uw privésleutel, herstelzin, wachtwoord en andere gevoelige informatie worden alleen lokaal op uw apparaat opgeslagen. OneGate uploadt, synchroniseert of bewaart geen kopieën.</value>
+  </data>
+  <data name="SelectAddressToImportFromMnemonic" xml:space="preserve">
+    <value>Deze herstelzin kan overeenkomen met meerdere adressen. Selecteer het adres dat u wilt importeren.</value>
+  </data>
+  <data name="ImportAddress" xml:space="preserve">
+    <value>Te importeren adres</value>
+  </data>
+</root>

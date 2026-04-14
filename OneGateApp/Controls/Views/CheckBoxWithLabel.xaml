@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             x:Class="NeoOrder.OneGate.Controls.Views.CheckBoxWithLabel">
+    <Grid ColumnDefinitions="auto,*" BindingContext="{Binding Source={RelativeSource AncestorType={x:Type og:CheckBoxWithLabel}}}">
+        <CheckBox IsChecked="{Binding IsChecked}" VerticalOptions="Center" CheckedChanged="OnCheckedChanged" />
+        <Label Grid.Column="1" Text="{Binding Text}" VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLabelTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Grid>
+</ContentView>

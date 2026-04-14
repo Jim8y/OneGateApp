@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apps" xml:space="preserve">
+    <value>Aplicaciones</value>
+  </data>
+  <data name="BackupMnemonicCheckBoxText" xml:space="preserve">
+    <value>He anotado y respaldado de forma segura la frase mnemónica anterior</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>Crear contraseña</value>
+  </data>
+  <data name="CreateWallet" xml:space="preserve">
+    <value>Crear billetera</value>
+  </data>
+  <data name="DefaultCompareErrorMessage" xml:space="preserve">
+    <value>{0} no coinciden</value>
+  </data>
+  <data name="DefaultRequiredErrorMessage" xml:space="preserve">
+    <value>{0} no puede estar vacío</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageLength" xml:space="preserve">
+    <value>{0} debe tener {1} caracteres</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMax" xml:space="preserve">
+    <value>{0} debe tener como máximo {2} caracteres</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMinMax" xml:space="preserve">
+    <value>{0} debe tener entre {1} y {2} caracteres</value>
+  </data>
+  <data name="DefaultValidatorErrorMessage" xml:space="preserve">
+    <value>{0} no válido</value>
+  </data>
+  <data name="ErrorMessageMnemonicBackup" xml:space="preserve">
+    <value>Asegúrese de anotar y respaldar de forma segura la frase mnemónica anterior. De lo contrario, sus activos se perderán permanentemente y no podrán recuperarse.</value>
+  </data>
+  <data name="ErrorMessageMnemonicMismatch" xml:space="preserve">
+    <value>Frase mnemónica incorrecta. Introdúzcala en el orden correcto</value>
+  </data>
+  <data name="ErrorMessagePasswordsMismatch" xml:space="preserve">
+    <value>Las contraseñas no coinciden</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>Campo</value>
+  </data>
+  <data name="GenerateMnemonic" xml:space="preserve">
+    <value>Generar frase mnemónica</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="ImportWallet" xml:space="preserve">
+    <value>Importar billetera</value>
+  </data>
+  <data name="MnemonicImportanceContent" xml:space="preserve">
+    <value>Su frase mnemónica consta de 24 palabras y puede utilizarse para recuperar sus fondos. Asegúrese de anotarla y guardarla de forma segura. No la comparta con nadie.</value>
+  </data>
+  <data name="MnemonicImportanceTitle" xml:space="preserve">
+    <value>Importancia de la frase mnemónica</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="PasswordImportanceContent" xml:space="preserve">
+    <value>Tenga en cuenta: si olvida la contraseña de su billetera, no podrá recuperarla. Asegúrese de recordarla.</value>
+  </data>
+  <data name="PasswordImportanceTitle" xml:space="preserve">
+    <value>Importancia de la contraseña</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Vuelva a introducir la contraseña</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Establecer contraseña</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Error desconocido</value>
+  </data>
+  <data name="VerifyMnemonic" xml:space="preserve">
+    <value>Verificar frase mnemónica</value>
+  </data>
+  <data name="VerifyMnemonicPrompt" xml:space="preserve">
+    <value>Seleccione las palabras en el orden correcto para verificar.</value>
+  </data>
+  <data name="WalletName" xml:space="preserve">
+    <value>Nombre de la billetera</value>
+  </data>
+  <data name="WelcomePageTitle" xml:space="preserve">
+    <value>Bienvenido a OneGate</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Recientes</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Favoritos</value>
+  </data>
+  <data name="DefaultEmptyViewMessage" xml:space="preserve">
+    <value>Sin contenido</value>
+  </data>
+  <data name="ImportViaMnemonicCode" xml:space="preserve">
+    <value>Importar mediante frase mnemónica</value>
+  </data>
+  <data name="ImportViaPrivateKey" xml:space="preserve">
+    <value>Importar mediante clave privada</value>
+  </data>
+  <data name="ImportViaNep2" xml:space="preserve">
+    <value>Importar mediante NEP-2</value>
+  </data>
+  <data name="EnterMnemonicPrompt" xml:space="preserve">
+    <value>Introduzca su frase mnemónica, separada por espacios</value>
+  </data>
+  <data name="Mnemonic" xml:space="preserve">
+    <value>Frase mnemónica</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>Clave privada</value>
+  </data>
+  <data name="Nep2Key" xml:space="preserve">
+    <value>Clave NEP-2</value>
+  </data>
+  <data name="ShowOriginalText" xml:space="preserve">
+    <value>Ver original</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Abrir</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>Detalles de la aplicación</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="ScanQRCode" xml:space="preserve">
+    <value>Escanear</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="ErrorMessageCameraFailure" xml:space="preserve">
+    <value>No se puede acceder a la cámara</value>
+  </data>
+  <data name="ErrorMessageUnsupportedQRCode" xml:space="preserve">
+    <value>Contenido de código QR no compatible: {0}</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="ScanFromPhotoLibrary" xml:space="preserve">
+    <value>Escanear código QR desde la galería</value>
+  </data>
+  <data name="ErrorMessageUnableReadQRCode" xml:space="preserve">
+    <value>No se puede reconocer el código QR</value>
+  </data>
+  <data name="RecognizeQRCode" xml:space="preserve">
+    <value>Escanear código QR</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Seguridad</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Cambiar contraseña</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Contraseña actual</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Contraseña actualizada</value>
+  </data>
+  <data name="ShareAppText" xml:space="preserve">
+    <value>Encontré algo interesante en OneGate: {0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="LoginRequest" xml:space="preserve">
+    <value>Solicitud de inicio de sesión</value>
+  </data>
+  <data name="LoginRequestText" xml:space="preserve">
+    <value>La aplicación solicita iniciar sesión con su dirección de billetera. ¿Permitir?</value>
+  </data>
+  <data name="CreateBiometricCredential" xml:space="preserve">
+    <value>Crear credenciales biométricas</value>
+  </data>
+  <data name="CreateBiometricCredentialText" xml:space="preserve">
+    <value>Su dispositivo admite autenticación biométrica. ¿Crear credenciales biométricas para simplificar el inicio de sesión?</value>
+  </data>
+  <data name="RedirectionBlockedText" xml:space="preserve">
+    <value>Navegación a enlace externo bloqueada</value>
+  </data>
+  <data name="BiometricAuthentication" xml:space="preserve">
+    <value>Autenticación biométrica</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Activado</value>
+  </data>
+  <data name="BiometricIntroductionText" xml:space="preserve">
+    <value>Después de crear una credencial biométrica, puede usar la biometría para desbloquear su billetera, iniciar sesión en la aplicación o realizar pagos.
+
+Puede desactivar la autenticación biométrica en cualquier momento.</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Verificar contraseña</value>
+  </data>
+  <data name="VerifyBiometricText" xml:space="preserve">
+    <value>Por favor, verifique sus datos biométricos para continuar</value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>Operación cancelada</value>
+  </data>
+  <data name="BiometricUnavailableText" xml:space="preserve">
+    <value>La autenticación biométrica no está disponible temporalmente</value>
+  </data>
+  <data name="BiometricCredentialCreatedText" xml:space="preserve">
+    <value>Credencial biométrica creada correctamente</value>
+  </data>
+  <data name="BiometricResetText" xml:space="preserve">
+    <value>Contraseña cambiada. Las credenciales biométricas se han restablecido.</value>
+  </data>
+  <data name="VerifyPasswordToContinue" xml:space="preserve">
+    <value>Introduzca la contraseña de su billetera para continuar.</value>
+  </data>
+  <data name="ErrorMessageIncorrectPassword" xml:space="preserve">
+    <value>Contraseña incorrecta</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Omitir</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Autorizar</value>
+  </data>
+  <data name="DisableBiometric" xml:space="preserve">
+    <value>Desactivar la autenticación biométrica</value>
+  </data>
+  <data name="DisableBiometricText" xml:space="preserve">
+    <value>La autenticación biométrica está habilitada actualmente para autorizar el acceso de la aplicación a su billetera. ¿Desea desactivarla?
+
+Después de desactivarla, deberá introducir manualmente la contraseña de la billetera para autorizar el acceso.</value>
+  </data>
+  <data name="BiometricDisabledText" xml:space="preserve">
+    <value>La autenticación biométrica está desactivada</value>
+  </data>
+  <data name="PickAddress" xml:space="preserve">
+    <value>Seleccionar dirección</value>
+  </data>
+  <data name="PickAddressText" xml:space="preserve">
+    <value>La aplicación le solicita seleccionar o introducir una dirección:</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="SendTransaction" xml:space="preserve">
+    <value>Enviar transacción</value>
+  </data>
+  <data name="SendTransactionText" xml:space="preserve">
+    <value>Die App fordert das Senden einer Transaktion an:</value>
+  </data>
+  <data name="SelectAddressFromWallet" xml:space="preserve">
+    <value>Seleccione una dirección desde su billetera</value>
+  </data>
+  <data name="EnterCustomAddress" xml:space="preserve">
+    <value>Introducir dirección personalizada</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Transferencia</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Dirección de origen</value>
+  </data>
+  <data name="Fee" xml:space="preserve">
+    <value>Tarifa de transacción</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="ContractInvocation" xml:space="preserve">
+    <value>Invocación de contrato</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Método</value>
+  </data>
+  <data name="NoParameters" xml:space="preserve">
+    <value>Sin parámetros</value>
+  </data>
+  <data name="SignMessage" xml:space="preserve">
+    <value>Firma de mensaje</value>
+  </data>
+  <data name="SignMessageText" xml:space="preserve">
+    <value>La aplicación solicita firmar un mensaje:</value>
+  </data>
+  <data name="SigningAccount" xml:space="preserve">
+    <value>Cuenta de firma</value>
+  </data>
+  <data name="SignMessageRequestText" xml:space="preserve">
+    <value>La aplicación solicita firmar un mensaje. ¿Permitir?</value>
+  </data>
+  <data name="SignTransaction" xml:space="preserve">
+    <value>Firma de transacción</value>
+  </data>
+  <data name="SignTransactionText" xml:space="preserve">
+    <value>La aplicación solicita firmar una transacción:</value>
+  </data>
+  <data name="ExecutionResult" xml:space="preserve">
+    <value>Resultado de la ejecución</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Éxito</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>Billetera</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>Recibir</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Historial de transacciones</value>
+  </data>
+  <data name="Asset" xml:space="preserve">
+    <value>Activos</value>
+  </data>
+  <data name="WalletSettings" xml:space="preserve">
+    <value>Configuración de la billetera</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="ReceiveQRCodeTitle" xml:space="preserve">
+    <value>Escanee el código QR para enviarme una transferencia</value>
+  </data>
+  <data name="ReceiveQRCodeText" xml:space="preserve">
+    <value>Esta dirección puede recibir todos los activos en la plataforma Neo.</value>
+  </data>
+  <data name="SaveToPhotoLibrary" xml:space="preserve">
+    <value>Guardar en la galería</value>
+  </data>
+  <data name="QRCodeSaved" xml:space="preserve">
+    <value>Código QR guardado</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>Sin permiso</value>
+  </data>
+  <data name="SelectAsset" xml:space="preserve">
+    <value>Seleccionar activo</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Saldo</value>
+  </data>
+  <data name="DefaultOutOfRangeErrorMessage" xml:space="preserve">
+    <value>{0} está fuera de rango</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="ReceivingAddress" xml:space="preserve">
+    <value>Dirección de recepción</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Libreta de direcciones</value>
+  </data>
+  <data name="NoAddress" xml:space="preserve">
+    <value>Sin direcciones</value>
+  </data>
+  <data name="NoAddressText" xml:space="preserve">
+    <value>Tu libreta de direcciones está vacía</value>
+  </data>
+  <data name="AddNewAddress" xml:space="preserve">
+    <value>Agregar dirección</value>
+  </data>
+  <data name="ScreenshotFailed" xml:space="preserve">
+    <value>Error al capturar la pantalla</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ContactAddedSuccessfully" xml:space="preserve">
+    <value>Dirección añadida</value>
+  </data>
+  <data name="AddressAlreadyExists" xml:space="preserve">
+    <value>La dirección ya existe</value>
+  </data>
+  <data name="EditContact" xml:space="preserve">
+    <value>Editar dirección</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="ContactUpdatedSuccessfully" xml:space="preserve">
+    <value>Dirección actualizada</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Confirmar eliminación</value>
+  </data>
+  <data name="DeleteContactText" xml:space="preserve">
+    <value>¿Seguro que deseas eliminar esta dirección?</value>
+  </data>
+  <data name="ContactDeletedSuccessfully" xml:space="preserve">
+    <value>Dirección eliminada</value>
+  </data>
+  <data name="SelectContact" xml:space="preserve">
+    <value>Seleccionar dirección de recepción</value>
+  </data>
+  <data name="SignTransactionFailed" xml:space="preserve">
+    <value>Error al firmar la transacción</value>
+  </data>
+  <data name="SendTransactionByUserText" xml:space="preserve">
+    <value>Sie initiieren eine Überweisungstransaktion:</value>
+  </data>
+  <data name="UnknownAddress" xml:space="preserve">
+    <value>Dirección desconocida</value>
+  </data>
+  <data name="SendingTransaction" xml:space="preserve">
+    <value>Enviando transacción</value>
+  </data>
+  <data name="TransactionConfirming" xml:space="preserve">
+    <value>Transacción en espera de confirmación</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>Transaktionsdetails</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Confirming" xml:space="preserve">
+    <value>Confirmando</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="TxID" xml:space="preserve">
+    <value>ID de transacción</value>
+  </data>
+  <data name="TransactionSucceeded" xml:space="preserve">
+    <value>Transacción exitosa</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Cargando</value>
+  </data>
+  <data name="NoNftText" xml:space="preserve">
+    <value>No hay NFT en su billetera</value>
+  </data>
+  <data name="OpenNFTLink" xml:space="preserve">
+    <value>Abrir enlace NFT</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="Contract" xml:space="preserve">
+    <value>Contrato</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Colección</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="HiddenAssets" xml:space="preserve">
+    <value>Activos ocultos</value>
+  </data>
+  <data name="NoHiddenAssets" xml:space="preserve">
+    <value>No hay activos ocultos</value>
+  </data>
+  <data name="NoHiddenAssetsText" xml:space="preserve">
+    <value>Abra los detalles del activo en su billetera para gestionar la configuración</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Ocultar</value>
+  </data>
+  <data name="AssetHidden" xml:space="preserve">
+    <value>Activos ocultos</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="NewsCategories" xml:space="preserve">
+    <value>Categorías de noticias</value>
+  </data>
+  <data name="NoAssetText" xml:space="preserve">
+    <value>No hay activos en su billetera</value>
+  </data>
+  <data name="NoRssText" xml:space="preserve">
+    <value>No hay fuentes de noticias</value>
+  </data>
+  <data name="AgreeToTermsAndPrivacy" xml:space="preserve">
+    <value>Al seleccionar cualquier opción, acepta {0} y {1}.</value>
+  </data>
+  <data name="TermsOfServiceWithBrackets" xml:space="preserve">
+    <value>Términos de servicio</value>
+  </data>
+  <data name="PrivacyPolicyWithBrackets" xml:space="preserve">
+    <value>Política de privacidad</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>Seguir el sistema</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Cambiar idioma</value>
+  </data>
+  <data name="ChangeLanguageConfirmation" xml:space="preserve">
+    <value>La aplicación se reiniciará después de cambiar el idioma.
+¿Desea continuar?</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>Idioma actualizado</value>
+  </data>
+  <data name="SignInWithNeo" xml:space="preserve">
+    <value>Iniciar sesión con Neo</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>Iniciando sesión</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Nombre de dominio</value>
+  </data>
+  <data name="OpenDAppFailedText" xml:space="preserve">
+    <value>No se pudo volver a la DApp</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Compartir</value>
+  </data>
+  <data name="InvalidCallbackURLFormat" xml:space="preserve">
+    <value>Formato de URL de retorno no válido</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Otros</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contáctanos</value>
+  </data>
+  <data name="DeleteWallet" xml:space="preserve">
+    <value>Eliminar billetera</value>
+  </data>
+  <data name="DeleteWalletWarningText" xml:space="preserve">
+    <value>Eliminar una billetera es una acción irreversible y de alto riesgo. Una vez eliminada, todos los datos relacionados con esta billetera en el dispositivo actual (incluida la información de la cuenta, el historial de transacciones y la caché local) se eliminarán permanentemente y no podrán recuperarse.
+
+Asegúrese de haber respaldado de forma segura la frase mnemónica o la clave privada de la billetera, y de que la copia sea correcta y esté bien protegida. Si no ha realizado una copia de seguridad o la pierde, no podrá restaurar la billetera después de eliminarla, y los activos que contiene se perderán permanentemente.
+
+Al continuar, usted reconoce que comprende plenamente y acepta todos los riesgos asociados.</value>
+  </data>
+  <data name="DeleteWalletConfirmation" xml:space="preserve">
+    <value>Entiendo los riesgos anteriores y confirmo que he respaldado mi frase mnemónica o clave privada</value>
+  </data>
+  <data name="ConfirmSecurityRiskAcknowledgement" xml:space="preserve">
+    <value>Por favor confirme que comprende los riesgos de seguridad asociados</value>
+  </data>
+  <data name="WalletDeletionIrreversibleWarning" xml:space="preserve">
+    <value>Esta acción no se puede deshacer. Eliminar la billetera borrará permanentemente los datos locales. Si no ha respaldado su frase mnemónica o clave privada, no podrá recuperar su billetera ni sus activos.</value>
+  </data>
+  <data name="WalletDeleted" xml:space="preserve">
+    <value>Billetera eliminada</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="AboutOneGate" xml:space="preserve">
+    <value>Acerca de OneGate</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Sitio web</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Términos de servicio</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Política de privacidad</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Capturas</value>
+  </data>
+  <data name="SupportedLanguages" xml:space="preserve">
+    <value>Idiomas compatibles</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>Buscar actualizaciones</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>Buscando actualizaciones</value>
+  </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>No hay actualizaciones disponibles</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>Nueva versión disponible</value>
+  </data>
+  <data name="UpdateNow" xml:space="preserve">
+    <value>Actualizar ahora</value>
+  </data>
+  <data name="UpdateApp" xml:space="preserve">
+    <value>Actualizar aplicación</value>
+  </data>
+  <data name="UpdateDownloadedRestartToInstall" xml:space="preserve">
+    <value>La actualización se ha descargado. ¿Reiniciar ahora para instalar?</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Instalar</value>
+  </data>
+  <data name="UpdateInstalledRestartNow" xml:space="preserve">
+    <value>La actualización se ha instalado. Reinicie la aplicación para aplicar los cambios. ¿Reiniciar ahora?</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>Reiniciar</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Herramientas</value>
+  </data>
+  <data name="Gaming" xml:space="preserve">
+    <value>Juegos</value>
+  </data>
+  <data name="Marketplace" xml:space="preserve">
+    <value>Mercado</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>Social</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="LoadingWalletData" xml:space="preserve">
+    <value>Cargando datos de la billetera</value>
+  </data>
+  <data name="ExportPrivateKey" xml:space="preserve">
+    <value>Exportar clave privada</value>
+  </data>
+  <data name="PrivateKeySecurity" xml:space="preserve">
+    <value>Aviso de seguridad de la clave privada</value>
+  </data>
+  <data name="PrivateKeyExportWarning" xml:space="preserve">
+    <value>Exportar su clave privada expone el control total sobre los activos de su billetera. Si la clave privada se ve comprometida, cualquiera podrá transferir sus activos y no habrá forma de revertirlo ni recuperarlos.
+
+Asegúrese de realizar esta operación en un entorno seguro, sin conexión y sin que nadie pueda observarle. No haga capturas de pantalla, fotos ni copie la clave en aplicaciones de mensajería, correo electrónico o almacenamiento en la nube. Nunca comparta su clave privada.
+
+Tenga en cuenta: no almacenamos ni gestionamos su clave privada. Si se pierde, olvida o se daña, no podrá recuperarse.
+
+Después de exportarla, guárdela de forma segura y asegúrese de que su entorno es seguro.</value>
+  </data>
+  <data name="SelectPrivateKeyFormat" xml:space="preserve">
+    <value>Seleccionar formato de exportación</value>
+  </data>
+  <data name="PlaintextPrivateKeyWif" xml:space="preserve">
+    <value>Clave privada en texto plano (WIF)</value>
+  </data>
+  <data name="PasswordProtectedPrivateKeyNep2" xml:space="preserve">
+    <value>Clave privada protegida por contraseña (NEP-2)</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Formato</value>
+  </data>
+  <data name="WifPrivateKeyWarning" xml:space="preserve">
+    <value>WIF es una clave privada sin cifrar en texto plano. Cualquier persona que la obtenga puede controlar y transferir sus activos sin verificación adicional.
+
+Consúltela y guárdela únicamente en un entorno seguro, sin conexión y sin que nadie pueda observarle. Se recomienda anotarla a mano o almacenarla en un medio offline confiable y realizar copias de seguridad en ubicaciones separadas.
+
+No haga capturas de pantalla ni fotos, ni la copie en aplicaciones de mensajería, correo electrónico, notas o almacenamiento en la nube. No la comparta con nadie.</value>
+  </data>
+  <data name="Nep2PrivateKeyWarning" xml:space="preserve">
+    <value>NEP-2 es una clave privada cifrada protegida por contraseña. Para utilizarla se requiere la contraseña del monedero y es adecuada para almacenamiento y copia de seguridad.
+
+Tenga en cuenta: la clave NEP-2 y su contraseña correspondiente son ambas necesarias. Si alguien obtiene ambas, podrá controlar y transferir sus activos. Si pierde la clave NEP-2 o olvida la contraseña, no podrá recuperar sus activos.
+
+Se recomienda almacenar la clave NEP-2 y la contraseña por separado y realizar copias de seguridad seguras. Evite guardarlas en el mismo dispositivo o en el mismo entorno en línea.</value>
+  </data>
+  <data name="ShownAfterSettingPassword" xml:space="preserve">
+    <value>Se mostrará después de establecer una contraseña</value>
+  </data>
+  <data name="SelectImportType" xml:space="preserve">
+    <value>Seleccionar tipo de importación</value>
+  </data>
+  <data name="ImportTypeRequired" xml:space="preserve">
+    <value>Por favor seleccione un tipo de importación</value>
+  </data>
+  <data name="SensitiveDataSecurityNotice" xml:space="preserve">
+    <value>Aviso de seguridad de la información sensible</value>
+  </data>
+  <data name="LocalSensitiveDataNotice" xml:space="preserve">
+    <value>Su clave privada, frase mnemónica, contraseña y otra información sensible se almacenan únicamente en su dispositivo local. OneGate no carga, sincroniza ni guarda ninguna copia.</value>
+  </data>
+  <data name="SelectAddressToImportFromMnemonic" xml:space="preserve">
+    <value>Se ha detectado que esta frase de recuperación puede corresponder a varias direcciones. Selecciona la dirección que deseas importar.</value>
+  </data>
+  <data name="ImportAddress" xml:space="preserve">
+    <value>Dirección a importar</value>
+  </data>
+</root>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:og="http://schemas.neoorder.org/onegate/controls"
+       xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+       x:Class="NeoOrder.OneGate.AppShell"
+       Title="OneGate">
+    <TabBar>
+        <Tab Title="{x:Static og:Strings.Home}">
+            <Tab.Icon>
+                <Binding Path="IsChecked" Source="{RelativeSource Self}">
+                    <Binding.Converter>
+                        <toolkit:BoolToObjectConverter>
+                            <toolkit:BoolToObjectConverter.TrueObject>
+                                <FontImageSource FontFamily="Icons" Glyph="&#xe64d;" />
+                            </toolkit:BoolToObjectConverter.TrueObject>
+                            <toolkit:BoolToObjectConverter.FalseObject>
+                                <FontImageSource FontFamily="Icons" Glyph="&#xe609;" />
+                            </toolkit:BoolToObjectConverter.FalseObject>
+                        </toolkit:BoolToObjectConverter>
+                    </Binding.Converter>
+                </Binding>
+            </Tab.Icon>
+            <ShellContent Route="home" ContentTemplate="{DataTemplate og:HomePage}" />
+        </Tab>
+        <Tab Title="{x:Static og:Strings.Apps}">
+            <Tab.Icon>
+                <Binding Path="IsChecked" Source="{RelativeSource Self}">
+                    <Binding.Converter>
+                        <toolkit:BoolToObjectConverter>
+                            <toolkit:BoolToObjectConverter.TrueObject>
+                                <FontImageSource FontFamily="Icons" Glyph="&#xe853;" />
+                            </toolkit:BoolToObjectConverter.TrueObject>
+                            <toolkit:BoolToObjectConverter.FalseObject>
+                                <FontImageSource FontFamily="Icons" Glyph="&#xe792;" />
+                            </toolkit:BoolToObjectConverter.FalseObject>
+                        </toolkit:BoolToObjectConverter>
+                    </Binding.Converter>
+                </Binding>
+            </Tab.Icon>
+            <ShellContent Route="dapps" ContentTemplate="{DataTemplate og:DAppsPage}" />
+        </Tab>
+        <Tab Title="{x:Static og:Strings.Wallet}">
+            <Tab.Icon>
+                <Binding Path="IsChecked" Source="{RelativeSource Self}">
+                    <Binding.Converter>
+                        <toolkit:BoolToObjectConverter>
+                            <toolkit:BoolToObjectConverter.TrueObject>
+                                <FontImageSource FontFamily="Icons" Glyph="&#xe852;" />
+                            </toolkit:BoolToObjectConverter.TrueObject>
+                            <toolkit:BoolToObjectConverter.FalseObject>
+                                <FontImageSource FontFamily="Icons" Glyph="&#xe798;" />
+                            </toolkit:BoolToObjectConverter.FalseObject>
+                        </toolkit:BoolToObjectConverter>
+                    </Binding.Converter>
+                </Binding>
+            </Tab.Icon>
+            <ShellContent Route="wallet" ContentTemplate="{DataTemplate og:WalletPage}" />
+        </Tab>
+    </TabBar>
+</Shell>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.GenerateMnemonicPage"
+             x:DataType="og:WalletCreationContext"
+             Title="{x:Static og:Strings.GenerateMnemonic}"
+             SafeAreaEdges="Container">
+    <ScrollView>
+        <Grid Padding="20" RowDefinitions="*,auto" RowSpacing="20" MinimumHeightRequest="{Binding Height, Source={RelativeSource AncestorType={x:Type ContentPage}}}">
+            <VerticalStackLayout Spacing="20">
+                <Label StyleClass="Icon" Text="&#xe744;" FontSize="50" HorizontalOptions="Center" />
+                <Label Text="{x:Static og:Strings.MnemonicImportanceTitle}" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label Text="{x:Static og:Strings.MnemonicImportanceContent}" />
+                <Grid ColumnDefinitions="*,*,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto" ColumnSpacing="1" RowSpacing="1" BackgroundColor="{toolkit:AppThemeResource Primary}" HorizontalOptions="Fill">
+                    <Grid.Resources>
+                        <Style TargetType="Label" Class="Cell">
+                            <Setter Property="BackgroundColor" Value="{toolkit:AppThemeResource Panel}" />
+                        </Style>
+                    </Grid.Resources>
+                    <Label Grid.Row="0" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,1,0,0" Padding="0,8" Text="{Binding Mnemonic[0]}" />
+                    <Label Grid.Row="0" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,1,0,0" Padding="0,8" Text="{Binding Mnemonic[1]}" />
+                    <Label Grid.Row="0" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,1,1,0" Padding="0,8" Text="{Binding Mnemonic[2]}" />
+                    <Label Grid.Row="1" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,0,0,0" Padding="0,8" Text="{Binding Mnemonic[3]}" />
+                    <Label Grid.Row="1" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,0,0" Padding="0,8" Text="{Binding Mnemonic[4]}" />
+                    <Label Grid.Row="1" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,1,0" Padding="0,8" Text="{Binding Mnemonic[5]}" />
+                    <Label Grid.Row="2" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,0,0,0" Padding="0,8" Text="{Binding Mnemonic[6]}" />
+                    <Label Grid.Row="2" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,0,0" Padding="0,8" Text="{Binding Mnemonic[7]}" />
+                    <Label Grid.Row="2" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,1,0" Padding="0,8" Text="{Binding Mnemonic[8]}" />
+                    <Label Grid.Row="3" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,0,0,0" Padding="0,8" Text="{Binding Mnemonic[9]}" />
+                    <Label Grid.Row="3" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,0,0" Padding="0,8" Text="{Binding Mnemonic[10]}" />
+                    <Label Grid.Row="3" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,1,0" Padding="0,8" Text="{Binding Mnemonic[11]}" />
+                    <Label Grid.Row="4" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,0,0,0" Padding="0,8" Text="{Binding Mnemonic[12]}" />
+                    <Label Grid.Row="4" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,0,0" Padding="0,8" Text="{Binding Mnemonic[13]}" />
+                    <Label Grid.Row="4" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,1,0" Padding="0,8" Text="{Binding Mnemonic[14]}" />
+                    <Label Grid.Row="5" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,0,0,0" Padding="0,8" Text="{Binding Mnemonic[15]}" />
+                    <Label Grid.Row="5" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,0,0" Padding="0,8" Text="{Binding Mnemonic[16]}" />
+                    <Label Grid.Row="5" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,1,0" Padding="0,8" Text="{Binding Mnemonic[17]}" />
+                    <Label Grid.Row="6" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,0,0,0" Padding="0,8" Text="{Binding Mnemonic[18]}" />
+                    <Label Grid.Row="6" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,0,0" Padding="0,8" Text="{Binding Mnemonic[19]}" />
+                    <Label Grid.Row="6" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,1,0" Padding="0,8" Text="{Binding Mnemonic[20]}" />
+                    <Label Grid.Row="7" Grid.Column="0" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="1,0,0,1" Padding="0,8" Text="{Binding Mnemonic[21]}" />
+                    <Label Grid.Row="7" Grid.Column="1" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,0,1" Padding="0,8" Text="{Binding Mnemonic[22]}" />
+                    <Label Grid.Row="7" Grid.Column="2" StyleClass="Cell" HorizontalTextAlignment="Center" Margin="0,0,1,1" Padding="0,8" Text="{Binding Mnemonic[23]}" />
+                    <Label Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="1" FontSize="10" />
+                    <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="2" FontSize="10" />
+                    <Label Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="3" FontSize="10" />
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="4" FontSize="10" />
+                    <Label Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="5" FontSize="10" />
+                    <Label Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="6" FontSize="10" />
+                    <Label Grid.Row="2" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="7" FontSize="10" />
+                    <Label Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="8" FontSize="10" />
+                    <Label Grid.Row="2" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="9" FontSize="10" />
+                    <Label Grid.Row="3" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="10" FontSize="10" />
+                    <Label Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="11" FontSize="10" />
+                    <Label Grid.Row="3" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="12" FontSize="10" />
+                    <Label Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="13" FontSize="10" />
+                    <Label Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="14" FontSize="10" />
+                    <Label Grid.Row="4" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="15" FontSize="10" />
+                    <Label Grid.Row="5" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="16" FontSize="10" />
+                    <Label Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="17" FontSize="10" />
+                    <Label Grid.Row="5" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="18" FontSize="10" />
+                    <Label Grid.Row="6" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="19" FontSize="10" />
+                    <Label Grid.Row="6" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="20" FontSize="10" />
+                    <Label Grid.Row="6" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="21" FontSize="10" />
+                    <Label Grid.Row="7" Grid.Column="0" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="22" FontSize="10" />
+                    <Label Grid.Row="7" Grid.Column="1" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="23" FontSize="10" />
+                    <Label Grid.Row="7" Grid.Column="2" HorizontalTextAlignment="End" Padding="0,3,4,0" Text="24" FontSize="10" />
+                </Grid>
+                <og:CheckBoxWithLabel x:Name="checkBackup" Text="{x:Static og:Strings.BackupMnemonicCheckBoxText}" />
+                <og:ValidationMessage Margin="0,-20,0,0" Target="{x:Reference checkBackup}">
+                    <og:Compare To="{x:Boolean true}" ErrorMessage="{x:Static og:Strings.ErrorMessageMnemonicBackup}" />
+                </og:ValidationMessage>
+            </VerticalStackLayout>
+            <og:Submit Grid.Row="1" Text="{x:Static og:Strings.Next}" Submitted="OnSubmitted" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             x:Class="NeoOrder.OneGate.Pages.ScanPage"
+             Title="{x:Static og:Strings.ScanQRCode}"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <og:StringSelectConverter x:Key="StringSelectConverter" />
+    </ContentPage.Resources>
+    <Grid>
+        <zxing:CameraBarcodeReaderView x:Name="cameraView" BarcodesDetected="OnBarcodesDetected" />
+        <Label Text="{x:Static og:Strings.RecognizeQRCode}" TextColor="White" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,120" />
+        <ImageButton Source="{FontImageSource &#xe607;, FontFamily=Icons}" HorizontalOptions="Start" VerticalOptions="End" Margin="60,0,0,60" Clicked="OnPickPhotoClicked" />
+        <ImageButton HorizontalOptions="End" VerticalOptions="End" Margin="0,0,60,60" Clicked="OnTorchClicked">
+            <ImageButton.Source>
+                <FontImageSource Glyph="{Binding IsTorchOn, Converter={StaticResource StringSelectConverter}, ConverterParameter=&#xe623;&#xe621;, Source={x:Reference cameraView}}" FontFamily="Icons" />
+            </ImageButton.Source>
+        </ImageButton>
+    </Grid>
+</ContentPage>

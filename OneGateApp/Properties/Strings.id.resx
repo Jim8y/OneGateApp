@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apps" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+  <data name="BackupMnemonicCheckBoxText" xml:space="preserve">
+    <value>Saya telah menuliskan dan mencadangkan frasa mnemonik di atas dengan aman</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>Buat kata sandi</value>
+  </data>
+  <data name="CreateWallet" xml:space="preserve">
+    <value>Buat wallet</value>
+  </data>
+  <data name="DefaultCompareErrorMessage" xml:space="preserve">
+    <value>{0} tidak cocok</value>
+  </data>
+  <data name="DefaultRequiredErrorMessage" xml:space="preserve">
+    <value>{0} tidak boleh kosong</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageLength" xml:space="preserve">
+    <value>{0} harus terdiri dari {1} karakter</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMax" xml:space="preserve">
+    <value>{0} maksimal {2} karakter</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMinMax" xml:space="preserve">
+    <value>{0} harus antara {1} hingga {2} karakter</value>
+  </data>
+  <data name="DefaultValidatorErrorMessage" xml:space="preserve">
+    <value>{0} tidak valid</value>
+  </data>
+  <data name="ErrorMessageMnemonicBackup" xml:space="preserve">
+    <value>Anda harus menyalin dan mencadangkan frasa mnemonik di atas dengan benar, jika tidak aset Anda akan hilang secara permanen dan tidak dapat dipulihkan.</value>
+  </data>
+  <data name="ErrorMessageMnemonicMismatch" xml:space="preserve">
+    <value>Frasa mnemonik salah. Masukkan dalam urutan yang benar</value>
+  </data>
+  <data name="ErrorMessagePasswordsMismatch" xml:space="preserve">
+    <value>Kata sandi tidak cocok</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>Kolom</value>
+  </data>
+  <data name="GenerateMnemonic" xml:space="preserve">
+    <value>Buat frasa mnemonik</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Beranda</value>
+  </data>
+  <data name="ImportWallet" xml:space="preserve">
+    <value>Impor wallet</value>
+  </data>
+  <data name="MnemonicImportanceContent" xml:space="preserve">
+    <value>Frasa mnemonik Anda terdiri dari 24 kata dan dapat digunakan untuk memulihkan dana Anda. Pastikan Anda menuliskannya dan menyimpannya dengan aman. Jangan pernah membagikannya kepada siapa pun.</value>
+  </data>
+  <data name="MnemonicImportanceTitle" xml:space="preserve">
+    <value>Pentingnya frasa mnemonik</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Berikutnya</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Kata sandi</value>
+  </data>
+  <data name="PasswordImportanceContent" xml:space="preserve">
+    <value>Harap dicatat: jika Anda lupa kata sandi wallet, kata sandi tersebut tidak dapat dipulihkan. Pastikan Anda mengingat kata sandi Anda.</value>
+  </data>
+  <data name="PasswordImportanceTitle" xml:space="preserve">
+    <value>Pentingnya kata sandi</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Masukkan ulang kata sandi</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Tetapkan kata sandi</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Kesalahan tidak dikenal</value>
+  </data>
+  <data name="VerifyMnemonic" xml:space="preserve">
+    <value>Verifikasi frasa mnemonik</value>
+  </data>
+  <data name="VerifyMnemonicPrompt" xml:space="preserve">
+    <value>Silakan pilih kata-kata dalam urutan yang benar untuk verifikasi.</value>
+  </data>
+  <data name="WalletName" xml:space="preserve">
+    <value>Nama wallet</value>
+  </data>
+  <data name="WelcomePageTitle" xml:space="preserve">
+    <value>Selamat datang di OneGate</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Terbaru</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Favorit</value>
+  </data>
+  <data name="DefaultEmptyViewMessage" xml:space="preserve">
+    <value>Tidak ada konten</value>
+  </data>
+  <data name="ImportViaMnemonicCode" xml:space="preserve">
+    <value>Impor dengan frasa mnemonik</value>
+  </data>
+  <data name="ImportViaPrivateKey" xml:space="preserve">
+    <value>Impor dengan kunci privat</value>
+  </data>
+  <data name="ImportViaNep2" xml:space="preserve">
+    <value>Impor dengan NEP-2</value>
+  </data>
+  <data name="EnterMnemonicPrompt" xml:space="preserve">
+    <value>Masukkan frasa mnemonik Anda, pisahkan dengan spasi</value>
+  </data>
+  <data name="Mnemonic" xml:space="preserve">
+    <value>Frasa mnemonik</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>Kunci privat</value>
+  </data>
+  <data name="Nep2Key" xml:space="preserve">
+    <value>Kunci NEP-2</value>
+  </data>
+  <data name="ShowOriginalText" xml:space="preserve">
+    <value>Lihat teks asli</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Semua</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Buka</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>Detail aplikasi</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Deskripsi</value>
+  </data>
+  <data name="ScanQRCode" xml:space="preserve">
+    <value>Pindai</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Pengaturan</value>
+  </data>
+  <data name="ErrorMessageCameraFailure" xml:space="preserve">
+    <value>Tidak dapat mengakses kamera</value>
+  </data>
+  <data name="ErrorMessageUnsupportedQRCode" xml:space="preserve">
+    <value>Konten kode QR tidak didukung: {0}</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ScanFromPhotoLibrary" xml:space="preserve">
+    <value>Pindai kode QR dari galeri</value>
+  </data>
+  <data name="ErrorMessageUnableReadQRCode" xml:space="preserve">
+    <value>Tidak dapat mengenali kode QR</value>
+  </data>
+  <data name="RecognizeQRCode" xml:space="preserve">
+    <value>Pindai kode QR</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Keamanan</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Ubah kata sandi</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Kata sandi saat ini</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Kata sandi diperbarui</value>
+  </data>
+  <data name="ShareAppText" xml:space="preserve">
+    <value>Saya menemukan sesuatu yang menarik di OneGate: {0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="LoginRequest" xml:space="preserve">
+    <value>Permintaan masuk</value>
+  </data>
+  <data name="LoginRequestText" xml:space="preserve">
+    <value>Aplikasi meminta untuk masuk menggunakan alamat wallet Anda. Izinkan?</value>
+  </data>
+  <data name="CreateBiometricCredential" xml:space="preserve">
+    <value>Buat kredensial biometrik</value>
+  </data>
+  <data name="CreateBiometricCredentialText" xml:space="preserve">
+    <value>Perangkat Anda mendukung autentikasi biometrik. Buat kredensial biometrik untuk mempermudah proses masuk?</value>
+  </data>
+  <data name="RedirectionBlockedText" xml:space="preserve">
+    <value>Navigasi tautan eksternal diblokir</value>
+  </data>
+  <data name="BiometricAuthentication" xml:space="preserve">
+    <value>Autentikasi biometrik</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  <data name="BiometricIntroductionText" xml:space="preserve">
+    <value>Setelah membuat kredensial biometrik, Anda dapat menggunakan biometrik untuk membuka wallet, masuk ke aplikasi, atau melakukan pembayaran.
+
+Anda dapat menonaktifkan autentikasi biometrik kapan saja.</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Verifikasi kata sandi</value>
+  </data>
+  <data name="VerifyBiometricText" xml:space="preserve">
+    <value>Silakan verifikasi biometrik Anda untuk melanjutkan</value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>Operasi dibatalkan</value>
+  </data>
+  <data name="BiometricUnavailableText" xml:space="preserve">
+    <value>Autentikasi biometrik sementara tidak tersedia</value>
+  </data>
+  <data name="BiometricCredentialCreatedText" xml:space="preserve">
+    <value>Kredensial biometrik berhasil dibuat</value>
+  </data>
+  <data name="BiometricResetText" xml:space="preserve">
+    <value>Kata sandi diubah. Kredensial biometrik telah diatur ulang.</value>
+  </data>
+  <data name="VerifyPasswordToContinue" xml:space="preserve">
+    <value>Masukkan kata sandi wallet Anda untuk melanjutkan.</value>
+  </data>
+  <data name="ErrorMessageIncorrectPassword" xml:space="preserve">
+    <value>Kata sandi salah</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Lewati</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Izinkan</value>
+  </data>
+  <data name="DisableBiometric" xml:space="preserve">
+    <value>Nonaktifkan autentikasi biometrik</value>
+  </data>
+  <data name="DisableBiometricText" xml:space="preserve">
+    <value>Autentikasi biometrik saat ini diaktifkan untuk mengotorisasi akses aplikasi ke wallet Anda. Nonaktifkan autentikasi biometrik?
+
+Setelah dinonaktifkan, Anda harus memasukkan kata sandi wallet secara manual untuk mengotorisasi akses.</value>
+  </data>
+  <data name="BiometricDisabledText" xml:space="preserve">
+    <value>Autentikasi biometrik dinonaktifkan</value>
+  </data>
+  <data name="PickAddress" xml:space="preserve">
+    <value>Pilih alamat</value>
+  </data>
+  <data name="PickAddressText" xml:space="preserve">
+    <value>Aplikasi meminta Anda memilih atau memasukkan alamat:</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Alamat</value>
+  </data>
+  <data name="SendTransaction" xml:space="preserve">
+    <value>Kirim transaksi</value>
+  </data>
+  <data name="SendTransactionText" xml:space="preserve">
+    <value>Aplikasi meminta untuk mengirim transaksi:</value>
+  </data>
+  <data name="SelectAddressFromWallet" xml:space="preserve">
+    <value>Pilih alamat dari wallet Anda</value>
+  </data>
+  <data name="EnterCustomAddress" xml:space="preserve">
+    <value>Masukkan alamat kustom</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Alamat asal</value>
+  </data>
+  <data name="Fee" xml:space="preserve">
+    <value>Biaya transaksi</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Lanjutkan</value>
+  </data>
+  <data name="ContractInvocation" xml:space="preserve">
+    <value>Pemanggilan kontrak</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Metode</value>
+  </data>
+  <data name="NoParameters" xml:space="preserve">
+    <value>Tidak ada parameter</value>
+  </data>
+  <data name="SignMessage" xml:space="preserve">
+    <value>Tandatangani pesan</value>
+  </data>
+  <data name="SignMessageText" xml:space="preserve">
+    <value>Aplikasi meminta untuk menandatangani pesan:</value>
+  </data>
+  <data name="SigningAccount" xml:space="preserve">
+    <value>Akun penandatangan</value>
+  </data>
+  <data name="SignMessageRequestText" xml:space="preserve">
+    <value>Aplikasi meminta untuk menandatangani pesan. Izinkan?</value>
+  </data>
+  <data name="SignTransaction" xml:space="preserve">
+    <value>Tandatangani transaksi</value>
+  </data>
+  <data name="SignTransactionText" xml:space="preserve">
+    <value>Aplikasi meminta untuk menandatangani transaksi:</value>
+  </data>
+  <data name="ExecutionResult" xml:space="preserve">
+    <value>Hasil eksekusi</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Berhasil</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>Wallet</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>Terima</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Kirim</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Riwayat transaksi</value>
+  </data>
+  <data name="Asset" xml:space="preserve">
+    <value>Aset</value>
+  </data>
+  <data name="WalletSettings" xml:space="preserve">
+    <value>Pengaturan wallet</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Umum</value>
+  </data>
+  <data name="ReceiveQRCodeTitle" xml:space="preserve">
+    <value>Silakan pindai kode QR untuk mengirim transfer kepada saya</value>
+  </data>
+  <data name="ReceiveQRCodeText" xml:space="preserve">
+    <value>Alamat ini dapat menerima semua aset di platform Neo.</value>
+  </data>
+  <data name="SaveToPhotoLibrary" xml:space="preserve">
+    <value>Simpan ke galeri</value>
+  </data>
+  <data name="QRCodeSaved" xml:space="preserve">
+    <value>Kode QR disimpan</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>Tidak ada izin</value>
+  </data>
+  <data name="SelectAsset" xml:space="preserve">
+    <value>Pilih aset</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Cari</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Jumlah</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Saldo</value>
+  </data>
+  <data name="DefaultOutOfRangeErrorMessage" xml:space="preserve">
+    <value>{0} di luar rentang</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Nilai</value>
+  </data>
+  <data name="ReceivingAddress" xml:space="preserve">
+    <value>Alamat penerima</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Buku alamat</value>
+  </data>
+  <data name="NoAddress" xml:space="preserve">
+    <value>Tidak ada alamat</value>
+  </data>
+  <data name="NoAddressText" xml:space="preserve">
+    <value>Buku alamat Anda kosong</value>
+  </data>
+  <data name="AddNewAddress" xml:space="preserve">
+    <value>Tambah alamat</value>
+  </data>
+  <data name="ScreenshotFailed" xml:space="preserve">
+    <value>Gagal mengambil tangkapan layar</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="ContactAddedSuccessfully" xml:space="preserve">
+    <value>Alamat berhasil ditambahkan</value>
+  </data>
+  <data name="AddressAlreadyExists" xml:space="preserve">
+    <value>Alamat sudah ada</value>
+  </data>
+  <data name="EditContact" xml:space="preserve">
+    <value>Edit alamat</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="ContactUpdatedSuccessfully" xml:space="preserve">
+    <value>Alamat berhasil diperbarui</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Konfirmasi penghapusan</value>
+  </data>
+  <data name="DeleteContactText" xml:space="preserve">
+    <value>Yakin ingin menghapus alamat ini?</value>
+  </data>
+  <data name="ContactDeletedSuccessfully" xml:space="preserve">
+    <value>Alamat berhasil dihapus</value>
+  </data>
+  <data name="SelectContact" xml:space="preserve">
+    <value>Pilih alamat penerima</value>
+  </data>
+  <data name="SignTransactionFailed" xml:space="preserve">
+    <value>Gagal menandatangani transaksi</value>
+  </data>
+  <data name="SendTransactionByUserText" xml:space="preserve">
+    <value>Anda sedang memulai transaksi transfer:</value>
+  </data>
+  <data name="UnknownAddress" xml:space="preserve">
+    <value>Alamat tidak dikenal</value>
+  </data>
+  <data name="SendingTransaction" xml:space="preserve">
+    <value>Mengirim transaksi</value>
+  </data>
+  <data name="TransactionConfirming" xml:space="preserve">
+    <value>Transaksi menunggu konfirmasi</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>Detail transaksi</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Confirming" xml:space="preserve">
+    <value>Mengonfirmasi</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Waktu</value>
+  </data>
+  <data name="TxID" xml:space="preserve">
+    <value>ID transaksi</value>
+  </data>
+  <data name="TransactionSucceeded" xml:space="preserve">
+    <value>Transaksi berhasil</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Memuat</value>
+  </data>
+  <data name="NoNftText" xml:space="preserve">
+    <value>Tidak ada NFT di wallet Anda</value>
+  </data>
+  <data name="OpenNFTLink" xml:space="preserve">
+    <value>Buka tautan NFT</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nama</value>
+  </data>
+  <data name="Contract" xml:space="preserve">
+    <value>Kontrak</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Deskripsi</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Koleksi</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="HiddenAssets" xml:space="preserve">
+    <value>Aset tersembunyi</value>
+  </data>
+  <data name="NoHiddenAssets" xml:space="preserve">
+    <value>Tidak ada aset tersembunyi</value>
+  </data>
+  <data name="NoHiddenAssetsText" xml:space="preserve">
+    <value>Buka detail aset di wallet Anda untuk mengelola pengaturan</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Sembunyikan</value>
+  </data>
+  <data name="AssetHidden" xml:space="preserve">
+    <value>Aset disembunyikan</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Tampilkan kembali</value>
+  </data>
+  <data name="NewsCategories" xml:space="preserve">
+    <value>Kategori berita</value>
+  </data>
+  <data name="NoAssetText" xml:space="preserve">
+    <value>Tidak ada aset di wallet Anda</value>
+  </data>
+  <data name="NoRssText" xml:space="preserve">
+    <value>Tidak ada sumber berita</value>
+  </data>
+  <data name="AgreeToTermsAndPrivacy" xml:space="preserve">
+    <value>Dengan memilih opsi apa pun, Anda menyetujui {0} dan {1}.</value>
+  </data>
+  <data name="TermsOfServiceWithBrackets" xml:space="preserve">
+    <value>Ketentuan Layanan</value>
+  </data>
+  <data name="PrivacyPolicyWithBrackets" xml:space="preserve">
+    <value>Kebijakan Privasi</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Bahasa</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>Ikuti sistem</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Ubah bahasa</value>
+  </data>
+  <data name="ChangeLanguageConfirmation" xml:space="preserve">
+    <value>Aplikasi akan dimulai ulang setelah bahasa diubah.
+Apakah Anda ingin melanjutkan?</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>Bahasa diperbarui</value>
+  </data>
+  <data name="SignInWithNeo" xml:space="preserve">
+    <value>Masuk dengan Neo</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>Sedang masuk</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Nama domain</value>
+  </data>
+  <data name="OpenDAppFailedText" xml:space="preserve">
+    <value>Tidak dapat kembali ke DApp</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Bagikan</value>
+  </data>
+  <data name="InvalidCallbackURLFormat" xml:space="preserve">
+    <value>Format URL callback tidak valid</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Lainnya</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Hubungi kami</value>
+  </data>
+  <data name="DeleteWallet" xml:space="preserve">
+    <value>Hapus wallet</value>
+  </data>
+  <data name="DeleteWalletWarningText" xml:space="preserve">
+    <value>Menghapus wallet adalah tindakan berisiko tinggi yang tidak dapat dibatalkan. Setelah dihapus, semua data yang terkait dengan wallet ini pada perangkat saat ini (termasuk informasi akun, riwayat transaksi, dan cache lokal) akan dihapus secara permanen dan tidak dapat dipulihkan.
+
+Pastikan Anda telah mencadangkan frasa mnemonik atau kunci privat wallet dengan aman, serta memastikan cadangan tersebut akurat dan disimpan dengan baik. Jika Anda belum menyelesaikan pencadangan atau cadangan tersebut hilang, Anda tidak akan dapat memulihkan wallet setelah dihapus, dan aset di dalam wallet akan hilang secara permanen.
+
+Dengan melanjutkan, Anda menyatakan bahwa Anda sepenuhnya memahami dan menerima semua risiko yang terkait.</value>
+  </data>
+  <data name="DeleteWalletConfirmation" xml:space="preserve">
+    <value>Saya memahami risiko di atas dan mengonfirmasi bahwa saya telah mencadangkan frasa mnemonik atau kunci privat saya</value>
+  </data>
+  <data name="ConfirmSecurityRiskAcknowledgement" xml:space="preserve">
+    <value>Harap konfirmasikan bahwa Anda memahami risiko keamanan yang terkait</value>
+  </data>
+  <data name="WalletDeletionIrreversibleWarning" xml:space="preserve">
+    <value>Tindakan ini tidak dapat dibatalkan. Menghapus wallet akan menghapus data lokal secara permanen. Jika Anda belum mencadangkan frasa mnemonik atau kunci privat, Anda tidak akan dapat memulihkan wallet atau aset di dalamnya.</value>
+  </data>
+  <data name="WalletDeleted" xml:space="preserve">
+    <value>Wallet dihapus</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Tentang</value>
+  </data>
+  <data name="AboutOneGate" xml:space="preserve">
+    <value>Tentang OneGate</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Situs web</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Ketentuan Layanan</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Kebijakan Privasi</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Cuplikan layar</value>
+  </data>
+  <data name="SupportedLanguages" xml:space="preserve">
+    <value>Bahasa yang didukung</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>Periksa pembaruan</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>Sedang memeriksa pembaruan</value>
+  </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>Tidak ada pembaruan tersedia</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>Versi baru tersedia</value>
+  </data>
+  <data name="UpdateNow" xml:space="preserve">
+    <value>Perbarui sekarang</value>
+  </data>
+  <data name="UpdateApp" xml:space="preserve">
+    <value>Perbarui aplikasi</value>
+  </data>
+  <data name="UpdateDownloadedRestartToInstall" xml:space="preserve">
+    <value>Pembaruan telah diunduh. Mulai ulang sekarang untuk memasang?</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Pasang</value>
+  </data>
+  <data name="UpdateInstalledRestartNow" xml:space="preserve">
+    <value>Pembaruan telah dipasang. Mulai ulang aplikasi untuk menerapkan perubahan. Mulai ulang sekarang?</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>Mulai ulang</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Alat</value>
+  </data>
+  <data name="Gaming" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="Marketplace" xml:space="preserve">
+    <value>Marketplace</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>Sosial</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="LoadingWalletData" xml:space="preserve">
+    <value>Memuat data wallet</value>
+  </data>
+  <data name="ExportPrivateKey" xml:space="preserve">
+    <value>Ekspor kunci privat</value>
+  </data>
+  <data name="PrivateKeySecurity" xml:space="preserve">
+    <value>Peringatan keamanan kunci privat</value>
+  </data>
+  <data name="PrivateKeyExportWarning" xml:space="preserve">
+    <value>Mengekspor kunci privat Anda berarti memberikan kendali penuh atas aset di wallet Anda. Jika kunci privat tersebut bocor, siapa pun dapat memindahkan aset Anda, dan hal ini tidak dapat dibatalkan maupun dipulihkan.
+
+Pastikan Anda melakukan tindakan ini di lingkungan offline yang aman dan tidak dapat dilihat orang lain. Jangan ambil tangkapan layar atau foto, dan jangan salin ke aplikasi chat, email, atau penyimpanan cloud. Jangan pernah membagikan kunci privat Anda kepada siapa pun.
+
+Harap dicatat: kami tidak menyimpan atau mengelola kunci privat Anda. Jika hilang, terlupa, atau rusak, kunci tersebut tidak dapat dipulihkan.
+
+Setelah diekspor, simpan dengan aman dan pastikan lingkungan Anda saat ini aman.</value>
+  </data>
+  <data name="SelectPrivateKeyFormat" xml:space="preserve">
+    <value>Pilih format ekspor</value>
+  </data>
+  <data name="PlaintextPrivateKeyWif" xml:space="preserve">
+    <value>Kunci privat biasa (WIF)</value>
+  </data>
+  <data name="PasswordProtectedPrivateKeyNep2" xml:space="preserve">
+    <value>Kunci privat terlindungi kata sandi (NEP-2)</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="WifPrivateKeyWarning" xml:space="preserve">
+    <value>WIF adalah kunci privat tidak terenkripsi dalam bentuk teks biasa. Siapa pun yang mendapatkannya dapat langsung mengendalikan dan memindahkan aset Anda tanpa verifikasi tambahan.
+
+Lihat dan simpan hanya di lingkungan offline yang aman dan tidak dapat dilihat orang lain. Disarankan untuk menuliskannya atau menyimpannya di media offline yang tepercaya, serta menyimpan cadangan di lokasi yang terpisah.
+
+Jangan ambil tangkapan layar atau foto, dan jangan salin ke aplikasi chat, email, catatan, penyimpanan cloud, atau lingkungan online apa pun. Jangan pernah membagikannya kepada siapa pun.</value>
+  </data>
+  <data name="Nep2PrivateKeyWarning" xml:space="preserve">
+    <value>NEP-2 adalah kunci privat terenkripsi yang dilindungi oleh kata sandi. Kunci ini memerlukan kata sandi wallet Anda untuk digunakan dan cocok untuk penyimpanan serta pencadangan.
+
+Harap dicatat: kunci NEP-2 dan kata sandi yang terkait sama-sama diperlukan. Jika seseorang mendapatkan keduanya, mereka dapat mengendalikan dan memindahkan aset Anda. Jika Anda kehilangan kunci NEP-2 atau lupa kata sandinya, aset Anda tidak dapat dipulihkan.
+
+Disarankan untuk menyimpan kunci NEP-2 dan kata sandinya secara terpisah serta mencadangkannya dengan aman. Hindari menyimpannya pada perangkat yang sama atau di lingkungan online yang sama.</value>
+  </data>
+  <data name="ShownAfterSettingPassword" xml:space="preserve">
+    <value>Akan ditampilkan setelah Anda menetapkan kata sandi</value>
+  </data>
+  <data name="SelectImportType" xml:space="preserve">
+    <value>Pilih jenis impor</value>
+  </data>
+  <data name="ImportTypeRequired" xml:space="preserve">
+    <value>Silakan pilih jenis impor</value>
+  </data>
+  <data name="SensitiveDataSecurityNotice" xml:space="preserve">
+    <value>Peringatan keamanan data sensitif</value>
+  </data>
+  <data name="LocalSensitiveDataNotice" xml:space="preserve">
+    <value>Kunci privat, frasa mnemonik, kata sandi, dan informasi sensitif lainnya hanya disimpan di perangkat Anda secara lokal. OneGate tidak mengunggah, menyinkronkan, atau menyimpan salinannya.</value>
+  </data>
+  <data name="SelectAddressToImportFromMnemonic" xml:space="preserve">
+    <value>Frasa pemulihan ini mungkin terkait dengan beberapa alamat. Silakan pilih alamat yang ingin Anda impor.</value>
+  </data>
+  <data name="ImportAddress" xml:space="preserve">
+    <value>Alamat yang akan diimpor</value>
+  </data>
+</root>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Controls.Views.IntentsView">
+    <ContentView.Resources>
+        <og:AddressConverter x:Key="AddressConverter" />
+        <og:InWalletConverter x:Key="InWalletConverter" />
+    </ContentView.Resources>
+    <CollectionView ItemsSource="{Binding Intents, Source={RelativeSource AncestorType={x:Type og:IntentsView}}}">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <og:TypeNameTemplateSelector />
+        </CollectionView.ItemTemplate>
+        <CollectionView.Resources>
+            <DataTemplate x:Key="TransferIntent" x:DataType="og:TransferIntent">
+                <Border StrokeShape="RoundRectangle 10" BackgroundColor="{toolkit:AppThemeResource Panel}">
+                    <VerticalStackLayout Padding="10,0">
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.Transfer}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding DisplayAmount}" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" Text="{Binding Asset.Hash}" LineBreakMode="MiddleTruncation" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <BoxView HeightRequest="1" />
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.From}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding From, Converter={StaticResource AddressConverter}}" LineBreakMode="MiddleTruncation" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" Text="{Binding From, Converter={StaticResource InWalletConverter}}" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <BoxView HeightRequest="1" />
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.ReceivingAddress}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding To, Converter={StaticResource AddressConverter}}" LineBreakMode="MiddleTruncation" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" Text="{Binding To, Converter={StaticResource InWalletConverter}}" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="Nep11TransferIntent" x:DataType="og:Nep11TransferIntent">
+                <Border StrokeShape="RoundRectangle 10" BackgroundColor="{toolkit:AppThemeResource Panel}">
+                    <VerticalStackLayout Padding="10,0">
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.Transfer}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding Asset.Name}" LineBreakMode="TailTruncation" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" LineBreakMode="TailTruncation" HorizontalOptions="End">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Asset.TokenInfo.Name}" />
+                                            <Span Text="{Binding Asset.TokenInfo.Symbol, StringFormat=' ({0})'}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                        </Grid>
+                        <BoxView HeightRequest="1" />
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.From}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding From, Converter={StaticResource AddressConverter}}" LineBreakMode="MiddleTruncation" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" Text="{Binding From, Converter={StaticResource InWalletConverter}}" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <BoxView HeightRequest="1" />
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.ReceivingAddress}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding To, Converter={StaticResource AddressConverter}}" LineBreakMode="MiddleTruncation" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" Text="{Binding To, Converter={StaticResource InWalletConverter}}" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="InvocationIntent" x:DataType="og:InvocationIntent">
+                <Border StrokeShape="RoundRectangle 10" BackgroundColor="{toolkit:AppThemeResource Panel}">
+                    <VerticalStackLayout Padding="10,0">
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.ContractInvocation}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding ContractName}" LineBreakMode="TailTruncation" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" Text="{Binding Hash}" LineBreakMode="MiddleTruncation" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                        <BoxView HeightRequest="1" />
+                        <Grid ColumnDefinitions="auto,*" ColumnSpacing="15" Padding="0,10">
+                            <Label StyleClass="Secondary" Text="{x:Static og:Strings.Operation}" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding Method}" HorizontalOptions="End" />
+                                <Label StyleClass="Secondary" Text="{Binding ArgumentsString}" LineBreakMode="TailTruncation" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+        </CollectionView.Resources>
+    </CollectionView>
+</ContentView>

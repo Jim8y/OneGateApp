@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.NewsSettingsPage"
+             Title="{x:Static og:Strings.NewsCategories}"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+    </ContentPage.Resources>
+    <ScrollView>
+        <CollectionView Margin="20" ItemsSource="{Binding Categroies}">
+            <CollectionView.EmptyView>
+                <Grid RowDefinitions="*,*">
+                    <Label IsVisible="{Binding LoadingService.IsLoading}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static og:Strings.Loading}" />
+                                <Span Text="…" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <VerticalStackLayout Spacing="20" IsVisible="{Binding LoadingService.IsLoading, Converter={StaticResource InvertedBoolConverter}}" VerticalOptions="Center">
+                        <Border StrokeShape="Ellipse" BackgroundColor="#e9eaee" WidthRequest="100" HeightRequest="100">
+                            <Image Source="empty.png" WidthRequest="32" HeightRequest="32" />
+                        </Border>
+                        <Label Text="{x:Static og:Strings.NoRssText}" TextColor="#9c9da1" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Grid>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="og:CategroySetting">
+                    <Grid>
+                        <Label Text="{Binding Categroy}" VerticalOptions="Center" />
+                        <Switch IsToggled="{Binding IsEnabled}" Toggled="OnSwitchToggled" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>

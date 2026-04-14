@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.ExportWalletPage"
+             Title="{x:Static og:Strings.ExportPrivateKey}"
+             SafeAreaEdges="Container"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             Shell.TabBarIsVisible="False">
+    <ScrollView>
+        <Grid Padding="20" RowDefinitions="*,auto" RowSpacing="20" MinimumHeightRequest="{Binding Height, Source={RelativeSource AncestorType={x:Type ContentPage}}}">
+            <VerticalStackLayout Spacing="20" RadioButtonGroup.GroupName="ExportFormat" RadioButtonGroup.SelectedValue="{Binding ExportFormat}">
+                <Label StyleClass="Icon" Text="&#xe744;" FontSize="50" HorizontalOptions="Center" />
+                <Label Text="{x:Static og:Strings.PrivateKeySecurity}" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label Text="{x:Static og:Strings.PrivateKeyExportWarning}" />
+                <Label StyleClass="Secondary" Text="{x:Static og:Strings.SelectPrivateKeyFormat}" />
+                <RadioButton Content="{x:Static og:Strings.PlaintextPrivateKeyWif}" Value="WIF" />
+                <RadioButton Margin="0,-20,0,0" Content="{x:Static og:Strings.PasswordProtectedPrivateKeyNep2}" Value="NEP-2" />
+                <og:ValidationMessage Title="{x:Static og:Strings.Format}" Margin="0,-16,0,0" Target="{Binding ExportFormat}">
+                    <og:Required />
+                </og:ValidationMessage>
+            </VerticalStackLayout>
+            <og:Submit Grid.Row="1" Text="{x:Static og:Strings.ExportPrivateKey}" Submitted="OnSubmit" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             x:Class="NeoOrder.OneGate.Pages.SelectImportAddressPage"
+             Title="{x:Static og:Strings.ImportWallet}"
+             BindingContext="{Binding Source={RelativeSource Self}}">
+    <ContentPage.Resources>
+        <og:AddressConverter x:Key="AddressConverter" />
+    </ContentPage.Resources>
+    <Grid Padding="20" RowDefinitions="*,auto" RowSpacing="20">
+        <VerticalStackLayout Spacing="20">
+            <Label Text="{x:Static og:Strings.SelectAddressToImportFromMnemonic}" />
+            <Label StyleClass="Secondary" Text="{x:Static og:Strings.ImportAddress}" />
+            <Picker ItemsSource="{Binding CreationContext.DerivedKeys}" ItemDisplayBinding="{Binding Converter={StaticResource AddressConverter}}" SelectedItem="{Binding SelectedKey}" Margin="0,-20,0,0" />
+            <og:ValidationMessage Title="{x:Static og:Strings.ImportAddress}" Target="{Binding SelectedKey}" Margin="0,-20,0,0">
+                <og:Required />
+            </og:ValidationMessage>
+        </VerticalStackLayout>
+        <og:Submit Grid.Row="1" Text="{x:Static og:Strings.Next}" Submitted="OnSubmit" />
+    </Grid>
+</ContentPage>

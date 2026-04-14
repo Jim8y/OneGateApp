@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             x:Class="NeoOrder.OneGate.Pages.SettingsPage"
+             Title="{x:Static og:Strings.Settings}"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             Shell.TabBarIsVisible="False">
+    <ScrollView>
+        <og:SettingsView Margin="20" IsGrouped="True" Settings="{Binding SettingEntries}" />
+    </ScrollView>
+</ContentPage>

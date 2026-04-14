@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.RequestCreateBiometricPage"
+             Title="{x:Static og:Strings.BiometricAuthentication}">
+    <Grid RowDefinitions="*,auto" Margin="20">
+        <Label Text="{x:Static og:Strings.CreateBiometricCredentialText}" />
+        <VerticalStackLayout Grid.Row="1" Spacing="20">
+            <Button Text="{x:Static og:Strings.CreateBiometricCredential}" ImageSource="{FontImageSource &#xe67f;, FontFamily=Icons, Color={toolkit:AppThemeResource Accent}}" Clicked="OnCreateClicked" />
+            <Button StyleClass="Secondary" Text="{x:Static og:Strings.Skip}" BorderWidth="0" Clicked="OnSkipClicked" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

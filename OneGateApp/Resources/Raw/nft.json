@@ -1,0 +1,31 @@
+[
+  {
+    "hash": "0x577a51f7d39162c9de1db12a6b319c848e4c54e5",
+    "name": "GhostMarket.NFT",
+    "symbol": "GHOST",
+    "icon": "tokens_icon_ghost.webp"
+  },
+  {
+    "hash": "0xcd10d9f697230b04d9ebb8594a1ffe18fa95d9ad",
+    "name": "Neoverse",
+    "symbol": "N3",
+    "icon": "tokens_icon_neoverse.webp"
+  },
+  {
+    "hash": "0x50ac1c37690cc2cfc594472833cf57505d5f46de",
+    "name": "NameService",
+    "symbol": "NNS",
+    "icon": "tokens_icon_nns.webp"
+  },
+  {
+    "hash": "0x6d56a2b3c4396fa64d90046a15a9a286309ea3dd",
+    "name": "Matrix Name Service",
+    "symbol": "MNS"
+  },
+  {
+    "hash": "0x76a8f8a7a901b29a33013b469949f4b08db15756",
+    "name": "puppet",
+    "symbol": "PUPPET",
+    "icon": "tokens_icon_puppet.webp"
+  }
+]

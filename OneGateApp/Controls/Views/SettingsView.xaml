@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Controls.Views.SettingsView">
+    <CollectionView IsGrouped="{Binding IsGrouped}" ItemsSource="{Binding Settings}" BindingContext="{Binding Source={RelativeSource AncestorType={x:Type og:SettingsView}}}">
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate x:DataType="og:SettingEntryGroup">
+                <Label StyleClass="Secondary" Text="{Binding Name}" />
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
+        <CollectionView.GroupFooterTemplate>
+            <DataTemplate />
+        </CollectionView.GroupFooterTemplate>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="og:SettingEntry">
+                <Grid Margin="5,0,0,0" HeightRequest="50" ColumnDefinitions="auto,*,auto" ColumnSpacing="20">
+                    <Label Grid.Column="0" Text="{Binding Name}" FontSize="16" VerticalOptions="Center">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" Binding="{Binding IsDanger}" Value="True">
+                                <Setter Property="TextColor" Value="{toolkit:AppThemeResource Danger}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Label Grid.Column="1" StyleClass="Secondary" Text="{Binding CurrentValue}" HorizontalOptions="End" VerticalOptions="Center" />
+                    <Label Grid.Column="2" StyleClass="Icon, Secondary" Text="&#xe70a;" FontSize="12" VerticalOptions="Center" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Command}" CommandParameter="{Binding CommandParameter}" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

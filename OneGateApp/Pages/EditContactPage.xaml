@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.EditContactPage"
+             Title="{x:Static og:Strings.EditContact}"
+             SafeAreaEdges="All"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="*,auto" Margin="20">
+        <VerticalStackLayout Spacing="20">
+            <Label StyleClass="Secondary" Text="{x:Static og:Strings.Address}" />
+            <Border StrokeShape="RoundRectangle 5" Margin="0,-16,0,0">
+                <ContentView Padding="10,5" BackgroundColor="{toolkit:AppThemeResource TextBox}">
+                    <Entry Text="{Binding Contact.Address}" IsReadOnly="True" og:Border.IsVisible="False" />
+                </ContentView>
+            </Border>
+            <Label StyleClass="Secondary" Text="{x:Static og:Strings.Label}" />
+            <Border StrokeShape="RoundRectangle 5" Margin="0,-16,0,0">
+                <ContentView Padding="10,5" BackgroundColor="{toolkit:AppThemeResource TextBox}">
+                    <Entry x:Name="entryLabel" Text="{Binding Contact.Label}" og:Border.IsVisible="False" />
+                </ContentView>
+            </Border>
+            <og:ValidationMessage Title="{x:Static og:Strings.Label}" Margin="0,-16,0,0" Target="{x:Reference entryLabel}">
+                <og:Required />
+            </og:ValidationMessage>
+        </VerticalStackLayout>
+        <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="20">
+            <Button StyleClass="Danger" Text="{x:Static og:Strings.Delete}" Clicked="OnDelete" />
+            <og:Submit Grid.Column="1" Text="{x:Static og:Strings.OK}" Submitted="OnSubmitted" />
+        </Grid>
+    </Grid>
+</ContentPage>

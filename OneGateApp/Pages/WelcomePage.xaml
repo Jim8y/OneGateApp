@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.WelcomePage"
+             Title="{x:Static og:Strings.WelcomePageTitle}">
+    <ContentPage.Resources>
+        <og:FormattedStringConverter x:Key="FormattedStringConverter" />
+    </ContentPage.Resources>
+    <Grid Margin="20" RowDefinitions="4*,*,*" RowSpacing="20">
+        <Image Source="logo_vertical.png" WidthRequest="150">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{toolkit:AppThemeResource Primary}" />
+            </Image.Behaviors>
+        </Image>
+        <VerticalStackLayout Grid.Row="1" Spacing="20">
+            <Button Text="{x:Static og:Strings.CreateWallet}" Clicked="OnCreateWallet" />
+            <Button StyleClass="Secondary" Text="{x:Static og:Strings.ImportWallet}" Clicked="OnImportWallet" />
+        </VerticalStackLayout>
+        <Label Grid.Row="2" StyleClass="Secondary" FontSize="12" HorizontalOptions="Center" VerticalOptions="End">
+            <Label.FormattedText>
+                <Binding Source="{x:Static og:Strings.AgreeToTermsAndPrivacy}" Converter="{StaticResource FormattedStringConverter}">
+                    <Binding.ConverterParameter>
+                        <x:Array Type="{x:Type Span}">
+                            <Span Text="{x:Static og:Strings.TermsOfServiceWithBrackets}" TextColor="{toolkit:AppThemeResource Primary}" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{x:Static og:Commands.OpenUrl}" CommandParameter="https://onegate.space/terms.html" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text="{x:Static og:Strings.PrivacyPolicyWithBrackets}" TextColor="{toolkit:AppThemeResource Primary}" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{x:Static og:Commands.OpenUrl}" CommandParameter="https://onegate.space/privacy.html" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </x:Array>
+                    </Binding.ConverterParameter>
+                </Binding>
+            </Label.FormattedText>
+        </Label>
+    </Grid>
+</ContentPage>

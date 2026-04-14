@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Controls.Views.TabBar">
+    <ContentView.Resources>
+        <toolkit:MathExpressionConverter x:Key="MathExpressionConverter" />
+        <og:TabBarLabelColorConverter x:Key="TabBarLabelColorConverter" />
+        <og:IsEqualMultiValueConverter x:Key="IsEqualMultiValueConverter" />
+    </ContentView.Resources>
+    <CollectionView BindingContext="{Binding Source={RelativeSource AncestorType={x:Type og:TabBar}}}" ItemsSource="{Binding Tabs}">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="{Binding Spacing}" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout>
+                    <Label Text="{Binding .}" FontSize="{Binding FontSize, Source={RelativeSource AncestorType={x:Type og:TabBar}}}" FontAttributes="Bold" HeightRequest="{Binding FontSize, Source={RelativeSource AncestorType={x:Type og:TabBar}}, Converter={StaticResource MathExpressionConverter}, ConverterParameter='x * 6 / 5'}" VerticalTextAlignment="End">
+                        <Label.TextColor>
+                            <MultiBinding Converter="{StaticResource TabBarLabelColorConverter}">
+                                <Binding Path="." />
+                                <Binding Path="SelectedTab" Source="{RelativeSource AncestorType={x:Type og:TabBar}}" />
+                                <Binding Path="TabColor" Source="{RelativeSource AncestorType={x:Type og:TabBar}}" />
+                                <Binding Path="SelectedTabColor" Source="{RelativeSource AncestorType={x:Type og:TabBar}}" />
+                            </MultiBinding>
+                        </Label.TextColor>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Tab_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView HeightRequest="2" Color="{Binding SelectedTabColor, Source={RelativeSource AncestorType={x:Type og:TabBar}}}">
+                        <BoxView.IsVisible>
+                            <MultiBinding Converter="{StaticResource IsEqualMultiValueConverter}">
+                                <Binding Path="." />
+                                <Binding Path="SelectedTab" Source="{RelativeSource AncestorType={x:Type og:TabBar}}" />
+                            </MultiBinding>
+                        </BoxView.IsVisible>
+                    </BoxView>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

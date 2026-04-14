@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.ShowWifPage"
+             Title="{x:Static og:Strings.ExportPrivateKey}"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             Shell.TabBarIsVisible="False">
+    <VerticalStackLayout Margin="20" Spacing="20">
+        <Label StyleClass="Icon" Text="&#xe744;" FontSize="50" HorizontalOptions="Center" />
+        <Label Text="{x:Static og:Strings.PrivateKeySecurity}" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Label Text="{x:Static og:Strings.WifPrivateKeyWarning}" />
+        <Label StyleClass="Secondary" Text="{x:Static og:Strings.PlaintextPrivateKeyWif}" />
+        <Border Padding="10" StrokeShape="RoundRectangle 5" BackgroundColor="{toolkit:AppThemeResource TextBox}">
+            <Editor Text="{Binding PrivateKey}" IsReadOnly="True" HeightRequest="60" og:Border.IsVisible="False" />
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

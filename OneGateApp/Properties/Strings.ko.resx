@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apps" xml:space="preserve">
+    <value>앱</value>
+  </data>
+  <data name="BackupMnemonicCheckBoxText" xml:space="preserve">
+    <value>위의 복구 구문을 기록하고 안전하게 백업했습니다</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>비밀번호 생성</value>
+  </data>
+  <data name="CreateWallet" xml:space="preserve">
+    <value>지갑 생성</value>
+  </data>
+  <data name="DefaultCompareErrorMessage" xml:space="preserve">
+    <value>{0}이(가) 일치하지 않습니다</value>
+  </data>
+  <data name="DefaultRequiredErrorMessage" xml:space="preserve">
+    <value>{0}은(는) 비워둘 수 없습니다</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageLength" xml:space="preserve">
+    <value>{0}은(는) {1}자여야 합니다</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMax" xml:space="preserve">
+    <value>{0}은(는) 최대 {2}자까지 가능합니다</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMinMax" xml:space="preserve">
+    <value>{0}은(는) {1}자 이상 {2}자 이하이어야 합니다</value>
+  </data>
+  <data name="DefaultValidatorErrorMessage" xml:space="preserve">
+    <value>{0}이(가) 올바르지 않습니다</value>
+  </data>
+  <data name="ErrorMessageMnemonicBackup" xml:space="preserve">
+    <value>위의 복구 구문을 반드시 기록하고 안전하게 백업해야 합니다. 그렇지 않으면 자산을 영구적으로 잃고 복구할 수 없습니다.</value>
+  </data>
+  <data name="ErrorMessageMnemonicMismatch" xml:space="preserve">
+    <value>복구 구문이 올바르지 않습니다. 올바른 순서로 입력하세요</value>
+  </data>
+  <data name="ErrorMessagePasswordsMismatch" xml:space="preserve">
+    <value>입력한 비밀번호가 일치하지 않습니다</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>필드</value>
+  </data>
+  <data name="GenerateMnemonic" xml:space="preserve">
+    <value>복구 구문 생성</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>홈</value>
+  </data>
+  <data name="ImportWallet" xml:space="preserve">
+    <value>지갑 가져오기</value>
+  </data>
+  <data name="MnemonicImportanceContent" xml:space="preserve">
+    <value>복구 구문은 24개의 단어로 구성되어 있으며 자산을 복구하는 데 사용됩니다. 반드시 적어 두고 안전한 곳에 보관하세요. 누구와도 공유하지 마세요.</value>
+  </data>
+  <data name="MnemonicImportanceTitle" xml:space="preserve">
+    <value>복구 구문의 중요성</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>다음</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>비밀번호</value>
+  </data>
+  <data name="PasswordImportanceContent" xml:space="preserve">
+    <value>주의: 지갑 비밀번호를 잊어버리면 복구할 수 없습니다. 반드시 기억해 두십시오.</value>
+  </data>
+  <data name="PasswordImportanceTitle" xml:space="preserve">
+    <value>비밀번호의 중요성</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>비밀번호를 다시 입력하세요</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>비밀번호 설정</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>알 수 없는 오류</value>
+  </data>
+  <data name="VerifyMnemonic" xml:space="preserve">
+    <value>복구 구문 확인</value>
+  </data>
+  <data name="VerifyMnemonicPrompt" xml:space="preserve">
+    <value>올바른 순서로 단어를 선택하여 확인하세요.</value>
+  </data>
+  <data name="WalletName" xml:space="preserve">
+    <value>지갑 이름</value>
+  </data>
+  <data name="WelcomePageTitle" xml:space="preserve">
+    <value>OneGate에 오신 것을 환영합니다</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>최근</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>즐겨찾기</value>
+  </data>
+  <data name="DefaultEmptyViewMessage" xml:space="preserve">
+    <value>표시할 내용이 없습니다</value>
+  </data>
+  <data name="ImportViaMnemonicCode" xml:space="preserve">
+    <value>복구 구문으로 가져오기</value>
+  </data>
+  <data name="ImportViaPrivateKey" xml:space="preserve">
+    <value>개인 키로 가져오기</value>
+  </data>
+  <data name="ImportViaNep2" xml:space="preserve">
+    <value>NEP-2로 가져오기</value>
+  </data>
+  <data name="EnterMnemonicPrompt" xml:space="preserve">
+    <value>복구 구문을 공백으로 구분하여 입력하세요</value>
+  </data>
+  <data name="Mnemonic" xml:space="preserve">
+    <value>복구 구문</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>개인 키</value>
+  </data>
+  <data name="Nep2Key" xml:space="preserve">
+    <value>NEP-2 키</value>
+  </data>
+  <data name="ShowOriginalText" xml:space="preserve">
+    <value>원문 보기</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>전체</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>열기</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>앱 상세 정보</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="ScanQRCode" xml:space="preserve">
+    <value>스캔</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="ErrorMessageCameraFailure" xml:space="preserve">
+    <value>카메라에 접근할 수 없습니다</value>
+  </data>
+  <data name="ErrorMessageUnsupportedQRCode" xml:space="preserve">
+    <value>지원되지 않는 QR 코드 내용: {0}</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>확인</value>
+  </data>
+  <data name="ScanFromPhotoLibrary" xml:space="preserve">
+    <value>갤러리에서 QR 코드 스캔</value>
+  </data>
+  <data name="ErrorMessageUnableReadQRCode" xml:space="preserve">
+    <value>QR 코드를 인식할 수 없습니다</value>
+  </data>
+  <data name="RecognizeQRCode" xml:space="preserve">
+    <value>QR 코드 스캔</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>보안</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>비밀번호 변경</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>현재 비밀번호</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>비밀번호가 업데이트되었습니다</value>
+  </data>
+  <data name="ShareAppText" xml:space="preserve">
+    <value>OneGate에서 흥미로운 것을 발견했습니다: {0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>취소</value>
+  </data>
+  <data name="LoginRequest" xml:space="preserve">
+    <value>로그인 요청</value>
+  </data>
+  <data name="LoginRequestText" xml:space="preserve">
+    <value>앱이 지갑 주소로 로그인을 요청하고 있습니다. 허용하시겠습니까?</value>
+  </data>
+  <data name="CreateBiometricCredential" xml:space="preserve">
+    <value>생체 인증 자격 증명 생성</value>
+  </data>
+  <data name="CreateBiometricCredentialText" xml:space="preserve">
+    <value>사용자의 기기는 생체 인증을 지원합니다. 로그인 간소화를 위해 생체 인증 자격 증명을 생성하시겠습니까?</value>
+  </data>
+  <data name="RedirectionBlockedText" xml:space="preserve">
+    <value>외부 링크 이동이 차단되었습니다</value>
+  </data>
+  <data name="BiometricAuthentication" xml:space="preserve">
+    <value>생체 인증</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>사용 중</value>
+  </data>
+  <data name="BiometricIntroductionText" xml:space="preserve">
+    <value>생체 인증 자격 증명을 생성하면 생체 정보를 사용해 지갑 잠금 해제, 앱 로그인 또는 결제가 가능합니다.
+
+언제든지 생체 인증을 비활성화할 수 있습니다.</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>비밀번호 확인</value>
+  </data>
+  <data name="VerifyBiometricText" xml:space="preserve">
+    <value>계속하려면 생체 인증을 확인하세요</value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>작업이 취소되었습니다</value>
+  </data>
+  <data name="BiometricUnavailableText" xml:space="preserve">
+    <value>생체 인증을 일시적으로 사용할 수 없습니다</value>
+  </data>
+  <data name="BiometricCredentialCreatedText" xml:space="preserve">
+    <value>생체 인증 자격 증명이 성공적으로 생성되었습니다</value>
+  </data>
+  <data name="BiometricResetText" xml:space="preserve">
+    <value>비밀번호가 변경되었으며 생체 인증 자격 증명이 재설정되었습니다</value>
+  </data>
+  <data name="VerifyPasswordToContinue" xml:space="preserve">
+    <value>계속하려면 지갑 비밀번호를 입력하세요.</value>
+  </data>
+  <data name="ErrorMessageIncorrectPassword" xml:space="preserve">
+    <value>비밀번호가 올바르지 않습니다</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>건너뛰기</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>권한 승인</value>
+  </data>
+  <data name="DisableBiometric" xml:space="preserve">
+    <value>생체 인증 비활성화</value>
+  </data>
+  <data name="DisableBiometricText" xml:space="preserve">
+    <value>현재 앱이 지갑에 접근할 때 생체 인증을 사용하도록 설정되어 있습니다. 생체 인증을 비활성화하시겠습니까?
+
+비활성화하면 접근 승인 시마다 지갑 비밀번호를 직접 입력해야 합니다.</value>
+  </data>
+  <data name="BiometricDisabledText" xml:space="preserve">
+    <value>생체 인증이 비활성화되었습니다</value>
+  </data>
+  <data name="PickAddress" xml:space="preserve">
+    <value>주소 선택</value>
+  </data>
+  <data name="PickAddressText" xml:space="preserve">
+    <value>앱이 주소를 선택하거나 입력하도록 요청하고 있습니다:</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>주소</value>
+  </data>
+  <data name="SendTransaction" xml:space="preserve">
+    <value>트랜잭션 보내기</value>
+  </data>
+  <data name="SendTransactionText" xml:space="preserve">
+    <value>앱이 트랜잭션 전송을 요청하고 있습니다:</value>
+  </data>
+  <data name="SelectAddressFromWallet" xml:space="preserve">
+    <value>지갑에서 주소를 선택하세요</value>
+  </data>
+  <data name="EnterCustomAddress" xml:space="preserve">
+    <value>사용자 지정 주소 입력</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>전송</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>보내는 주소</value>
+  </data>
+  <data name="Fee" xml:space="preserve">
+    <value>수수료</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>계속</value>
+  </data>
+  <data name="ContractInvocation" xml:space="preserve">
+    <value>컨트랙트 호출</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>메서드</value>
+  </data>
+  <data name="NoParameters" xml:space="preserve">
+    <value>매개변수 없음</value>
+  </data>
+  <data name="SignMessage" xml:space="preserve">
+    <value>메시지 서명</value>
+  </data>
+  <data name="SignMessageText" xml:space="preserve">
+    <value>앱이 메시지 서명을 요청하고 있습니다:</value>
+  </data>
+  <data name="SigningAccount" xml:space="preserve">
+    <value>서명 계정</value>
+  </data>
+  <data name="SignMessageRequestText" xml:space="preserve">
+    <value>앱이 메시지 서명을 요청하고 있습니다. 허용하시겠습니까?</value>
+  </data>
+  <data name="SignTransaction" xml:space="preserve">
+    <value>트랜잭션 서명</value>
+  </data>
+  <data name="SignTransactionText" xml:space="preserve">
+    <value>앱이 트랜잭션 서명을 요청하고 있습니다:</value>
+  </data>
+  <data name="ExecutionResult" xml:space="preserve">
+    <value>실행 결과</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>성공</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>지갑</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>받기</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>보내기</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>거래 내역</value>
+  </data>
+  <data name="Asset" xml:space="preserve">
+    <value>자산</value>
+  </data>
+  <data name="WalletSettings" xml:space="preserve">
+    <value>지갑 설정</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>일반</value>
+  </data>
+  <data name="ReceiveQRCodeTitle" xml:space="preserve">
+    <value>QR 코드를 스캔하여 송금해 주세요</value>
+  </data>
+  <data name="ReceiveQRCodeText" xml:space="preserve">
+    <value>이 주소는 Neo 플랫폼의 모든 자산을 받을 수 있습니다.</value>
+  </data>
+  <data name="SaveToPhotoLibrary" xml:space="preserve">
+    <value>갤러리에 저장</value>
+  </data>
+  <data name="QRCodeSaved" xml:space="preserve">
+    <value>QR 코드가 저장되었습니다</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>권한이 없습니다</value>
+  </data>
+  <data name="SelectAsset" xml:space="preserve">
+    <value>자산 선택</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>검색</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>수량</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>잔액</value>
+  </data>
+  <data name="DefaultOutOfRangeErrorMessage" xml:space="preserve">
+    <value>{0}이(가) 범위를 벗어났습니다</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>값</value>
+  </data>
+  <data name="ReceivingAddress" xml:space="preserve">
+    <value>수신 주소</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>주소록</value>
+  </data>
+  <data name="NoAddress" xml:space="preserve">
+    <value>주소가 없습니다</value>
+  </data>
+  <data name="NoAddressText" xml:space="preserve">
+    <value>주소록이 비어 있습니다</value>
+  </data>
+  <data name="AddNewAddress" xml:space="preserve">
+    <value>주소 추가</value>
+  </data>
+  <data name="ScreenshotFailed" xml:space="preserve">
+    <value>스크린샷 실패</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="ContactAddedSuccessfully" xml:space="preserve">
+    <value>주소가 추가되었습니다</value>
+  </data>
+  <data name="AddressAlreadyExists" xml:space="preserve">
+    <value>이미 존재하는 주소입니다</value>
+  </data>
+  <data name="EditContact" xml:space="preserve">
+    <value>주소 편집</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="ContactUpdatedSuccessfully" xml:space="preserve">
+    <value>주소가 업데이트되었습니다</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>삭제 확인</value>
+  </data>
+  <data name="DeleteContactText" xml:space="preserve">
+    <value>이 주소를 삭제하시겠습니까?</value>
+  </data>
+  <data name="ContactDeletedSuccessfully" xml:space="preserve">
+    <value>주소가 삭제되었습니다</value>
+  </data>
+  <data name="SelectContact" xml:space="preserve">
+    <value>수신 주소 선택</value>
+  </data>
+  <data name="SignTransactionFailed" xml:space="preserve">
+    <value>트랜잭션 서명 실패</value>
+  </data>
+  <data name="SendTransactionByUserText" xml:space="preserve">
+    <value>전송 거래를 시작하고 있습니다:</value>
+  </data>
+  <data name="UnknownAddress" xml:space="preserve">
+    <value>알 수 없는 주소</value>
+  </data>
+  <data name="SendingTransaction" xml:space="preserve">
+    <value>트랜잭션 전송 중</value>
+  </data>
+  <data name="TransactionConfirming" xml:space="preserve">
+    <value>트랜잭션 확인 중</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>거래 상세</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>상태</value>
+  </data>
+  <data name="Confirming" xml:space="preserve">
+    <value>확인 중</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>시간</value>
+  </data>
+  <data name="TxID" xml:space="preserve">
+    <value>トランザクションID</value>
+  </data>
+  <data name="TransactionSucceeded" xml:space="preserve">
+    <value>거래 성공</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>로딩 중</value>
+  </data>
+  <data name="NoNftText" xml:space="preserve">
+    <value>지갑에 NFT가 없습니다</value>
+  </data>
+  <data name="OpenNFTLink" xml:space="preserve">
+    <value>NFT 링크 열기</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Contract" xml:space="preserve">
+    <value>컨트랙트</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>설명</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>컬렉션</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>토큰</value>
+  </data>
+  <data name="HiddenAssets" xml:space="preserve">
+    <value>숨겨진 자산</value>
+  </data>
+  <data name="NoHiddenAssets" xml:space="preserve">
+    <value>숨겨진 자산이 없습니다</value>
+  </data>
+  <data name="NoHiddenAssetsText" xml:space="preserve">
+    <value>지갑에서 자산 상세를 열어 설정할 수 있습니다</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>숨기기</value>
+  </data>
+  <data name="AssetHidden" xml:space="preserve">
+    <value>자산이 숨겨졌습니다</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>숨김 해제</value>
+  </data>
+  <data name="NewsCategories" xml:space="preserve">
+    <value>뉴스 카테고리</value>
+  </data>
+  <data name="NoAssetText" xml:space="preserve">
+    <value>지갑에 자산이 없습니다</value>
+  </data>
+  <data name="NoRssText" xml:space="preserve">
+    <value>뉴스 소스가 없습니다</value>
+  </data>
+  <data name="AgreeToTermsAndPrivacy" xml:space="preserve">
+    <value>옵션을 선택하면 {0} 및 {1}에 동의하는 것으로 간주됩니다.</value>
+  </data>
+  <data name="TermsOfServiceWithBrackets" xml:space="preserve">
+    <value>서비스 이용 약관</value>
+  </data>
+  <data name="PrivacyPolicyWithBrackets" xml:space="preserve">
+    <value>개인정보 처리방침</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>언어</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>시스템 설정 따르기</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>언어 변경</value>
+  </data>
+  <data name="ChangeLanguageConfirmation" xml:space="preserve">
+    <value>언어를 변경하면 앱이 다시 시작됩니다.
+계속하시겠습니까?</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>언어가 업데이트되었습니다</value>
+  </data>
+  <data name="SignInWithNeo" xml:space="preserve">
+    <value>Neo로 로그인</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>로그인 중</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>도메인 이름</value>
+  </data>
+  <data name="OpenDAppFailedText" xml:space="preserve">
+    <value>DApp으로 돌아갈 수 없습니다</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>공유</value>
+  </data>
+  <data name="InvalidCallbackURLFormat" xml:space="preserve">
+    <value>콜백 URL 형식이 올바르지 않습니다</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>기타</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>문의하기</value>
+  </data>
+  <data name="DeleteWallet" xml:space="preserve">
+    <value>지갑 삭제</value>
+  </data>
+  <data name="DeleteWalletWarningText" xml:space="preserve">
+    <value>지갑 삭제는 되돌릴 수 없는 고위험 작업입니다. 삭제되면 현재 기기에서 해당 지갑과 관련된 모든 데이터(계정 정보, 거래 내역 및 로컬 캐시 포함)가 영구적으로 제거되며 복구할 수 없습니다.
+
+지갑의 니모닉 구문 또는 개인 키를 안전하게 백업했는지, 그리고 백업이 정확하고 안전하게 보관되어 있는지 반드시 확인하십시오. 백업이 없거나 분실된 경우, 삭제 후 지갑을 복원할 수 없으며 지갑 내 자산은 영구적으로 손실됩니다.
+
+계속 진행하면 모든 관련 위험을 충분히 이해하고 수락한 것으로 간주됩니다.</value>
+  </data>
+  <data name="DeleteWalletConfirmation" xml:space="preserve">
+    <value>위의 위험을 이해했으며, 니모닉 구문 또는 개인 키를 백업했음을 확인합니다</value>
+  </data>
+  <data name="ConfirmSecurityRiskAcknowledgement" xml:space="preserve">
+    <value>관련 보안 위험을 이해했는지 확인해 주세요</value>
+  </data>
+  <data name="WalletDeletionIrreversibleWarning" xml:space="preserve">
+    <value>이 작업은 되돌릴 수 없습니다. 지갑을 삭제하면 로컬 데이터가 영구적으로 제거됩니다. 니모닉 구문이나 개인 키를 백업하지 않은 경우 지갑과 자산을 복구할 수 없습니다.</value>
+  </data>
+  <data name="WalletDeleted" xml:space="preserve">
+    <value>지갑이 삭제되었습니다</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>앱 정보</value>
+  </data>
+  <data name="AboutOneGate" xml:space="preserve">
+    <value>OneGate 정보</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>웹사이트</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>서비스 이용 약관</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>개인정보 처리방침</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>스크린샷</value>
+  </data>
+  <data name="SupportedLanguages" xml:space="preserve">
+    <value>지원 언어</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>업데이트 확인</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>업데이트 확인 중</value>
+  </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>사용 가능한 업데이트가 없습니다</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>새 버전이 있습니다</value>
+  </data>
+  <data name="UpdateNow" xml:space="preserve">
+    <value>지금 업데이트</value>
+  </data>
+  <data name="UpdateApp" xml:space="preserve">
+    <value>앱 업데이트</value>
+  </data>
+  <data name="UpdateDownloadedRestartToInstall" xml:space="preserve">
+    <value>업데이트가 다운로드되었습니다. 지금 재시작하여 설치하시겠습니까?</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>설치</value>
+  </data>
+  <data name="UpdateInstalledRestartNow" xml:space="preserve">
+    <value>업데이트가 설치되었습니다. 변경 사항을 적용하려면 앱을 재시작하세요. 지금 재시작하시겠습니까?</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>다시 시작</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>도구</value>
+  </data>
+  <data name="Gaming" xml:space="preserve">
+    <value>게임</value>
+  </data>
+  <data name="Marketplace" xml:space="preserve">
+    <value>마켓플레이스</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>소셜</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>메시지</value>
+  </data>
+  <data name="LoadingWalletData" xml:space="preserve">
+    <value>지갑 데이터를 불러오는 중</value>
+  </data>
+  <data name="ExportPrivateKey" xml:space="preserve">
+    <value>개인 키 내보내기</value>
+  </data>
+  <data name="PrivateKeySecurity" xml:space="preserve">
+    <value>개인 키 보안 안내</value>
+  </data>
+  <data name="PrivateKeyExportWarning" xml:space="preserve">
+    <value>개인 키를 내보내면 지갑 자산에 대한 완전한 제어 권한이 노출됩니다. 개인 키가 유출되면 누구나 자산을 이전할 수 있으며, 되돌리거나 복구할 수 없습니다.
+
+반드시 안전하고 오프라인이며 다른 사람이 볼 수 없는 환경에서 진행하십시오. 스크린샷이나 사진을 찍거나, 채팅 앱, 이메일, 클라우드에 복사하지 말고 절대 타인과 공유하지 마십시오.
+
+주의: 당사는 개인 키를 저장하거나 관리하지 않습니다. 분실, 망각 또는 손상 시 복구할 수 없습니다.
+
+내보낸 후에는 즉시 안전하게 보관하고 현재 환경이 안전한지 확인하십시오.</value>
+  </data>
+  <data name="SelectPrivateKeyFormat" xml:space="preserve">
+    <value>내보내기 형식 선택</value>
+  </data>
+  <data name="PlaintextPrivateKeyWif" xml:space="preserve">
+    <value>평문 개인 키 (WIF)</value>
+  </data>
+  <data name="PasswordProtectedPrivateKeyNep2" xml:space="preserve">
+    <value>비밀번호로 보호된 개인 키 (NEP-2)</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>형식</value>
+  </data>
+  <data name="WifPrivateKeyWarning" xml:space="preserve">
+    <value>WIF는 암호화되지 않은 평문 개인 키입니다. 이를 획득한 사람은 추가 인증 없이 자산을 직접 제어하고 전송할 수 있습니다.
+
+반드시 안전하고 오프라인이며 다른 사람이 볼 수 없는 환경에서만 확인하고 저장하십시오. 손으로 기록하거나 신뢰할 수 있는 오프라인 매체에 저장하고, 별도의 장소에 백업하는 것을 권장합니다.
+
+스크린샷이나 사진을 찍거나, 채팅 앱, 이메일, 메모, 클라우드 등에 복사하지 말고 절대 타인과 공유하지 마십시오.</value>
+  </data>
+  <data name="Nep2PrivateKeyWarning" xml:space="preserve">
+    <value>NEP-2는 비밀번호로 보호된 암호화된 개인 키입니다. 사용 시 지갑 비밀번호가 필요하며, 저장 및 백업에 적합합니다.
+
+주의: NEP-2 키와 해당 비밀번호는 모두 필요합니다. 둘 다 제3자에게 노출되면 자산이 제어 및 전송될 수 있습니다. NEP-2 키를 잃거나 비밀번호를 잊으면 자산을 복구할 수 없습니다.
+
+NEP-2와 비밀번호는 별도로 보관하고 각각 안전하게 백업하는 것을 권장합니다. 동일한 기기나 동일한 네트워크 환경에 함께 저장하지 마십시오.</value>
+  </data>
+  <data name="ShownAfterSettingPassword" xml:space="preserve">
+    <value>비밀번호를 설정하면 표시됩니다</value>
+  </data>
+  <data name="SelectImportType" xml:space="preserve">
+    <value>가져오기 유형 선택</value>
+  </data>
+  <data name="ImportTypeRequired" xml:space="preserve">
+    <value>가져오기 유형을 선택하세요</value>
+  </data>
+  <data name="SensitiveDataSecurityNotice" xml:space="preserve">
+    <value>민감한 정보 보안 안내</value>
+  </data>
+  <data name="LocalSensitiveDataNotice" xml:space="preserve">
+    <value>개인 키, 니모닉 구문, 비밀번호 등 민감한 정보는 모두 로컬 기기에만 저장됩니다. OneGate는 이를 업로드, 동기화하거나 어떠한 사본도 저장하지 않습니다.</value>
+  </data>
+  <data name="SelectAddressToImportFromMnemonic" xml:space="preserve">
+    <value>이 복구 구문은 여러 주소에 해당할 수 있습니다. 가져올 주소를 선택해 주세요.</value>
+  </data>
+  <data name="ImportAddress" xml:space="preserve">
+    <value>가져올 주소</value>
+  </data>
+</root>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.DAppsPage"
+             Title="{x:Static og:Strings.Apps}"
+             BindingContext="{Binding Source={RelativeSource Self}}">
+    <ContentPage.Resources>
+        <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        <og:LocalizerConverter x:Key="LocalizerConverter" />
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" IconImageSource="{FontImageSource &#xe69a;, FontFamily=Icons, Color={toolkit:AppThemeResource Primary}}" Command="{x:Static og:Commands.ScanQRCode}" />
+    </ContentPage.ToolbarItems>
+    <Shell.SearchHandler>
+        <og:DAppSearchHandler SearchBoxVisibility="Collapsible" DApps="{Binding DApps}">
+            <og:DAppSearchHandler.ItemTemplate>
+                <DataTemplate x:DataType="og:DApp">
+                    <HorizontalStackLayout Margin="5" Spacing="5">
+                        <Image WidthRequest="20" HeightRequest="20" VerticalOptions="Center">
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding IconUrl}" CacheValidity="30:00:00:00" />
+                            </Image.Source>
+                        </Image>
+                        <Label Text="{Binding Name, Converter={StaticResource LocalizerConverter}}" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </og:DAppSearchHandler.ItemTemplate>
+        </og:DAppSearchHandler>
+    </Shell.SearchHandler>
+    <ScrollView Margin="20,0">
+        <VerticalStackLayout Spacing="20">
+            <og:TabBar x:Name="tabbarFavoriteOrRecent" SelectedTabChanged="FavoriteOrRecent_SelectedTabChanged">
+                <og:TabBar.Tabs>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:Static Member="og:Strings.Recent" />
+                        <x:Static Member="og:Strings.Favorite" />
+                    </x:Array>
+                </og:TabBar.Tabs>
+            </og:TabBar>
+            <CollectionView ItemsSource="{Binding DAppsFavoriteOrRecent}" MinimumHeightRequest="20">
+                <CollectionView.EmptyView>
+                    <Grid>
+                        <Label IsVisible="{Binding LoadingService.IsLoading}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static og:Strings.Loading}" />
+                                    <Span Text="…" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="{x:Static og:Strings.DefaultEmptyViewMessage}" IsVisible="{Binding LoadingService.IsLoading, Converter={StaticResource InvertedBoolConverter}}" />
+                    </Grid>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="og:DApp">
+                        <VerticalStackLayout WidthRequest="80" Spacing="5">
+                            <Border StrokeShape="RoundRectangle 10" HorizontalOptions="Center">
+                                <Image WidthRequest="64" HeightRequest="64" Aspect="AspectFit">
+                                    <Image.Source>
+                                        <UriImageSource Uri="{Binding IconUrl}" CacheValidity="30:00:00:00" />
+                                    </Image.Source>
+                                </Image>
+                            </Border>
+                            <Label Text="{Binding Name, Converter={StaticResource LocalizerConverter}}" FontAttributes="Bold" LineBreakMode="TailTruncation" HorizontalOptions="Center" />
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{x:Static og:Commands.LaunchDApp}" CommandParameter="{Binding .}" />
+                            </VerticalStackLayout.GestureRecognizers>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <og:TabBar Tabs="{Binding DAppCategories}" SelectedTabChanged="OnCategoryChanged" />
+            <CollectionView ItemsSource="{Binding DAppsFiltered}" MinimumHeightRequest="20">
+                <CollectionView.EmptyView>
+                    <Grid>
+                        <Label IsVisible="{Binding LoadingService.IsLoading}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static og:Strings.Loading}" />
+                                    <Span Text="…" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="{x:Static og:Strings.DefaultEmptyViewMessage}" IsVisible="{Binding LoadingService.IsLoading, Converter={StaticResource InvertedBoolConverter}}" />
+                    </Grid>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="og:DApp">
+                        <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="15">
+                            <Border StrokeShape="RoundRectangle 10">
+                                <Image WidthRequest="64" HeightRequest="64" Aspect="AspectFit">
+                                    <Image.Source>
+                                        <UriImageSource Uri="{Binding IconUrl}" CacheValidity="30:00:00:00" />
+                                    </Image.Source>
+                                </Image>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <Label Text="{Binding Name, Converter={StaticResource LocalizerConverter}}" FontAttributes="Bold" LineBreakMode="TailTruncation" />
+                                <Label StyleClass="Secondary" Text="{Binding Description, Converter={StaticResource LocalizerConverter}}" FontSize="10" MaxLines="2" LineBreakMode="TailTruncation" />
+                            </VerticalStackLayout>
+                            <Button Grid.Column="2" StyleClass="Icon" Text="&#xe605;" Margin="-20" Padding="20" VerticalOptions="Center" Clicked="OnDetailsClicked" CommandParameter="{Binding .}" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{x:Static og:Commands.LaunchDApp}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

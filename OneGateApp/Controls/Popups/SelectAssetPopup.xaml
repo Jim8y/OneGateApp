@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<og:MyPopup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:og="http://schemas.neoorder.org/onegate/controls"
+            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+            x:Class="NeoOrder.OneGate.Controls.Popups.SelectAssetPopup"
+            x:TypeArguments="og:AssetInfo"
+            CanBeDismissedByTappingOutsideOfPopup="True"
+            BindingContext="{Binding Source={RelativeSource Self}}">
+    <og:MyPopup.Resources>
+        <og:IsEqualMultiValueConverter x:Key="IsEqualMultiValueConverter" />
+    </og:MyPopup.Resources>
+    <VerticalStackLayout Spacing="15">
+        <Grid ColumnDefinitions="*,auto">
+            <Label Text="{x:Static og:Strings.SelectAsset}" FontAttributes="Bold" />
+            <Button Grid.Column="1" StyleClass="Icon" Text="&#xe6b5;" FontSize="24" Margin="-10" Padding="10" Clicked="OnCancel" />
+        </Grid>
+        <SearchBar Placeholder="{x:Static og:Strings.Search}" TextChanged="OnSearch" />
+        <CollectionView ItemsSource="{Binding Assets}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="1" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="og:AssetInfo">
+                    <Grid ColumnDefinitions="auto,*,auto" ColumnSpacing="10" Padding="10" BackgroundColor="{toolkit:AppThemeResource Panel}">
+                        <Image Source="{Binding Token.Icon, TargetNullValue=tokens_icon_default.png}" WidthRequest="32" HeightRequest="32" Aspect="AspectFit" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="{Binding Token.Symbol}" TextColor="{StaticResource Primary}" FontAttributes="Bold" FontSize="16" />
+                            <Label StyleClass="Secondary" Text="{Binding Token.Name}" FontSize="12" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="2" StyleClass="Icon, Secondary" Text="&#xe9b0;" FontSize="22" Margin="10,0" VerticalOptions="Center">
+                            <Label.IsVisible>
+                                <MultiBinding Converter="{StaticResource IsEqualMultiValueConverter}">
+                                    <Binding Path="Token.Hash" />
+                                    <Binding Path="SelectedHash" Source="{RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type og:SelectAssetPopup}}" />
+                                </MultiBinding>
+                            </Label.IsVisible>
+                        </Label>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSelectAsset" CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</og:MyPopup>

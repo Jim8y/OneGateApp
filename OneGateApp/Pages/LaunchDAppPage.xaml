@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.LaunchDAppPage"
+             x:DataType="og:DApp"
+             SafeAreaEdges="All"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <og:LocalizerConverter x:Key="LocalizerConverter" />
+        <og:StringSelectConverter x:Key="StringSelectConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Title>
+        <Binding Path="Name" Converter="{StaticResource LocalizerConverter}" />
+    </ContentPage.Title>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Clicked="OnFavoriteClicked" Command="{x:Static og:Commands.AddToFavorites}" CommandParameter="{Binding .}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="{Binding IsFavorite, Converter={StaticResource StringSelectConverter}, ConverterParameter=&#xe83a;&#xe839;, Source={RelativeSource AncestorType={x:Type og:LaunchDAppPage}}}" FontFamily="Icons" Color="Gold" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Order="Primary" IconImageSource="{FontImageSource &#xe68b;, FontFamily=Icons, Color={toolkit:AppThemeResource Primary}}" Command="{x:Static og:Commands.Share}" CommandParameter="{Binding .}" />
+    </ContentPage.ToolbarItems>
+    <og:BridgeWebView x:Name="webView" Source="{Binding Url}" Navigating="OnNavigating" Navigated="OnNavigated" InvokedFromJavaScript="OnInvokedFromJavaScript" />
+</ContentPage>

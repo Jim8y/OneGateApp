@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "dependentFileProviders": {
+    "add": {
+      "extensionToExtension": {
+        "add": {
+          ".xaml": [ ".cs" ]
+        }
+      },
+      "pathSegment": {
+        "add": {
+          ".*": [ ".cs" ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Apps" xml:space="preserve">
+    <value>Uygulamalar</value>
+  </data>
+  <data name="BackupMnemonicCheckBoxText" xml:space="preserve">
+    <value>Yukarıdaki kurtarma ifadesini yazdım ve güvenli şekilde yedekledim</value>
+  </data>
+  <data name="CreatePassword" xml:space="preserve">
+    <value>Şifre oluştur</value>
+  </data>
+  <data name="CreateWallet" xml:space="preserve">
+    <value>Cüzdan oluştur</value>
+  </data>
+  <data name="DefaultCompareErrorMessage" xml:space="preserve">
+    <value>{0} eşleşmiyor</value>
+  </data>
+  <data name="DefaultRequiredErrorMessage" xml:space="preserve">
+    <value>{0} boş bırakılamaz</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageLength" xml:space="preserve">
+    <value>{0} {1} karakter uzunluğunda olmalıdır</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMax" xml:space="preserve">
+    <value>{0} en fazla {2} karakter olmalıdır</value>
+  </data>
+  <data name="DefaultStringLengthErrorMessageMinMax" xml:space="preserve">
+    <value>{0} {1} ile {2} karakter arasında olmalıdır</value>
+  </data>
+  <data name="DefaultValidatorErrorMessage" xml:space="preserve">
+    <value>Geçersiz {0}</value>
+  </data>
+  <data name="ErrorMessageMnemonicBackup" xml:space="preserve">
+    <value>Yukarıdaki kurtarma ifadesini mutlaka kaydetmeli ve güvenli şekilde yedeklemelisiniz; aksi halde varlıklarınız kalıcı olarak kaybolabilir ve geri getirilemez.</value>
+  </data>
+  <data name="ErrorMessageMnemonicMismatch" xml:space="preserve">
+    <value>Kurtarma ifadesi hatalı. Lütfen doğru sırayla girin</value>
+  </data>
+  <data name="ErrorMessagePasswordsMismatch" xml:space="preserve">
+    <value>Şifreler eşleşmiyor</value>
+  </data>
+  <data name="Field" xml:space="preserve">
+    <value>Alan</value>
+  </data>
+  <data name="GenerateMnemonic" xml:space="preserve">
+    <value>Kurtarma ifadesi oluştur</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Ana Sayfa</value>
+  </data>
+  <data name="ImportWallet" xml:space="preserve">
+    <value>Cüzdanı içe aktar</value>
+  </data>
+  <data name="MnemonicImportanceContent" xml:space="preserve">
+    <value>Kurtarma ifadeniz 24 kelimeden oluşur ve varlıklarınızı geri yüklemek için kullanılabilir. Mutlaka yazın ve güvenli bir yerde saklayın. Kimseyle asla paylaşmayın.</value>
+  </data>
+  <data name="MnemonicImportanceTitle" xml:space="preserve">
+    <value>Kurtarma ifadesinin önemi</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>İleri</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="PasswordImportanceContent" xml:space="preserve">
+    <value>Lütfen unutmayın: Cüzdan şifrenizi unutursanız kurtarılamaz. Şifrenizi hatırladığınızdan emin olun.</value>
+  </data>
+  <data name="PasswordImportanceTitle" xml:space="preserve">
+    <value>Şifrenin önemi</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Şifreyi yeniden girin</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Şifre belirle</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Bilinmeyen hata</value>
+  </data>
+  <data name="VerifyMnemonic" xml:space="preserve">
+    <value>Kurtarma ifadesini doğrula</value>
+  </data>
+  <data name="VerifyMnemonicPrompt" xml:space="preserve">
+    <value>Doğrulamak için lütfen kelimeleri doğru sırayla seçin.</value>
+  </data>
+  <data name="WalletName" xml:space="preserve">
+    <value>Cüzdan adı</value>
+  </data>
+  <data name="WelcomePageTitle" xml:space="preserve">
+    <value>OneGate'e hoş geldiniz</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Son Kullanılanlar</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Favoriler</value>
+  </data>
+  <data name="DefaultEmptyViewMessage" xml:space="preserve">
+    <value>İçerik yok</value>
+  </data>
+  <data name="ImportViaMnemonicCode" xml:space="preserve">
+    <value>Kurtarma ifadesi ile içe aktar</value>
+  </data>
+  <data name="ImportViaPrivateKey" xml:space="preserve">
+    <value>Özel anahtar ile içe aktar</value>
+  </data>
+  <data name="ImportViaNep2" xml:space="preserve">
+    <value>NEP-2 ile içe aktar</value>
+  </data>
+  <data name="EnterMnemonicPrompt" xml:space="preserve">
+    <value>Kurtarma ifadenizi boşluklarla ayırarak girin</value>
+  </data>
+  <data name="Mnemonic" xml:space="preserve">
+    <value>Kurtarma ifadesi</value>
+  </data>
+  <data name="PrivateKey" xml:space="preserve">
+    <value>Özel anahtar</value>
+  </data>
+  <data name="Nep2Key" xml:space="preserve">
+    <value>NEP-2 anahtarı</value>
+  </data>
+  <data name="ShowOriginalText" xml:space="preserve">
+    <value>Orijinali görüntüle</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tümü</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Aç</value>
+  </data>
+  <data name="AppDetails" xml:space="preserve">
+    <value>Uygulama ayrıntıları</value>
+  </data>
+  <data name="Introduction" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="ScanQRCode" xml:space="preserve">
+    <value>Tara</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ayarlar</value>
+  </data>
+  <data name="ErrorMessageCameraFailure" xml:space="preserve">
+    <value>Kameraya erişilemiyor</value>
+  </data>
+  <data name="ErrorMessageUnsupportedQRCode" xml:space="preserve">
+    <value>Desteklenmeyen QR kod içeriği: {0}</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="ScanFromPhotoLibrary" xml:space="preserve">
+    <value>Galeriden QR kod tara</value>
+  </data>
+  <data name="ErrorMessageUnableReadQRCode" xml:space="preserve">
+    <value>QR kod tanınamadı</value>
+  </data>
+  <data name="RecognizeQRCode" xml:space="preserve">
+    <value>QR kod tara</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Güvenlik</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Şifre değiştir</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Mevcut şifre</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Şifre güncellendi</value>
+  </data>
+  <data name="ShareAppText" xml:space="preserve">
+    <value>OneGate'te ilginç bir şey buldum: {0}</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="LoginRequest" xml:space="preserve">
+    <value>Giriş isteği</value>
+  </data>
+  <data name="LoginRequestText" xml:space="preserve">
+    <value>Uygulama, cüzdan adresinizle oturum açmanızı istiyor. İzin verilsin mi?</value>
+  </data>
+  <data name="CreateBiometricCredential" xml:space="preserve">
+    <value>Biyometrik kimlik bilgisi oluştur</value>
+  </data>
+  <data name="CreateBiometricCredentialText" xml:space="preserve">
+    <value>Cihazınız biyometrik kimlik doğrulamayı destekliyor. Oturum açmayı kolaylaştırmak için biyometrik kimlik bilgisi oluşturulsun mu?</value>
+  </data>
+  <data name="RedirectionBlockedText" xml:space="preserve">
+    <value>Harici bağlantıya yönlendirme engellendi</value>
+  </data>
+  <data name="BiometricAuthentication" xml:space="preserve">
+    <value>Biyometrik kimlik doğrulama</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Etkin</value>
+  </data>
+  <data name="BiometricIntroductionText" xml:space="preserve">
+    <value>Biyometrik kimlik bilgisi oluşturduktan sonra cüzdanınızı açmak, uygulamada oturum açmak veya ödeme yapmak için biyometriyi kullanabilirsiniz.
+
+Biyometrik kimlik doğrulamayı istediğiniz zaman devre dışı bırakabilirsiniz.</value>
+  </data>
+  <data name="VerifyPassword" xml:space="preserve">
+    <value>Şifreyi doğrula</value>
+  </data>
+  <data name="VerifyBiometricText" xml:space="preserve">
+    <value>Devam etmek için lütfen biyometrinizi doğrulayın</value>
+  </data>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>İşlem iptal edildi</value>
+  </data>
+  <data name="BiometricUnavailableText" xml:space="preserve">
+    <value>Biyometrik kimlik doğrulama geçici olarak kullanılamıyor</value>
+  </data>
+  <data name="BiometricCredentialCreatedText" xml:space="preserve">
+    <value>Biyometrik kimlik bilgisi başarıyla oluşturuldu</value>
+  </data>
+  <data name="BiometricResetText" xml:space="preserve">
+    <value>Şifre değiştirildi. Biyometrik kimlik bilgileri sıfırlandı.</value>
+  </data>
+  <data name="VerifyPasswordToContinue" xml:space="preserve">
+    <value>Devam etmek için cüzdan şifrenizi girin.</value>
+  </data>
+  <data name="ErrorMessageIncorrectPassword" xml:space="preserve">
+    <value>Hatalı şifre</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Atla</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Yetkilendir</value>
+  </data>
+  <data name="DisableBiometric" xml:space="preserve">
+    <value>Biyometrik kimlik doğrulamayı devre dışı bırak</value>
+  </data>
+  <data name="DisableBiometricText" xml:space="preserve">
+    <value>Uygulamanın cüzdanınıza erişimini yetkilendirmek için biyometrik kimlik doğrulama şu anda etkin. Biyometrik kimlik doğrulama devre dışı bırakılsın mı?
+
+Devre dışı bıraktıktan sonra erişimi yetkilendirmek için cüzdan şifrenizi manuel olarak girmeniz gerekir.</value>
+  </data>
+  <data name="BiometricDisabledText" xml:space="preserve">
+    <value>Biyometrik kimlik doğrulama devre dışı</value>
+  </data>
+  <data name="PickAddress" xml:space="preserve">
+    <value>Adres seç</value>
+  </data>
+  <data name="PickAddressText" xml:space="preserve">
+    <value>Uygulama sizden bir adres seçmenizi veya girmenizi istiyor:</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adres</value>
+  </data>
+  <data name="SendTransaction" xml:space="preserve">
+    <value>İşlem gönder</value>
+  </data>
+  <data name="SendTransactionText" xml:space="preserve">
+    <value>Uygulama bir işlem göndermek istiyor:</value>
+  </data>
+  <data name="SelectAddressFromWallet" xml:space="preserve">
+    <value>Cüzdanınızdan bir adres seçin</value>
+  </data>
+  <data name="EnterCustomAddress" xml:space="preserve">
+    <value>Özel adres girin</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>Gönderen adresi</value>
+  </data>
+  <data name="Fee" xml:space="preserve">
+    <value>İşlem ücreti</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Devam et</value>
+  </data>
+  <data name="ContractInvocation" xml:space="preserve">
+    <value>Sözleşme çağrısı</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Yöntem</value>
+  </data>
+  <data name="NoParameters" xml:space="preserve">
+    <value>Parametre yok</value>
+  </data>
+  <data name="SignMessage" xml:space="preserve">
+    <value>Mesaj imzalama</value>
+  </data>
+  <data name="SignMessageText" xml:space="preserve">
+    <value>Uygulama bir mesajı imzalamanızı istiyor:</value>
+  </data>
+  <data name="SigningAccount" xml:space="preserve">
+    <value>İmzalayan hesap</value>
+  </data>
+  <data name="SignMessageRequestText" xml:space="preserve">
+    <value>Uygulama bir mesajı imzalamanızı istiyor. İzin verilsin mi?</value>
+  </data>
+  <data name="SignTransaction" xml:space="preserve">
+    <value>İşlem imzalama</value>
+  </data>
+  <data name="SignTransactionText" xml:space="preserve">
+    <value>Uygulama bir işlemi imzalamanızı istiyor:</value>
+  </data>
+  <data name="ExecutionResult" xml:space="preserve">
+    <value>Yürütme sonucu</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>Cüzdan</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>Al</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gönder</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>İşlem geçmişi</value>
+  </data>
+  <data name="Asset" xml:space="preserve">
+    <value>Varlık</value>
+  </data>
+  <data name="WalletSettings" xml:space="preserve">
+    <value>Cüzdan ayarları</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Genel</value>
+  </data>
+  <data name="ReceiveQRCodeTitle" xml:space="preserve">
+    <value>Bana transfer göndermek için lütfen QR kodu tarayın</value>
+  </data>
+  <data name="ReceiveQRCodeText" xml:space="preserve">
+    <value>Bu adres, Neo platformundaki tüm varlıkları alabilir.</value>
+  </data>
+  <data name="SaveToPhotoLibrary" xml:space="preserve">
+    <value>Galeriye kaydet</value>
+  </data>
+  <data name="QRCodeSaved" xml:space="preserve">
+    <value>QR kod kaydedildi</value>
+  </data>
+  <data name="PermissionDenied" xml:space="preserve">
+    <value>İzin yok</value>
+  </data>
+  <data name="SelectAsset" xml:space="preserve">
+    <value>Varlık seç</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Ara</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Tutar</value>
+  </data>
+  <data name="Balance" xml:space="preserve">
+    <value>Bakiye</value>
+  </data>
+  <data name="DefaultOutOfRangeErrorMessage" xml:space="preserve">
+    <value>{0} aralık dışında</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Değer</value>
+  </data>
+  <data name="ReceivingAddress" xml:space="preserve">
+    <value>Alıcı adresi</value>
+  </data>
+  <data name="AddressBook" xml:space="preserve">
+    <value>Adres Defteri</value>
+  </data>
+  <data name="NoAddress" xml:space="preserve">
+    <value>Adres yok</value>
+  </data>
+  <data name="NoAddressText" xml:space="preserve">
+    <value>Adres defteriniz boş</value>
+  </data>
+  <data name="AddNewAddress" xml:space="preserve">
+    <value>Adres ekle</value>
+  </data>
+  <data name="ScreenshotFailed" xml:space="preserve">
+    <value>Ekran görüntüsü alınamadı</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="ContactAddedSuccessfully" xml:space="preserve">
+    <value>Adres eklendi</value>
+  </data>
+  <data name="AddressAlreadyExists" xml:space="preserve">
+    <value>Adres zaten mevcut</value>
+  </data>
+  <data name="EditContact" xml:space="preserve">
+    <value>Adresi düzenle</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="ContactUpdatedSuccessfully" xml:space="preserve">
+    <value>Adres başarıyla güncellendi</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Silmeyi onayla</value>
+  </data>
+  <data name="DeleteContactText" xml:space="preserve">
+    <value>Bu adresi silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="ContactDeletedSuccessfully" xml:space="preserve">
+    <value>Adres silindi</value>
+  </data>
+  <data name="SelectContact" xml:space="preserve">
+    <value>Alıcı adresini seç</value>
+  </data>
+  <data name="SignTransactionFailed" xml:space="preserve">
+    <value>İşlem imzalama başarısız oldu</value>
+  </data>
+  <data name="SendTransactionByUserText" xml:space="preserve">
+    <value>Bir transfer işlemi başlatıyorsunuz:</value>
+  </data>
+  <data name="UnknownAddress" xml:space="preserve">
+    <value>Bilinmeyen adres</value>
+  </data>
+  <data name="SendingTransaction" xml:space="preserve">
+    <value>İşlem gönderiliyor</value>
+  </data>
+  <data name="TransactionConfirming" xml:space="preserve">
+    <value>İşlem onay bekliyor</value>
+  </data>
+  <data name="TransactionDetails" xml:space="preserve">
+    <value>İşlem ayrıntıları</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Durum</value>
+  </data>
+  <data name="Confirming" xml:space="preserve">
+    <value>Onaylanıyor</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Zaman</value>
+  </data>
+  <data name="TxID" xml:space="preserve">
+    <value>İşlem Kimliği</value>
+  </data>
+  <data name="TransactionSucceeded" xml:space="preserve">
+    <value>İşlem başarılı</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Yükleniyor</value>
+  </data>
+  <data name="NoNftText" xml:space="preserve">
+    <value>Cüzdanınızda NFT yok</value>
+  </data>
+  <data name="OpenNFTLink" xml:space="preserve">
+    <value>NFT bağlantısını aç</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="Contract" xml:space="preserve">
+    <value>Sözleşme</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Açıklama</value>
+  </data>
+  <data name="TokenId" xml:space="preserve">
+    <value>Kimlik</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Koleksiyon</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="HiddenAssets" xml:space="preserve">
+    <value>Gizli varlıklar</value>
+  </data>
+  <data name="NoHiddenAssets" xml:space="preserve">
+    <value>Gizli varlık yok</value>
+  </data>
+  <data name="NoHiddenAssetsText" xml:space="preserve">
+    <value>Ayarları yönetmek için cüzdanınızdaki varlık ayrıntılarını açın</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Gizle</value>
+  </data>
+  <data name="AssetHidden" xml:space="preserve">
+    <value>Varlıklar gizlendi</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Gizlemeyi kaldır</value>
+  </data>
+  <data name="NewsCategories" xml:space="preserve">
+    <value>Haber kategorileri</value>
+  </data>
+  <data name="NoAssetText" xml:space="preserve">
+    <value>Cüzdanınızda varlık yok</value>
+  </data>
+  <data name="NoRssText" xml:space="preserve">
+    <value>Haber kaynağı yok</value>
+  </data>
+  <data name="AgreeToTermsAndPrivacy" xml:space="preserve">
+    <value>Herhangi bir seçeneği belirleyerek {0} ve {1} belgelerini kabul etmiş olursunuz.</value>
+  </data>
+  <data name="TermsOfServiceWithBrackets" xml:space="preserve">
+    <value>Hizmet Şartları</value>
+  </data>
+  <data name="PrivacyPolicyWithBrackets" xml:space="preserve">
+    <value>Gizlilik Politikası</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Dil</value>
+  </data>
+  <data name="SystemLanguage" xml:space="preserve">
+    <value>Sistem dilini kullan</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Dili değiştir</value>
+  </data>
+  <data name="ChangeLanguageConfirmation" xml:space="preserve">
+    <value>Dil değiştirildikten sonra uygulama yeniden başlatılacak.
+Devam etmek istiyor musunuz?</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>Dil güncellendi</value>
+  </data>
+  <data name="SignInWithNeo" xml:space="preserve">
+    <value>Neo ile oturum aç</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>Oturum açılıyor</value>
+  </data>
+  <data name="Domain" xml:space="preserve">
+    <value>Alan adı</value>
+  </data>
+  <data name="OpenDAppFailedText" xml:space="preserve">
+    <value>DApp'e geri dönülemedi</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Paylaş</value>
+  </data>
+  <data name="InvalidCallbackURLFormat" xml:space="preserve">
+    <value>Geçersiz geri çağrı URL biçimi</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Diğer</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Bize Ulaşın</value>
+  </data>
+  <data name="DeleteWallet" xml:space="preserve">
+    <value>Cüzdanı sil</value>
+  </data>
+  <data name="DeleteWalletWarningText" xml:space="preserve">
+    <value>Bir cüzdanı silmek geri alınamaz ve yüksek riskli bir işlemdir. Silindikten sonra, bu cüzdanla ilgili mevcut cihazdaki tüm veriler (hesap bilgileri, işlem geçmişi ve yerel önbellek dahil) kalıcı olarak kaldırılır ve geri getirilemez.
+
+Lütfen cüzdanın anımsatıcı ifadesini veya özel anahtarını güvenli şekilde yedeklediğinizden, yedeğin doğru olduğundan ve güvenli bir yerde saklandığından emin olun. Yedeklemeyi tamamlamadıysanız veya yedeği kaybettiyseniz, silme işleminden sonra cüzdanı geri yükleyemez ve cüzdandaki varlıkları kalıcı olarak kaybedersiniz.
+
+Devam ederek, ilgili tüm riskleri tamamen anladığınızı ve kabul ettiğinizi onaylarsınız.</value>
+  </data>
+  <data name="DeleteWalletConfirmation" xml:space="preserve">
+    <value>Yukarıdaki riskleri anlıyorum ve anımsatıcı ifademi veya özel anahtarımı yedeklediğimi onaylıyorum</value>
+  </data>
+  <data name="ConfirmSecurityRiskAcknowledgement" xml:space="preserve">
+    <value>Lütfen ilgili güvenlik risklerini anladığınızı onaylayın</value>
+  </data>
+  <data name="WalletDeletionIrreversibleWarning" xml:space="preserve">
+    <value>Bu işlem geri alınamaz. Cüzdanın silinmesi yerel verileri kalıcı olarak silecektir. Anımsatıcı ifadenizi veya özel anahtarınızı yedeklemediyseniz, cüzdanınızı ya da varlıklarınızı kurtaramazsınız.</value>
+  </data>
+  <data name="WalletDeleted" xml:space="preserve">
+    <value>Cüzdan silindi</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="AboutOneGate" xml:space="preserve">
+    <value>OneGate Hakkında</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Web sitesi</value>
+  </data>
+  <data name="TermsOfService" xml:space="preserve">
+    <value>Hizmet Şartları</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Gizlilik Politikası</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Ekran görüntüleri</value>
+  </data>
+  <data name="SupportedLanguages" xml:space="preserve">
+    <value>Desteklenen diller</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>Güncellemeleri denetle</value>
+  </data>
+  <data name="CheckingForUpdates" xml:space="preserve">
+    <value>Güncellemeler denetleniyor</value>
+  </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>Güncelleme yok</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>Yeni sürüm mevcut</value>
+  </data>
+  <data name="UpdateNow" xml:space="preserve">
+    <value>Şimdi güncelle</value>
+  </data>
+  <data name="UpdateApp" xml:space="preserve">
+    <value>Uygulamayı güncelle</value>
+  </data>
+  <data name="UpdateDownloadedRestartToInstall" xml:space="preserve">
+    <value>Güncelleme indirildi. Yüklemek için şimdi yeniden başlatılsın mı?</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Yükle</value>
+  </data>
+  <data name="UpdateInstalledRestartNow" xml:space="preserve">
+    <value>Güncelleme yüklendi. Değişikliklerin uygulanması için uygulama şimdi yeniden başlatılsın mı?</value>
+  </data>
+  <data name="Restart" xml:space="preserve">
+    <value>Yeniden başlat</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>Araçlar</value>
+  </data>
+  <data name="Gaming" xml:space="preserve">
+    <value>Oyun</value>
+  </data>
+  <data name="Marketplace" xml:space="preserve">
+    <value>Pazaryeri</value>
+  </data>
+  <data name="Social" xml:space="preserve">
+    <value>Sosyal</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="LoadingWalletData" xml:space="preserve">
+    <value>Cüzdan verileri yükleniyor</value>
+  </data>
+  <data name="ExportPrivateKey" xml:space="preserve">
+    <value>Özel anahtarı dışa aktar</value>
+  </data>
+  <data name="PrivateKeySecurity" xml:space="preserve">
+    <value>Özel anahtar güvenlik bildirimi</value>
+  </data>
+  <data name="PrivateKeyExportWarning" xml:space="preserve">
+    <value>Özel anahtarınızı dışa aktarmak, cüzdan varlıklarınız üzerinde tam kontrolün açığa çıkması anlamına gelir. Özel anahtar ele geçirilirse, biri varlıklarınızı aktarabilir ve bu geri alınamaz ya da kurtarılamaz.
+
+Bu işlemi kimsenin sizi göremeyeceği güvenli ve çevrimdışı bir ortamda yaptığınızdan emin olun. Ekran görüntüsü almayın, fotoğraf çekmeyin ve bunu sohbet uygulamalarına, e-postaya veya bulut depolamaya kopyalamayın. Özel anahtarınızı asla kimseyle paylaşmayın.
+
+Lütfen unutmayın: Özel anahtarınızı saklamıyor veya yönetmiyoruz. Kaybolur, unutulur veya zarar görürse kurtarılamaz.
+
+Dışa aktardıktan sonra güvenli şekilde saklayın ve mevcut ortamınızın güvenli olduğundan emin olun.</value>
+  </data>
+  <data name="SelectPrivateKeyFormat" xml:space="preserve">
+    <value>Dışa aktarma biçimini seçin</value>
+  </data>
+  <data name="PlaintextPrivateKeyWif" xml:space="preserve">
+    <value>Düz metin özel anahtar (WIF)</value>
+  </data>
+  <data name="PasswordProtectedPrivateKeyNep2" xml:space="preserve">
+    <value>Şifre korumalı özel anahtar (NEP-2)</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Biçim</value>
+  </data>
+  <data name="WifPrivateKeyWarning" xml:space="preserve">
+    <value>WIF, düz metin hâlinde şifrelenmemiş bir özel anahtardır. Onu ele geçiren herkes, ek bir doğrulama olmadan varlıklarınızı doğrudan kontrol edebilir ve transfer edebilir.
+
+Bunu yalnızca kimsenin sizi göremeyeceği güvenli ve çevrimdışı bir ortamda görüntüleyin ve saklayın. Yazmanız veya güvenilir bir çevrimdışı ortamda saklamanız ve yedekleri ayrı yerlerde tutmanız önerilir.
+
+Ekran görüntüsü veya fotoğraf çekmeyin; bunu sohbet uygulamalarına, e-postaya, notlara, bulut depolamaya veya herhangi bir çevrimiçi ortama kopyalamayın. Asla kimseyle paylaşmayın.</value>
+  </data>
+  <data name="Nep2PrivateKeyWarning" xml:space="preserve">
+    <value>NEP-2, bir şifre ile korunan şifreli bir özel anahtardır. Kullanmak için cüzdan şifreniz gerekir ve saklama ile yedekleme için uygundur.
+
+Lütfen unutmayın: Hem NEP-2 anahtarı hem de karşılık gelen şifre gereklidir. Bir kişi her ikisini de elde ederse varlıklarınızı kontrol edebilir ve transfer edebilir. NEP-2 anahtarını kaybederseniz veya şifreyi unutursanız, varlıklarınız kurtarılamaz.
+
+NEP-2 anahtarı ile şifreyi ayrı ayrı saklamanız ve güvenli şekilde yedeklemeniz önerilir. Bunları aynı cihazda veya aynı çevrimiçi ortamda tutmaktan kaçının.</value>
+  </data>
+  <data name="ShownAfterSettingPassword" xml:space="preserve">
+    <value>Şifre belirlendikten sonra görünür</value>
+  </data>
+  <data name="SelectImportType" xml:space="preserve">
+    <value>İçe aktarma türünü seçin</value>
+  </data>
+  <data name="ImportTypeRequired" xml:space="preserve">
+    <value>Lütfen bir içe aktarma türü seçin</value>
+  </data>
+  <data name="SensitiveDataSecurityNotice" xml:space="preserve">
+    <value>Hassas veri güvenlik bildirimi</value>
+  </data>
+  <data name="LocalSensitiveDataNotice" xml:space="preserve">
+    <value>Özel anahtarınız, anımsatıcı ifadeniz, şifreniz ve diğer hassas bilgiler yalnızca yerel cihazınızda saklanır. OneGate herhangi bir kopyayı yüklemez, senkronize etmez veya saklamaz.</value>
+  </data>
+  <data name="SelectAddressToImportFromMnemonic" xml:space="preserve">
+    <value>Bu kurtarma ifadesi birden fazla adrese karşılık gelebilir. Lütfen içe aktarmak istediğiniz adresi seçin.</value>
+  </data>
+  <data name="ImportAddress" xml:space="preserve">
+    <value>İçe aktarılacak adres</value>
+  </data>
+</root>

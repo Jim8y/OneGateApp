@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             x:Class="NeoOrder.OneGate.Pages.CreateWalletPage"
+             x:DataType="og:WalletCreationContext"
+             Title="{x:Static og:Strings.CreateWallet}"
+             SafeAreaEdges="All">
+    <Grid RowDefinitions="*,Auto" Padding="20" RowSpacing="20">
+        <VerticalStackLayout Spacing="20">
+            <Label StyleClass="Secondary" Text="{x:Static og:Strings.WalletName}" />
+            <Entry x:Name="entryWalletName" Text="{Binding WalletName}" Margin="0,-20,0,0" />
+            <og:ValidationMessage Title="{x:Static og:Strings.WalletName}" Margin="0,-20,0,0" Target="{x:Reference entryWalletName}">
+                <og:Required />
+            </og:ValidationMessage>
+        </VerticalStackLayout>
+        <og:Submit Grid.Row="1" Text="{x:Static og:Strings.Next}" Submitted="OnSubmitted" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             x:Class="NeoOrder.OneGate.Pages.DeleteWalletPage"
+             Title="{x:Static og:Strings.DeleteWallet}"
+             SafeAreaEdges="Container"
+             Shell.TabBarIsVisible="False">
+    <ScrollView>
+        <Grid Padding="20" RowDefinitions="*,auto" RowSpacing="20" MinimumHeightRequest="{Binding Height, Source={RelativeSource AncestorType={x:Type ContentPage}}}">
+            <VerticalStackLayout Spacing="20">
+                <Label StyleClass="Icon, Danger" Text="&#xe682;" FontSize="50" HorizontalOptions="Center" />
+                <Label Text="{x:Static og:Strings.DeleteWalletWarningText}" />
+                <og:CheckBoxWithLabel x:Name="checkBackup" Text="{x:Static og:Strings.DeleteWalletConfirmation}" />
+                <og:ValidationMessage Margin="0,-20,0,0" Target="{x:Reference checkBackup}">
+                    <og:Compare To="{x:Boolean true}" ErrorMessage="{x:Static og:Strings.ConfirmSecurityRiskAcknowledgement}" />
+                </og:ValidationMessage>
+            </VerticalStackLayout>
+            <og:Submit StyleClass="Danger" Grid.Row="1" Text="{x:Static og:Strings.DeleteWallet}" Submitted="OnSubmitted" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

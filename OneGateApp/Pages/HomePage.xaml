@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.HomePage"
+             Title="OneGate"
+             BindingContext="{Binding Source={RelativeSource Self}}">
+    <ContentPage.Resources>
+        <toolkit:MathExpressionConverter x:Key="MathExpressionConverter" />
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="{x:Static og:Strings.ScanQRCode}" Command="{x:Static og:Commands.ScanQRCode}" />
+        <ToolbarItem Order="Secondary" Text="{x:Static og:Strings.AddressBook}" Command="{x:Static og:Commands.GotoPage}" CommandParameter="contacts" />
+        <ToolbarItem Order="Secondary" Text="{x:Static og:Strings.Settings}" Command="{x:Static og:Commands.GotoPage}" CommandParameter="settings" />
+    </ContentPage.ToolbarItems>
+    <RefreshView Margin="20,0" IsRefreshing="{Binding LoadingService.IsReloading}" Command="{Binding LoadingService}">
+        <ScrollView>
+            <VerticalStackLayout Spacing="20">
+                <!-- There are some issues with CarouselView on WinUI, so we disable looping on that platform to prevent potential crashes. -->
+                <CarouselView x:Name="carouselView" Loop="{OnPlatform WinUI=False, Default=True}" ItemsSource="{Binding Banners}" IndicatorView="indicatorView" HeightRequest="{Binding Width, Source={RelativeSource Self}, Converter={StaticResource MathExpressionConverter}, ConverterParameter='x / 2'}" MaximumHeightRequest="300">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate x:DataType="og:Banner">
+                            <Image Aspect="AspectFit" SemanticProperties.Description="{Binding AltText}">
+                                <Image.Source>
+                                    <UriImageSource Uri="{Binding ImageUrl}" CacheValidity="30:00:00:00" />
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{x:Static og:Commands.OpenUrl}" CommandParameter="{Binding TargetUrl}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView x:Name="indicatorView" HorizontalOptions="Center" />
+                <CollectionView ItemsSource="{Binding News}" EmptyView="{x:Static og:Strings.DefaultEmptyViewMessage}" MinimumHeightRequest="20" SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="20" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="og:News">
+                            <Grid ColumnDefinitions="auto,*" RowDefinitions="auto,auto" ColumnSpacing="10">
+                                <Image Grid.RowSpan="2" Aspect="AspectFill" WidthRequest="112" HeightRequest="63">
+                                    <Image.Source>
+                                        <UriImageSource Uri="{Binding ImageUrl}" CacheValidity="90:00:00:00" />
+                                    </Image.Source>
+                                </Image>
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Title}" FontAttributes="Bold" MaxLines="2" LineBreakMode="TailTruncation" />
+                                <Label Grid.Column="1" Grid.Row="1" StyleClass="Secondary" Text="{Binding Subtitle}" FontSize="10" FontAttributes="Italic" LineBreakMode="NoWrap" VerticalOptions="End" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnNewsTapped" CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

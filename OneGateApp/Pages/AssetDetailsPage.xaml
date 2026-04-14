@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:og="http://schemas.neoorder.org/onegate/controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="NeoOrder.OneGate.Pages.AssetDetailsPage"
+             Title="{Binding Asset.Token.Symbol}"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             Shell.TabBarIsVisible="False">
+    <ContentPage.Resources>
+        <og:HiddenTextConverter x:Key="HiddenTextConverter" />
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="{x:Static og:Strings.Hide}" IsEnabled="{Binding CanHide}" Clicked="OnHideClicked" />
+    </ContentPage.ToolbarItems>
+    <Grid RowDefinitions="*,auto" RowSpacing="20" Margin="20">
+        <VerticalStackLayout Spacing="20">
+            <Image Source="{Binding Asset.Token.Icon}" WidthRequest="64" HeightRequest="64" />
+            <Border StrokeShape="RoundRectangle 8" BackgroundColor="{toolkit:AppThemeResource Panel}">
+                <Grid ColumnDefinitions="auto,*" ColumnSpacing="10" Padding="20">
+                    <Label StyleClass="Secondary" Text="{x:Static og:Strings.Balance}" VerticalOptions="Center" />
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                        <Label HorizontalOptions="End">
+                            <Label.Text>
+                                <MultiBinding Converter="{StaticResource HiddenTextConverter}" ConverterParameter="******">
+                                    <Binding Path="Asset.DisplayBalance" />
+                                    <Binding Path="ShowBalance" />
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                        <Label StyleClass="Secondary" FontSize="12" HorizontalOptions="End">
+                            <Label.Text>
+                                <MultiBinding Converter="{StaticResource HiddenTextConverter}" ConverterParameter="******">
+                                    <Binding Path="Asset.DisplayValuation" />
+                                    <Binding Path="ShowBalance" />
+                                </MultiBinding>
+                            </Label.Text>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+            <Border StrokeShape="RoundRectangle 8" BackgroundColor="{toolkit:AppThemeResource Panel}">
+                <VerticalStackLayout Padding="20,0">
+                    <Grid ColumnDefinitions="auto,*" ColumnSpacing="10" Padding="0,20">
+                        <Label StyleClass="Secondary" Text="{x:Static og:Strings.Token}" VerticalOptions="Center" />
+                        <Label Grid.Column="1" LineBreakMode="TailTruncation" HorizontalOptions="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Asset.Token.Name}" />
+                                    <Span Text="{Binding Asset.Token.Symbol, StringFormat=' ({0})'}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Grid>
+                    <BoxView HeightRequest="1" />
+                    <VerticalStackLayout Padding="0,20" Spacing="10">
+                        <Label StyleClass="Secondary" Text="{x:Static og:Strings.Contract}" />
+                        <Label Text="{Binding Asset.Token.Hash}" LineBreakMode="MiddleTruncation" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+        <Grid Grid.Row="1" ColumnDefinitions="*,*" ColumnSpacing="20">
+            <Button Text="{x:Static og:Strings.Receive}" Command="{x:Static og:Commands.GotoPage}" CommandParameter="{Binding Asset.Token.Hash, StringFormat='//wallet/asset/details/receive?asset={0}'}" />
+            <Button Grid.Column="1" Text="{x:Static og:Strings.Send}" Clicked="OnSendClicked" />
+        </Grid>
+    </Grid>
+</ContentPage>
