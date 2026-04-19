@@ -34,9 +34,9 @@ public class SceneDelegate : MauiUISceneDelegate
         return HandleAppLink(activity.WebPageUrl);
     }
 
-    static bool HandleAppLink(NSSet<UIOpenUrlContext> urlContexts)
+    static bool HandleAppLink(NSSet<UIOpenUrlContext>? urlContexts)
     {
-        if (urlContexts.Count == 0) return false;
+        if (urlContexts is null || urlContexts.Count == 0) return false;
         return HandleAppLink(urlContexts.AnyObject!.Url);
     }
 
