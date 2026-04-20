@@ -14,7 +14,7 @@
             <Button Grid.Column="1" StyleClass="Icon" Text="&#xe6b5;" FontSize="24" Margin="-10" Padding="10" Clicked="OnCancel" />
         </Grid>
         <SearchBar Placeholder="{x:Static og:Strings.Search}" ios:SearchBar.SearchBarStyle="Minimal" TextChanged="OnSearch" />
-        <CollectionView ItemsSource="{Binding Contacts}">
+        <CollectionView ItemsSource="{Binding Contacts}" HeightRequest="300">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="1" />
             </CollectionView.ItemsLayout>
