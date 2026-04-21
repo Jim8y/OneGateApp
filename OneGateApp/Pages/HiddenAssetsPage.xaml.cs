@@ -38,6 +38,7 @@ public partial class HiddenAssetsPage : ContentPage
         ITokenInfo token = (ITokenInfo)swipeItem.CommandParameter;
         HiddenAssets!.Remove(token);
         await tokenManager.UnhideTokenAsync(token.Hash);
+        GlobalStates.Invalidate<SettingsPage>();
         GlobalStates.Invalidate<WalletPage>();
     }
 }
