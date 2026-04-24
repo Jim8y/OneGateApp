@@ -24,11 +24,6 @@ public partial class App : Application
         this.walletProvider = walletProvider;
         this.httpClient = httpClient;
         InitializeComponent();
-    }
-
-    protected override void OnStart()
-    {
-        base.OnStart();
         dbContext.Database.EnsureCreated();
         Version? version = dbContext.Settings.Get<Version>("system/version");
         if (version is null || version < AppInfo.Version)
