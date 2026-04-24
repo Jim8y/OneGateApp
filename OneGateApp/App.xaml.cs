@@ -11,18 +11,14 @@ namespace NeoOrder.OneGate;
 public partial class App : Application
 {
     readonly IServiceProvider serviceProvider;
-    readonly ApplicationDbContext dbContext;
     readonly IWalletProvider walletProvider;
-    readonly HttpClient httpClient;
 
     AppLinkAction? appLinkAction;
 
     public App(IServiceProvider serviceProvider, ApplicationDbContext dbContext, IWalletProvider walletProvider, HttpClient httpClient)
     {
         this.serviceProvider = serviceProvider;
-        this.dbContext = dbContext;
         this.walletProvider = walletProvider;
-        this.httpClient = httpClient;
         InitializeComponent();
         dbContext.Database.EnsureCreated();
         Version? version = dbContext.Settings.Get<Version>("system/version");

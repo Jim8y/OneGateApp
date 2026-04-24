@@ -5,56 +5,57 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="NeoOrder.OneGate.Pages.SelectImportTypePage"
              Title="{x:Static og:Strings.ImportWallet}"
-             SafeAreaEdges="All"
              BindingContext="{Binding Source={RelativeSource Self}}">
     <ContentPage.Resources>
         <toolkit:IsEqualConverter x:Key="IsEqualConverter" />
     </ContentPage.Resources>
-    <ScrollView>
-        <Grid Padding="20" RowDefinitions="auto,*,auto" RowSpacing="20" MinimumHeightRequest="{Binding Height, Source={RelativeSource AncestorType={x:Type ContentPage}}}">
-            <VerticalStackLayout Spacing="20">
-                <Label StyleClass="Icon" Text="&#xe744;" FontSize="50" HorizontalOptions="Center" />
-                <Label Text="{x:Static og:Strings.SensitiveDataSecurityNotice}" FontAttributes="Bold" HorizontalOptions="Center" />
-                <Label Text="{x:Static og:Strings.LocalSensitiveDataNotice}" />
-                <Label StyleClass="Secondary" Text="{x:Static og:Strings.SelectImportType}" />
-                <Picker SelectedIndex="{Binding SelectedIndex}" Margin="0,-20,0,0">
-                    <Picker.Items>
-                        <x:Static Member="og:Strings.ImportViaMnemonicCode" />
-                        <x:Static Member="og:Strings.ImportViaPrivateKey" />
-                        <x:Static Member="og:Strings.ImportViaNep2" />
-                    </Picker.Items>
-                </Picker>
-                <og:ValidationMessage Target="{Binding SelectedIndex}" Margin="0,-20,0,0">
-                    <og:Range x:TypeArguments="x:Int32" Minimum="0" ErrorMessage="{x:Static og:Strings.ImportTypeRequired}" />
-                </og:ValidationMessage>
+    <Grid Padding="20" RowDefinitions="auto,*,auto" RowSpacing="10">
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" SafeAreaEdges="All">
+                <VerticalStackLayout Spacing="20">
+                    <Label StyleClass="Icon" Text="&#xe744;" FontSize="50" HorizontalOptions="Center" />
+                    <Label Text="{x:Static og:Strings.SensitiveDataSecurityNotice}" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="{x:Static og:Strings.LocalSensitiveDataNotice}" />
+                    <Label StyleClass="Secondary" Text="{x:Static og:Strings.SelectImportType}" />
+                    <Picker SelectedIndex="{Binding SelectedIndex}" Margin="0,-20,0,0">
+                        <Picker.Items>
+                            <x:Static Member="og:Strings.ImportViaMnemonicCode" />
+                            <x:Static Member="og:Strings.ImportViaPrivateKey" />
+                            <x:Static Member="og:Strings.ImportViaNep2" />
+                        </Picker.Items>
+                    </Picker>
+                    <og:ValidationMessage Target="{Binding SelectedIndex}" Margin="0,-20,0,0">
+                        <og:Range x:TypeArguments="x:Int32" Minimum="0" ErrorMessage="{x:Static og:Strings.ImportTypeRequired}" />
+                    </og:ValidationMessage>
+                </VerticalStackLayout>
+                <VerticalStackLayout IsVisible="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 0}}">
+                    <Label StyleClass="Secondary" Text="{x:Static og:Strings.EnterMnemonicPrompt}" />
+                    <Editor x:Name="editorMnemonic" />
+                    <og:ValidationMessage Title="{x:Static og:Strings.Mnemonic}" Target="{x:Reference editorMnemonic}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 0}}">
+                        <og:Custom Validate="Mnemonic_Validate" />
+                    </og:ValidationMessage>
+                </VerticalStackLayout>
+                <VerticalStackLayout IsVisible="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 1}}">
+                    <Label StyleClass="Secondary" Text="{x:Static og:Strings.PrivateKey}" />
+                    <Entry x:Name="entryPrivateKey" />
+                    <og:ValidationMessage Title="{x:Static og:Strings.PrivateKey}" Target="{x:Reference entryPrivateKey}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 1}}">
+                        <og:Custom Validate="PrivateKey_Validate" />
+                    </og:ValidationMessage>
+                </VerticalStackLayout>
+                <VerticalStackLayout IsVisible="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 2}}">
+                    <Label StyleClass="Secondary" Text="{x:Static og:Strings.Nep2Key}" />
+                    <Entry x:Name="entryNep2Key" />
+                    <og:ValidationMessage Title="{x:Static og:Strings.Nep2Key}" Target="{x:Reference entryNep2Key}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 2}}">
+                        <og:Custom Validate="Nep2_Validate" />
+                    </og:ValidationMessage>
+                    <Label StyleClass="Secondary" Text="{x:Static og:Strings.Password}" Margin="0,20,0,0" />
+                    <Entry x:Name="entryPassword" Text="{Binding CreationContext.Password}" IsPassword="True" />
+                    <og:ValidationMessage x:Name="errMsg" Title="{x:Static og:Strings.Password}" Target="{x:Reference entryPassword}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 2}}">
+                        <og:Required />
+                    </og:ValidationMessage>
+                </VerticalStackLayout>
             </VerticalStackLayout>
-            <VerticalStackLayout Grid.Row="1" IsVisible="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 0}}">
-                <Label StyleClass="Secondary" Text="{x:Static og:Strings.EnterMnemonicPrompt}" />
-                <Editor x:Name="editorMnemonic" />
-                <og:ValidationMessage Title="{x:Static og:Strings.Mnemonic}" Target="{x:Reference editorMnemonic}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 0}}">
-                    <og:Custom Validate="Mnemonic_Validate" />
-                </og:ValidationMessage>
-            </VerticalStackLayout>
-            <VerticalStackLayout Grid.Row="1" IsVisible="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 1}}">
-                <Label StyleClass="Secondary" Text="{x:Static og:Strings.PrivateKey}" />
-                <Entry x:Name="entryPrivateKey" />
-                <og:ValidationMessage Title="{x:Static og:Strings.PrivateKey}" Target="{x:Reference entryPrivateKey}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 1}}">
-                    <og:Custom Validate="PrivateKey_Validate" />
-                </og:ValidationMessage>
-            </VerticalStackLayout>
-            <VerticalStackLayout Grid.Row="1" IsVisible="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 2}}">
-                <Label StyleClass="Secondary" Text="{x:Static og:Strings.Nep2Key}" />
-                <Entry x:Name="entryNep2Key" />
-                <og:ValidationMessage Title="{x:Static og:Strings.Nep2Key}" Target="{x:Reference entryNep2Key}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 2}}">
-                    <og:Custom Validate="Nep2_Validate" />
-                </og:ValidationMessage>
-                <Label StyleClass="Secondary" Text="{x:Static og:Strings.Password}" Margin="0,20,0,0" />
-                <Entry x:Name="entryPassword" Text="{Binding CreationContext.Password}" IsPassword="True" />
-                <og:ValidationMessage x:Name="errMsg" Title="{x:Static og:Strings.Password}" Target="{x:Reference entryPassword}" IsEnabled="{Binding SelectedIndex, Converter={StaticResource IsEqualConverter}, ConverterParameter={x:Int32 2}}">
-                    <og:Required />
-                </og:ValidationMessage>
-            </VerticalStackLayout>
-            <og:Submit Grid.Row="2" Text="{x:Static og:Strings.Next}" Submitted="OnSubmitted" />
-        </Grid>
-    </ScrollView>
+        </ScrollView>
+        <og:Submit Grid.Row="2" Text="{x:Static og:Strings.Next}" Submitted="OnSubmitted" />
+    </Grid>
 </ContentPage>
