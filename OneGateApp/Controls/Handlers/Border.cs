@@ -21,14 +21,24 @@ public static class Border
         EditorHandler.Mapper.AppendToMapping("NoBorder", (handler, view) =>
         {
             if (view is not Editor editor) return;
-            if (GetIsVisible(editor)) return;
-#if ANDROID
-            handler.PlatformView.Background = null;
-#elif IOS || MACCATALYST
-            handler.PlatformView.BorderStyle = UIKit.UITextViewBorderStyle.None;
-#elif WINDOWS
-            handler.PlatformView.BorderThickness = new(0);
+            if (GetIsVisible(editor))
+            {
+#if IOS || MACCATALYST
+                handler.PlatformView.Layer.BorderWidth = 1;
+                handler.PlatformView.Layer.BorderColor = UIKit.UIColor.FromRGB(226, 227, 231).CGColor;
+                handler.PlatformView.Layer.CornerRadius = 5;
 #endif
+            }
+            else
+            {
+#if ANDROID
+                handler.PlatformView.Background = null;
+#elif IOS || MACCATALYST
+                handler.PlatformView.BorderStyle = UIKit.UITextViewBorderStyle.None;
+#elif WINDOWS
+                handler.PlatformView.BorderThickness = new(0);
+#endif
+            }
         });
         EntryHandler.Mapper.AppendToMapping("NoBorder", (handler, view) =>
         {

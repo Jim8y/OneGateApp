@@ -12,8 +12,7 @@ public partial class AssetDetailsPage : ContentPage, IQueryAttributable
 {
     readonly TokenManager tokenManager;
 
-    public required AssetInfo Asset { get; set { field = value; OnPropertyChanged(); OnPropertyChanged(nameof(CanHide)); } }
-    public bool CanHide => Asset?.Token.Hash != NativeContract.NEO.Hash && Asset?.Token.Hash != NativeContract.GAS.Hash;
+    public required AssetInfo Asset { get; set { field = value; OnPropertyChanged(); } }
     public bool ShowBalance { get; set { field = value; OnPropertyChanged(); } }
 
     public AssetDetailsPage(ApplicationDbContext dbContext, TokenManager tokenManager)
@@ -25,7 +24,9 @@ public partial class AssetDetailsPage : ContentPage, IQueryAttributable
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        Asset = (AssetInfo)query["asset"]!;
+        Asset = (AssetInfo)query["asset"];
+        if (Asset.Token.Hash == NativeContract.NEO.Hash || Asset.Token.Hash == NativeContract.GAS.Hash)
+            ToolbarItems.Remove(hideButton);
     }
 
     async void OnHideClicked(object sender, EventArgs e)

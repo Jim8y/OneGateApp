@@ -71,7 +71,11 @@ public static class MauiProgram
             {
                 Shape = new Microsoft.Maui.Controls.Shapes.RoundRectangle
                 {
+#if IOS
+                    CornerRadius = new(10)
+#else
                     CornerRadius = new(10, 10, 0, 0)
+#endif
                 }
             });
         }

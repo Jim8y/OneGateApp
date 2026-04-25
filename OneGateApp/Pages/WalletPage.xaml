@@ -44,7 +44,7 @@
                                     </Label.Text>
                                 </Label>
                                 <Grid ColumnDefinitions="*,auto">
-                                    <Label Text="{Binding DefaultAccount.Address}" TextColor="{StaticResource White}" VerticalOptions="Center" />
+                                    <Label Text="{Binding DefaultAccount.Address}" TextColor="{StaticResource White}" LineBreakMode="MiddleTruncation" VerticalOptions="Center" />
                                     <Button Grid.Column="1" StyleClass="Icon" Text="&#xe664;" TextColor="{StaticResource White}" Padding="10,5" Command="{x:Static og:Commands.Copy}" CommandParameter="{Binding DefaultAccount.Address}" />
                                 </Grid>
                             </VerticalStackLayout>

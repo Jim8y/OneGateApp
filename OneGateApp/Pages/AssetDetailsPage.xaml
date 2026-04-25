@@ -11,7 +11,7 @@
         <og:HiddenTextConverter x:Key="HiddenTextConverter" />
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Order="Secondary" Text="{x:Static og:Strings.Hide}" IsEnabled="{Binding CanHide}" Clicked="OnHideClicked" />
+        <ToolbarItem x:Name="hideButton" Order="Secondary" Text="{x:Static og:Strings.Hide}" Clicked="OnHideClicked" />
     </ContentPage.ToolbarItems>
     <Grid RowDefinitions="*,auto" RowSpacing="20" Margin="20">
         <VerticalStackLayout Spacing="20">
