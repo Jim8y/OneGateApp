@@ -818,4 +818,7 @@ Recomenda-se armazenar a chave NEP-2 e a senha separadamente e fazer backups seg
   <data name="ImportAddress" xml:space="preserve">
     <value>Endereço a importar</value>
   </data>
+  <data name="CopiedToClipboard" xml:space="preserve">
+    <value>Copiado para a área de transferência</value>
+  </data>
 </root>

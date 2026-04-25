@@ -406,6 +406,15 @@ namespace NeoOrder.OneGate.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Copied to Clipboard 的本地化字符串。
+        /// </summary>
+        internal static string CopiedToClipboard {
+            get {
+                return ResourceManager.GetString("CopiedToClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Create Biometric Credential 的本地化字符串。
         /// </summary>
         internal static string CreateBiometricCredential {

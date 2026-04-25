@@ -818,4 +818,7 @@
   <data name="ImportAddress" xml:space="preserve">
     <value>导入地址</value>
   </data>
+  <data name="CopiedToClipboard" xml:space="preserve">
+    <value>已复制到剪贴板</value>
+  </data>
 </root>

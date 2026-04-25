@@ -818,4 +818,7 @@ Het wordt aanbevolen om de NEP-2-sleutel en het wachtwoord apart op te slaan en 
   <data name="ImportAddress" xml:space="preserve">
     <value>Te importeren adres</value>
   </data>
+  <data name="CopiedToClipboard" xml:space="preserve">
+    <value>Gekopieerd naar klembord</value>
+  </data>
 </root>

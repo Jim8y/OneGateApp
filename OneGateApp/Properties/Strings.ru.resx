@@ -818,4 +818,7 @@
   <data name="ImportAddress" xml:space="preserve">
     <value>Адрес для импорта</value>
   </data>
+  <data name="CopiedToClipboard" xml:space="preserve">
+    <value>Скопировано в буфер обмена</value>
+  </data>
 </root>

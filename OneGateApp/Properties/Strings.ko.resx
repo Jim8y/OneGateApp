@@ -818,4 +818,7 @@ NEP-2와 비밀번호는 별도로 보관하고 각각 안전하게 백업하는
   <data name="ImportAddress" xml:space="preserve">
     <value>가져올 주소</value>
   </data>
+  <data name="CopiedToClipboard" xml:space="preserve">
+    <value>클립보드에 복사됨</value>
+  </data>
 </root>

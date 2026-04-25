@@ -818,4 +818,7 @@ Si consiglia di conservare separatamente la chiave NEP-2 e la password e di eseg
   <data name="ImportAddress" xml:space="preserve">
     <value>Indirizzo da importare</value>
   </data>
+  <data name="CopiedToClipboard" xml:space="preserve">
+    <value>Copiato negli appunti</value>
+  </data>
 </root>

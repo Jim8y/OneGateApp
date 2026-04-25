@@ -14,6 +14,9 @@ static class Commands
     public static AsyncCommand Copy { get; } = new(static async obj =>
     {
         await Clipboard.SetTextAsync(obj?.ToString());
+#if !ANDROID
+        await Toast.Show(Strings.CopiedToClipboard);
+#endif
     });
 
     public static AsyncCommand<string> OpenUrl { get; } = new(static async url =>
