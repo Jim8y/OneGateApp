@@ -47,6 +47,7 @@
 	<string>public.app-category.finance</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>dapp</string>
 		<string>mailto</string>
 	</array>
 	<key>NSBiometricUsageDescription</key>

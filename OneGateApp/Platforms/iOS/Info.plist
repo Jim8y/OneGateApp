@@ -43,6 +43,7 @@
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>dapp</string>
 		<string>mailto</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
