@@ -28,6 +28,11 @@ public partial class DAppsPage : ContentPage
         this.DApps = serviceProvider.GetServiceOrCreateInstance<CachedCollection<DApp>>();
         this.DApps.CollectionLoaded += OnDAppsLoaded;
         InitializeComponent();
+#if WINDOWS
+        // Disable the search handler on Windows
+        // The search handler is not well supported on Windows and can cause issues with the layout
+        Shell.SetSearchHandler(this, null);
+#endif
         LoadingService.Loaded += OnDataLoaded;
         LoadingService.BeginLoad();
     }
