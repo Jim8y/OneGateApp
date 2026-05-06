@@ -10,5 +10,8 @@
         <Image Source="logo_vertical.png" WidthRequest="128" />
         <Label StyleClass="Secondary" Text="{Binding AppInfo.VersionString}" HorizontalOptions="Center" />
         <og:SettingsView Settings="{Binding SettingEntries}" />
+        <VerticalStackLayout.Behaviors>
+            <og:KonamiCodeBehavior KonamiCodeEntered="OnKonamiCodeEntered" />
+        </VerticalStackLayout.Behaviors>
     </VerticalStackLayout>
 </ContentPage>
