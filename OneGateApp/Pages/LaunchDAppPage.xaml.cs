@@ -7,7 +7,6 @@ using NeoOrder.OneGate.Data;
 using NeoOrder.OneGate.Properties;
 using NeoOrder.OneGate.Services;
 using NeoOrder.OneGate.Services.RPC;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json.Nodes;
@@ -67,7 +66,7 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
                 if (string.IsNullOrEmpty(uri.Query))
                     Url = DApp.Url;
                 else
-                    Url = ApplyLaunchQuery(DApp.Url, uri.Query);
+                    Url = DApp.Url + uri.Query;
             }
             else
             {
@@ -208,10 +207,8 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
             
                 for (let method of methods)
                     provider[method] = function () { return rpc(method, [...arguments]); };
-
+            
                 window.OneGateDapiProvider = deepFreeze(provider);
-                window.Neo = window.Neo || {};
-                window.Neo.DapiProvider = window.OneGateDapiProvider;
 
                 function dispatchReady() {
                     window.dispatchEvent(new CustomEvent('Neo.DapiProvider.ready', {
@@ -226,28 +223,7 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
                 window.addEventListener('Neo.DapiProvider.request', dispatchReady);
             })();
             """.ReplaceLineEndings("");
-        try
-        {
-            await webView.EvaluateJavaScriptAsync(script);
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Failed to inject OneGate dAPI provider: {ex}");
-        }
-    }
-
-    static string ApplyLaunchQuery(string baseUrl, string query)
-    {
-        if (string.IsNullOrEmpty(query)) return baseUrl;
-        string launchQuery = query.TrimStart('?');
-        if (string.IsNullOrEmpty(launchQuery)) return baseUrl;
-        int fragmentIndex = baseUrl.IndexOf('#');
-        string fragment = fragmentIndex >= 0 ? baseUrl[fragmentIndex..] : "";
-        string urlWithoutFragment = fragmentIndex >= 0 ? baseUrl[..fragmentIndex] : baseUrl;
-        string separator = urlWithoutFragment.Contains('?')
-            ? (urlWithoutFragment.EndsWith('?') || urlWithoutFragment.EndsWith('&') ? "" : "&")
-            : "?";
-        return urlWithoutFragment + separator + launchQuery + fragment;
+        await webView.EvaluateJavaScriptAsync(script);
     }
 
     static bool IsCrossDomain(Uri uriOld, Uri uriNew)
