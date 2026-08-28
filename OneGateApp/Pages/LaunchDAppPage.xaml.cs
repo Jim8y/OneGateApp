@@ -190,7 +190,6 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
         {
             DApp = (DApp)value;
             Url = DApp.Url;
-            UpdateReportButton();
         }
         else
         {
@@ -212,7 +211,6 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
                     Languages = ["en"]
                 };
                 Url = uri.AbsoluteUri;
-                UpdateReportButton();
             }
         }
         await RecordDAppOpenAsync();
@@ -220,6 +218,13 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
 
     async Task RecordDAppOpenAsync()
     {
+        if (DApp.Id > 0 && !DAppCatalogPolicy.IsSupportedOnCurrentPlatform(DApp))
+        {
+            await Toast.Show(Strings.DAppUnavailableOnCurrentPlatform);
+            await this.GoBackOrCloseAsync();
+            return;
+        }
+        UpdateFeedbackAndReportButtons();
         if (DApp.Id > 0)
         {
             List<int>? favorites = await dbContext.Settings.GetAsync<List<int>>("dapps/favorite");
@@ -256,6 +261,14 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
         catch
         {
         }
+    }
+
+    async void OnFeedbackClicked(object sender, EventArgs e)
+    {
+        if (!DApp.CanFeedback) return;
+        var popup = serviceProvider.GetServiceOrCreateInstance<DAppFeedbackPopup>();
+        popup.DApp = DApp;
+        await this.ShowPopupAsync<bool>(popup);
     }
 
     async void OnReportClicked(object sender, EventArgs e)
@@ -340,7 +353,6 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
             }
             DApp = dapp;
             Url = string.IsNullOrEmpty(uri.Query) ? DApp.Url : DApp.Url + uri.Query;
-            UpdateReportButton();
             return true;
         }
         catch (HttpRequestException)
@@ -1102,8 +1114,10 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
         return true;
     }
 
-    void UpdateReportButton()
+    void UpdateFeedbackAndReportButtons()
     {
+        if (!DApp.CanFeedback)
+            ToolbarItems.Remove(feedbackButton);
         if (!DApp.CanReport)
             ToolbarItems.Remove(reportButton);
     }
