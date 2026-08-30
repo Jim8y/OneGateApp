@@ -843,6 +843,9 @@ Mit dem Fortfahren bestätigen Sie, dass Sie alle damit verbundenen Risiken voll
   <data name="Gaming" xml:space="preserve">
     <value>Gaming</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>Ein zufälliges Spiel starten</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>Zum Aktualisieren des Spielekatalogs nach unten ziehen.</value>
   </data>

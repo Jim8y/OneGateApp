@@ -843,6 +843,9 @@ Devam ederek, ilgili tüm riskleri tamamen anladığınızı ve kabul ettiğiniz
   <data name="Gaming" xml:space="preserve">
     <value>Oyun</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>Rastgele bir oyun oyna</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>Oyun kataloğunu yenilemek için aşağı çekin.</value>
   </data>

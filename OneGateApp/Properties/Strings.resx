@@ -843,6 +843,9 @@ By continuing, you acknowledge that you fully understand and accept all associat
   <data name="Gaming" xml:space="preserve">
     <value>Gaming</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>Play a random game</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>Pull down to refresh the game catalog.</value>
   </data>

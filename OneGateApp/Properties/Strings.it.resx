@@ -843,6 +843,9 @@ Continuando, confermi di aver compreso pienamente e accettato tutti i rischi ass
   <data name="Gaming" xml:space="preserve">
     <value>Giochi</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>Gioca a un gioco casuale</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>Trascina verso il basso per aggiornare il catalogo dei giochi.</value>
   </data>

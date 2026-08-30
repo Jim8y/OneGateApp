@@ -843,6 +843,9 @@ Dengan melanjutkan, Anda menyatakan bahwa Anda sepenuhnya memahami dan menerima 
   <data name="Gaming" xml:space="preserve">
     <value>Game</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>Mainkan game acak</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>Tarik ke bawah untuk menyegarkan katalog game.</value>
   </data>

@@ -843,6 +843,9 @@ Al continuar, usted reconoce que comprende plenamente y acepta todos los riesgos
   <data name="Gaming" xml:space="preserve">
     <value>Juegos</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>Jugar a un juego aleatorio</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>Desliza hacia abajo para actualizar el catálogo de juegos.</value>
   </data>

@@ -819,6 +819,9 @@
   <data name="Gaming" xml:space="preserve">
     <value>遊戲</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>隨機玩一個遊戲</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>下拉重新整理遊戲目錄。</value>
   </data>

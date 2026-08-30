@@ -23,6 +23,7 @@ public partial class GamingPage : ContentPage
     readonly ApplicationDbContext dbContext;
     bool allowRestrictedContent;
     bool developerModeEnabled;
+    int? lastRandomGameId;
 
     public LoadingService LoadingService { get; }
     public CachedCollection<DApp> DApps { get; }
@@ -40,6 +41,7 @@ public partial class GamingPage : ContentPage
             OnPropertyChanged(nameof(ShowGalleryLayout));
             OnPropertyChanged(nameof(ShowListLayout));
             OnPropertyChanged(nameof(ShowEmptyState));
+            OnPropertyChanged(nameof(HasFilteredGames));
         }
     } = [];
     public DApp[] GamesQuickPicks { get; private set { field = value; OnPropertyChanged(); OnPropertyChanged(nameof(HasQuickPicks)); } } = [];
@@ -68,6 +70,7 @@ public partial class GamingPage : ContentPage
     public bool ShowGalleryLayout => IsGalleryLayout && GamesFiltered.Length > 0;
     public bool ShowListLayout => IsListLayout && GamesFiltered.Length > 0;
     public bool ShowEmptyState => GamesFiltered.Length == 0;
+    public bool HasFilteredGames => GamesFiltered.Length > 0;
 
     bool layoutPreferenceLoaded;
 
@@ -229,5 +232,23 @@ public partial class GamingPage : ContentPage
         {
             ["dapp"] = ((Button)sender).CommandParameter
         });
+    }
+
+    async void OnRandomGameClicked(object sender, EventArgs e)
+    {
+        if (GamesFiltered.Length == 0)
+            return;
+
+        DApp[] candidates = GamesFiltered;
+        if (candidates.Length > 1 && lastRandomGameId is int previousId)
+        {
+            DApp[] withoutPrevious = candidates.Where(p => p.Id != previousId).ToArray();
+            if (withoutPrevious.Length > 0)
+                candidates = withoutPrevious;
+        }
+
+        DApp game = candidates[Random.Shared.Next(candidates.Length)];
+        lastRandomGameId = game.Id;
+        await Commands.LaunchDApp.ExecuteAsync(game);
     }
 }

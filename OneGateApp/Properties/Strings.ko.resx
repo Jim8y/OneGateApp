@@ -843,6 +843,9 @@
   <data name="Gaming" xml:space="preserve">
     <value>게임</value>
   </data>
+  <data name="GamingRandomPlay" xml:space="preserve">
+    <value>무작위 게임 플레이</value>
+  </data>
   <data name="GamingEmptyState" xml:space="preserve">
     <value>아래로 당겨 게임 카탈로그를 새로고침하세요.</value>
   </data>

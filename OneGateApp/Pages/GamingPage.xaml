@@ -30,8 +30,9 @@
             </og:DAppSearchHandler.ItemTemplate>
         </og:DAppSearchHandler>
     </Shell.SearchHandler>
-    <RefreshView Margin="20,0" IsRefreshing="{Binding LoadingService.IsReloading}" Command="{Binding LoadingService}">
-        <Grid RowDefinitions="auto,*" RowSpacing="12">
+    <Grid>
+        <RefreshView Margin="20,0" IsRefreshing="{Binding LoadingService.IsReloading}" Command="{Binding LoadingService}">
+            <Grid RowDefinitions="auto,*" RowSpacing="12">
             <Grid ColumnDefinitions="*,auto" ColumnSpacing="10">
                 <og:TabBar x:Name="gameTypeTabBar"
                            Tabs="{Binding GameTypes}"
@@ -192,6 +193,9 @@
                             <Label Text="{x:Static og:Strings.GamingAllGames}" FontAttributes="Bold" FontSize="18" />
                         </VerticalStackLayout>
                     </CollectionView.Header>
+                    <CollectionView.Footer>
+                        <BoxView HeightRequest="76" />
+                    </CollectionView.Footer>
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout x:Name="GalleryItemsLayout" Orientation="Vertical" Span="3" HorizontalItemSpacing="10" VerticalItemSpacing="14" />
                     </CollectionView.ItemsLayout>
@@ -280,6 +284,9 @@
                             </VerticalStackLayout>
                         </VerticalStackLayout>
                     </CollectionView.Header>
+                    <CollectionView.Footer>
+                        <BoxView HeightRequest="76" />
+                    </CollectionView.Footer>
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout x:Name="GamesItemsLayout" Orientation="Vertical" Span="1" HorizontalItemSpacing="28" />
                     </CollectionView.ItemsLayout>
@@ -334,7 +341,27 @@
                         </VerticalStackLayout>
                     </Grid>
                 </Border>
+                </Grid>
             </Grid>
-        </Grid>
-    </RefreshView>
+        </RefreshView>
+
+        <ImageButton Source="gaming_random.svg"
+                     WidthRequest="58"
+                     HeightRequest="58"
+                     CornerRadius="29"
+                     Padding="15"
+                     Margin="20,0,20,20"
+                     BackgroundColor="{AppThemeBinding Light=#151922, Dark=#4B7BFF}"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     ZIndex="10"
+                     IsVisible="{Binding HasFilteredGames}"
+                     SemanticProperties.Description="{x:Static og:Strings.GamingRandomPlay}"
+                     ToolTipProperties.Text="{x:Static og:Strings.GamingRandomPlay}"
+                     Clicked="OnRandomGameClicked">
+            <ImageButton.Shadow>
+                <Shadow Brush="Black" Offset="0,6" Radius="12" Opacity="0.24" />
+            </ImageButton.Shadow>
+        </ImageButton>
+    </Grid>
 </ContentPage>

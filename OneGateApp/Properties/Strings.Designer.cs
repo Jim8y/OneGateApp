@@ -1553,6 +1553,15 @@ namespace NeoOrder.OneGate.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Play a random game.
+        /// </summary>
+        internal static string GamingRandomPlay {
+            get {
+                return ResourceManager.GetString("GamingRandomPlay", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   查找类似 Pull down to refresh the game catalog. 的本地化字符串。
         /// </summary>
         internal static string GamingEmptyState {
