@@ -12,10 +12,15 @@ namespace NeoOrder.OneGate.Services.RemoteDebug
 
 namespace NeoOrder.OneGate.Pages
 {
-    public class LaunchDAppPage
+    public class LaunchDAppPage : Services.RemoteDebug.IRemoteDebugSessionHost
     {
-        public void ConfigureRemoteDebug(string id, Services.RemoteDebug.RemoteDebugService service) { }
+        public void ConfigureRemoteDebug(string id, Services.RemoteDebug.RemoteDebugService service) => service.AttachSessionHost(id, this);
         public void ApplyQueryAttributes(IDictionary<string, object> query) { }
+        public Task<System.Text.Json.Nodes.JsonObject> GetRemoteStatusAsync() => Task.FromResult(new System.Text.Json.Nodes.JsonObject());
+        public Task<System.Text.Json.Nodes.JsonNode?> EvaluateRemoteAsync(string expression) => Task.FromResult<System.Text.Json.Nodes.JsonNode?>(null);
+        public Task<byte[]> CaptureRemoteScreenshotAsync() => Task.FromResult(Array.Empty<byte>());
+        public Task ReloadRemoteAsync(bool ignoreCache) => Task.CompletedTask;
+        public Task StopRemoteAsync() { BoundaryHooks.OnHostStopped?.Invoke(); return Task.CompletedTask; }
     }
 }
 
@@ -23,7 +28,17 @@ namespace NeoOrder.OneGate
 {
     static class ServiceProviderExtensions
     {
-        public static T GetServiceOrCreateInstance<T>(this IServiceProvider services) where T : new() => new();
+        public static T GetServiceOrCreateInstance<T>(this IServiceProvider services) where T : new()
+        {
+            BoundaryHooks.BeforePageCreate?.Invoke();
+            return new();
+        }
+    }
+    static class BoundaryHooks
+    {
+        public static Action? BeforePageCreate;
+        public static Action? OnOpenWindow;
+        public static Action? OnHostStopped;
     }
     static class MainThread
     {
@@ -43,7 +58,7 @@ namespace NeoOrder.OneGate
     sealed class Application
     {
         public static Application Current { get; } = new();
-        public void OpenWindow(Window window) { }
+        public void OpenWindow(Window window) => BoundaryHooks.OnOpenWindow?.Invoke();
     }
     sealed class Window(NavigationPage page) { public NavigationPage Page { get; } = page; }
     sealed class NavigationPage(Pages.LaunchDAppPage page) { public Pages.LaunchDAppPage Page { get; } = page; }
