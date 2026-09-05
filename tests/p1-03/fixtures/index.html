@@ -1,0 +1,26 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OneGate bridge provenance QA</title>
+<h1>Native bridge provenance</h1>
+<button id="read">Main: block count</button>
+<button id="pick">Main: pick address (cancel)</button>
+<button id="lock">Main: lock landscape</button>
+<button id="unlock">Main: synchronous unlock</button>
+<pre id="result"></pre>
+<h2>Same-origin iframe</h2><iframe id="same"></iframe>
+<h2>Cross-origin iframe</h2><iframe id="cross"></iframe>
+<script>
+const output = document.querySelector('#result');
+const show = value => output.textContent = JSON.stringify(value);
+document.querySelector('#read').onclick = () => OneGateDapiProvider.getBlockCount().then(show, show);
+document.querySelector('#pick').onclick = () => OneGateDapiProvider.pickAddress('Main-frame QA: cancel this picker').then(() => show('Picker completed'), show);
+document.querySelector('#lock').onclick = () => screen.orientation.lock('landscape').then(() => show('Locked'), show);
+document.querySelector('#unlock').onclick = () => { try { screen.orientation.unlock(); show('Unlocked'); } catch (e) { show(e.message); } };
+const cross = new URL('frame.html', location.href);
+// Give both fixtures the active identity so native frame checks, not token
+// mismatch, are the only reason their direct asynchronous calls are rejected.
+cross.searchParams.set('documentToken', window.__OneGateDocumentToken);
+document.querySelector('#same').src = cross.href;
+cross.port = new URL(location.href).searchParams.get('iframePort') || '8766';
+document.querySelector('#cross').src = cross.href;
+</script>

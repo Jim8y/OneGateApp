@@ -1,0 +1,13 @@
+<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1">
+<p id="status"></p><button id="probe">Raw frame request (must not open picker)</button>
+<button id="sync">Raw sync prompt (must be rejected)</button>
+<script>
+document.querySelector('#status').textContent = 'Provider injected: ' + Boolean(window.OneGateDapiProvider) + '; origin: ' + location.origin;
+document.querySelector('#probe').onclick = () => {
+ const payload = JSON.stringify({jsonrpc:'2.0', id:'frame-qa-'+Date.now(), onegateDocument:new URL(location.href).searchParams.get('documentToken'), method:'pickAddress', params:['FAIL: iframe opened this picker']});
+ if (window.__OneGateNativeBridge) window.__OneGateNativeBridge.postMessage(payload);
+ else if (window.webkit?.messageHandlers?.__OneGateBridge) window.webkit.messageHandlers.__OneGateBridge.postMessage(payload);
+ else document.querySelector('#status').textContent += '; native interface absent';
+};
+document.querySelector('#sync').onclick = () => prompt('__OneGateBridgeSync', JSON.stringify({jsonrpc:'2.0',id:'sync-frame',method:'onegate.system.screen.orientation.unlock',params:[]}));
+</script>

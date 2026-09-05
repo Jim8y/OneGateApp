@@ -13,12 +13,14 @@ public partial class BridgeWebView : WebView
     const string SystemCallMethodPrefix = "onegate.system.";
     const string SystemCallInvokeFunctionName = "__OneGateSystemInvoke";
     const string SystemCallInvokeSyncFunctionName = "__OneGateSystemInvokeSync";
+    const string InitializeDocumentMethod = "__onegate_document";
 
     public static readonly BindableProperty DocumentStartScriptProperty = BindableProperty.Create(nameof(DocumentStartScript), typeof(string), typeof(BridgeWebView));
     readonly ConcurrentDictionary<string, Func<JsonArray?, Task<JsonNode?>>> asyncSystemCallHandlers = new(StringComparer.Ordinal);
     readonly ConcurrentDictionary<string, Func<JsonArray?, JsonNode?>> syncSystemCallHandlers = new(StringComparer.Ordinal);
+    readonly BridgeRequestPolicy requestPolicy = new();
 
-    public event EventHandler<BridgeWebView, JsonObject>? InvokedFromJavaScript;
+    public event EventHandler<BridgeWebView, BridgeInvocation>? InvokedFromJavaScript;
     public event EventHandler<JsonObject>? RemoteConsoleMessageReceived;
 
     public string? DocumentStartScript { get => (string?)GetValue(DocumentStartScriptProperty); set => SetValue(DocumentStartScriptProperty, value); }
@@ -32,11 +34,14 @@ public partial class BridgeWebView : WebView
         RegisterSystemCallHandler("fullscreen.enter", EnterFullscreenSystemAsync);
         RegisterSystemCallHandler("fullscreen.exit", ExitFullscreenSystemAsync);
 #endif
-        Unloaded += (_, _) => RestoreHostState();
+        Unloaded += (_, _) => { requestPolicy.Invalidate(); RestoreHostState(); };
         HandlerChanging += (_, e) =>
         {
             if (e.OldHandler is not null)
+            {
+                requestPolicy.Invalidate();
                 RestoreHostState();
+            }
         };
     }
 
@@ -58,6 +63,7 @@ public partial class BridgeWebView : WebView
     {
         return $$"""
             (function () {
+                if (window.top !== window) return;
                 if (window.__OneGateRpcInjected) return;
                 window.__OneGateRpcInjected = true;
 
@@ -67,6 +73,23 @@ public partial class BridgeWebView : WebView
                     return 'onegate_' + Date.now() + '_' + Math.random().toString(16).slice(2);
                 }
 
+                /* The protected synchronous transport establishes the actual
+                   document identity, including same-URL reloads. Generic navigation
+                   events also cover canceled/iframe loads and cannot do this. */
+                const bootstrap = {
+                    jsonrpc: "2.0",
+                    id: createId(),
+                    method: "{{InitializeDocumentMethod}}",
+                    params: []
+                };
+                let initialized = window.__OneGateBridge.invokeSync(JSON.stringify(bootstrap));
+                if (typeof initialized === 'string') initialized = JSON.parse(initialized);
+                if (!initialized || initialized.jsonrpc !== "2.0" || initialized.id !== bootstrap.id
+                    || initialized.error || typeof initialized.result !== 'string' || !initialized.result)
+                    throw new Error('Native document initialization failed.');
+                const documentToken = initialized.result;
+                Object.defineProperty(window, '__OneGateDocumentToken', { value: documentToken });
+
                 function invoke(method, params) {
                     return new Promise(function(resolve, reject) {
                         const id = createId();
@@ -75,6 +98,7 @@ public partial class BridgeWebView : WebView
                         const request = {
                             jsonrpc: "2.0",
                             id: id,
+                            onegateDocument: documentToken,
                             method: method,
                             params: params
                         };
@@ -96,6 +120,7 @@ public partial class BridgeWebView : WebView
                     const request = {
                         jsonrpc: "2.0",
                         id: createId(),
+                        onegateDocument: documentToken,
                         method: method,
                         params: params
                     };
@@ -141,6 +166,7 @@ public partial class BridgeWebView : WebView
                 };
             })();
             (function () {
+                if (window.top !== window) return;
                 if (window.__OneGateScreenOrientationInjected) return;
                 window.__OneGateScreenOrientationInjected = true;
                 if (!window.screen) return;
@@ -191,6 +217,7 @@ public partial class BridgeWebView : WebView
                 install(orientationPrototype);
             })();
             (function () {
+                if (window.top !== window) return;
                 if (window.__OneGateFullscreenInjected) return;
                 window.__OneGateFullscreenInjected = true;
 
@@ -443,10 +470,18 @@ public partial class BridgeWebView : WebView
             """.ReplaceLineEndings("");
     }
 
-    public Task SendRpcRepsonseAsync(JsonObject response)
+    public bool IsCurrentRequest(BridgeInvocation invocation) => requestPolicy.IsCurrent(invocation.Context);
+
+    internal bool IsAuthorizedSyncSource(string? token, string expectedToken, string? sourceUrl, string? pageUrl)
+        => requestPolicy.TryAuthorizeSync(token, expectedToken, sourceUrl, pageUrl, out _);
+
+    public Task SendRpcRepsonseAsync(JsonObject response, BridgeRequestContext context)
     {
         ArgumentNullException.ThrowIfNull(response);
-        return EvaluateJavaScriptAsync($"window.{BridgeCallbackName}({response.ToJsonString()})");
+        if (!requestPolicy.IsCurrent(context)) return Task.CompletedTask;
+        // The native generation check precedes queued JS evaluation. Check again
+        // inside the document so navigation in between cannot receive an old reply.
+        return EvaluateJavaScriptAsync($"if (window.__OneGateDocumentToken === {JsonSerializer.Serialize(context.DocumentToken)}) window.{BridgeCallbackName}({response.ToJsonString()})");
     }
 
     protected void RegisterSystemCallHandler(string method, Func<JsonArray?, JsonNode?> handler)
@@ -516,8 +551,9 @@ public partial class BridgeWebView : WebView
         }
     }
 
-    internal void OnMessage(string payload)
+    internal void OnMessage(string payload, string? sourceUrl, string? pageUrl, bool isMainFrame)
     {
+        if (!requestPolicy.TryAuthorize(sourceUrl, pageUrl, isMainFrame, out var context)) return;
         JsonObject? request;
         try
         {
@@ -527,36 +563,47 @@ public partial class BridgeWebView : WebView
         {
             return;
         }
+        string? documentToken = request["onegateDocument"] is JsonValue token && token.TryGetValue<string>(out var value) ? value : null;
+        if (!requestPolicy.TryBindDocument(context, documentToken, out context)) return;
         string method = request["method"]!.GetValue<string>();
         if (TryGetSystemCallMethod(method, out string? systemMethod))
-            DispatchSystemCall(request, systemMethod);
+            DispatchSystemCall(request, systemMethod, context);
         else
-            DispatchJavaScriptInvocation(request);
+            DispatchJavaScriptInvocation(new(request, context));
     }
 
-    void DispatchJavaScriptInvocation(JsonObject request)
+    void DispatchJavaScriptInvocation(BridgeInvocation invocation)
     {
         if (MainThread.IsMainThread)
-            InvokedFromJavaScript?.Invoke(this, request);
+        {
+            if (IsCurrentRequest(invocation)) InvokedFromJavaScript?.Invoke(this, invocation);
+        }
         else
-            MainThread.BeginInvokeOnMainThread(() => InvokedFromJavaScript?.Invoke(this, request));
+            MainThread.BeginInvokeOnMainThread(() => { if (IsCurrentRequest(invocation)) InvokedFromJavaScript?.Invoke(this, invocation); });
     }
 
-    internal string OnSyncMessage(string payload)
+    internal string OnSyncMessage(string payload, string? sourceUrl, string? pageUrl, bool isMainFrame)
     {
+        if (!requestPolicy.TryAuthorize(sourceUrl, pageUrl, isMainFrame, out var context))
+            return CreateRpcErrorResponse(null, 10001, "Bridge source is not authorized").ToJsonString();
         if (MainThread.IsMainThread)
-            return HandleSyncMessage(payload);
+            return HandleSyncMessage(payload, context);
 
-        return MainThread.InvokeOnMainThreadAsync(() => HandleSyncMessage(payload)).GetAwaiter().GetResult();
+        return MainThread.InvokeOnMainThreadAsync(() => HandleSyncMessage(payload, context)).GetAwaiter().GetResult();
     }
 
-    string HandleSyncMessage(string payload)
+    string HandleSyncMessage(string payload, BridgeRequestContext context)
     {
         JsonObject? request = null;
         try
         {
             request = ParseRpcRequest(payload);
             string method = request["method"]!.GetValue<string>();
+            if (method == InitializeDocumentMethod)
+                return new JsonObject { ["jsonrpc"] = "2.0", ["id"] = request["id"]!.DeepClone(), ["result"] = requestPolicy.BeginDocument() }.ToJsonString();
+            string? documentToken = request["onegateDocument"] is JsonValue token && token.TryGetValue<string>(out var value) ? value : null;
+            if (!requestPolicy.TryBindDocument(context, documentToken, out _))
+                return CreateRpcErrorResponse(request, 10001, "Bridge document is no longer active").ToJsonString();
             if (TryGetSystemCallMethod(method, out string? systemMethod))
                 return HandleSyncSystemCall(request, systemMethod).ToJsonString();
             return InvokeSynchronouslyFromJavaScript(request).ToJsonString();
@@ -661,16 +708,17 @@ public partial class BridgeWebView : WebView
         };
     }
 
-    void DispatchSystemCall(JsonObject request, string method)
+    void DispatchSystemCall(JsonObject request, string method, BridgeRequestContext context)
     {
         if (MainThread.IsMainThread)
-            _ = HandleSystemCallAsync(request, method);
+            _ = HandleSystemCallAsync(request, method, context);
         else
-            MainThread.BeginInvokeOnMainThread(() => _ = HandleSystemCallAsync(request, method));
+            MainThread.BeginInvokeOnMainThread(() => _ = HandleSystemCallAsync(request, method, context));
     }
 
-    async Task HandleSystemCallAsync(JsonObject request, string method)
+    async Task HandleSystemCallAsync(JsonObject request, string method, BridgeRequestContext context)
     {
+        if (!requestPolicy.IsCurrent(context)) return;
         JsonObject response = CreateRpcResponse(request);
         try
         {
@@ -694,7 +742,7 @@ public partial class BridgeWebView : WebView
             response["error"] = CreateSystemCallError(10000, ex.Message);
         }
 
-        await SendRpcRepsonseAsync(response);
+        await SendRpcRepsonseAsync(response, context);
     }
 
     static JsonObject CreateSystemCallError(int code, string message)

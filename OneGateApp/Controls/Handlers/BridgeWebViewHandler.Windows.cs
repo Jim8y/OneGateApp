@@ -8,6 +8,7 @@ namespace NeoOrder.OneGate.Controls.Handlers;
 partial class BridgeWebViewHandler
 {
     const string SyncPrompt = "__OneGateBridgeSync";
+    readonly string syncToken = Convert.ToHexString(System.Security.Cryptography.RandomNumberGenerator.GetBytes(32));
 
     protected override void ConnectHandler(WebView2 platformView)
     {
@@ -30,15 +31,19 @@ partial class BridgeWebViewHandler
         sender.CoreWebView2.WebMessageReceived += CoreWebView2_WebMessageReceived;
         sender.CoreWebView2.ScriptDialogOpening += CoreWebView2_ScriptDialogOpening;
         sender.CoreWebView2.PermissionRequested += CoreWebView2_PermissionRequested;
-        string shim = """
+        string shim = $$"""
+            (function() {
+            if (window.top !== window) return;
+            const token = '{{syncToken}}';
             window.__OneGateBridge = {
                 invoke: function(payload) {
                     window.chrome.webview.postMessage(payload);
                 },
                 invokeSync: function(payload) {
-                    return window.prompt("__OneGateBridgeSync", payload);
+                    return window.prompt("__OneGateBridgeSync:" + token, payload);
                 }
             };
+            })();
             """;
         string script = shim + Views.BridgeWebView.CreateRpcScript();
         if (!string.IsNullOrWhiteSpace(BridgeWebView.DocumentStartScript))
@@ -72,15 +77,22 @@ partial class BridgeWebViewHandler
 
     void CoreWebView2_WebMessageReceived(CoreWebView2 sender, CoreWebView2WebMessageReceivedEventArgs args)
     {
-        BridgeWebView.OnMessage(args.TryGetWebMessageAsString());
+        BridgeWebView.OnMessage(args.TryGetWebMessageAsString(), args.Source, sender.Source, true);
     }
 
     void CoreWebView2_ScriptDialogOpening(CoreWebView2 sender, CoreWebView2ScriptDialogOpeningEventArgs args)
     {
-        if (args.Kind != CoreWebView2ScriptDialogKind.Prompt || args.Message != SyncPrompt)
+        if (args.Kind != CoreWebView2ScriptDialogKind.Prompt || !args.Message.StartsWith(SyncPrompt, StringComparison.Ordinal))
             return;
 
-        args.ResultText = BridgeWebView.OnSyncMessage(args.DefaultText ?? string.Empty);
+        string? token = args.Message.StartsWith(SyncPrompt + ":", StringComparison.Ordinal) ? args.Message[(SyncPrompt.Length + 1)..] : null;
+        if (!BridgeWebView.IsAuthorizedSyncSource(token, syncToken, args.Uri, sender.Source))
+        {
+            args.ResultText = string.Empty;
+            args.Accept();
+            return;
+        }
+        args.ResultText = BridgeWebView.OnSyncMessage(args.DefaultText ?? string.Empty, args.Uri, sender.Source, true);
         args.Accept();
     }
 }

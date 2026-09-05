@@ -10,6 +10,7 @@ public partial class SignMessagePopup : MyPopup<string?>
     const int MaxReadableMessageInputLength = 16 * 1024;
 
     readonly WalletAuthorizationService walletAuthorizationService;
+    public string? RequestOrigin { get; set { field = value; OnPropertyChanged(); } }
 
     public string? Account { get; set { field = value; OnPropertyChanged(); } }
     public string[] Addresses { get; set { field = value; OnPropertyChanged(); } }

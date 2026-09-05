@@ -13,11 +13,12 @@ partial class BridgeWebViewHandler
 {
     const string SyncPrompt = "__OneGateBridgeSync";
 
-    class ScriptHandler(Action<string> onMessage) : NSObject, IWKScriptMessageHandler
+    class ScriptHandler(BridgeWebViewHandler handler) : NSObject, IWKScriptMessageHandler
     {
         public void DidReceiveScriptMessage(WKUserContentController userContentController, WKScriptMessage message)
         {
-            onMessage(message.Body?.ToString()!);
+            handler.BridgeWebView.OnMessage(message.Body?.ToString() ?? string.Empty,
+                GetFrameOrigin(message.FrameInfo), handler.PlatformView.Url?.AbsoluteString, message.FrameInfo.MainFrame);
         }
     }
 
@@ -59,9 +60,10 @@ partial class BridgeWebViewHandler
             WKFrameInfo frame,
             Action<string> completionHandler)
         {
-            if (frame.MainFrame && prompt == SyncPrompt && handler.VirtualView is Views.BridgeWebView bridgeWebView)
+            if (prompt == SyncPrompt && handler.VirtualView is Views.BridgeWebView bridgeWebView)
             {
-                completionHandler(bridgeWebView.OnSyncMessage(defaultText ?? string.Empty));
+                completionHandler(bridgeWebView.OnSyncMessage(defaultText ?? string.Empty,
+                    GetFrameOrigin(frame), webView.Url?.AbsoluteString, frame.MainFrame));
                 return;
             }
 
@@ -104,7 +106,7 @@ partial class BridgeWebViewHandler
         controller.AddUserScript(CreateDocumentStartScript(shim + Views.BridgeWebView.CreateRpcScript()));
         if (!string.IsNullOrWhiteSpace(BridgeWebView.DocumentStartScript))
             controller.AddUserScript(CreateDocumentStartScript(BridgeWebView.DocumentStartScript));
-        controller.AddScriptMessageHandler(new ScriptHandler(BridgeWebView.OnMessage), "__OneGateBridge");
+        controller.AddScriptMessageHandler(new ScriptHandler(this), "__OneGateBridge");
 #if MACCATALYST
         config.Preferences.ElementFullscreenEnabled = true;
 #endif
@@ -115,6 +117,14 @@ partial class BridgeWebViewHandler
     static WKUserScript CreateDocumentStartScript(string script)
     {
         return new WKUserScript(new NSString(script), WKUserScriptInjectionTime.AtDocumentStart, true);
+    }
+
+    static string? GetFrameOrigin(WKFrameInfo frame)
+    {
+        WKSecurityOrigin origin = frame.SecurityOrigin;
+        if (origin.Protocol is not ("http" or "https") || string.IsNullOrEmpty(origin.Host)) return null;
+        return new UriBuilder(origin.Protocol, origin.Host, origin.Port > 0 ? (int)origin.Port : -1)
+            .Uri.GetLeftPart(UriPartial.Authority);
     }
 }
 #endif

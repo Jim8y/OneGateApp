@@ -30,6 +30,7 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
     readonly RpcClient rpcClient;
     RemoteDebugService? remoteDebugService;
     string? remoteDebugSessionId;
+    readonly AsyncLocal<BridgeInvocation?> currentBridgeInvocation = new();
 
     public required DApp DApp { get; set { field = value; OnPropertyChanged(); } }
     public required string Url { get; set { field = value; OnPropertyChanged(); } }
@@ -281,6 +282,7 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
     {
         return $$"""
             (function () {
+                if (window.top !== window) return;
                 if (window.__OneGateDapiInjected) return;
                 window.__OneGateDapiInjected = true;
 
@@ -935,8 +937,11 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
             ToolbarItems.Remove(reportButton);
     }
 
-    async void OnInvokedFromJavaScript(BridgeWebView webView, JsonObject request)
+    async void OnInvokedFromJavaScript(BridgeWebView webView, BridgeInvocation invocation)
     {
+        if (!webView.IsCurrentRequest(invocation)) return;
+        currentBridgeInvocation.Value = invocation;
+        JsonObject request = invocation.Request;
         string method = request["method"] is JsonValue methodValue && methodValue.TryGetValue(out string? methodName)
             ? methodName
             : "unknown";
@@ -945,8 +950,16 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDe
         JsonObject response = await rpcServer.HandleRequestAsync(request);
         if (remoteDebugSessionId is not null && remoteDebugService is not null)
             remoteDebugService.RecordDapiResponse(remoteDebugSessionId, method, response);
-        await webView.SendRpcRepsonseAsync(response);
+        await webView.SendRpcRepsonseAsync(response, invocation.Context);
     }
+
+    void EnsureCurrentBridgeRequest()
+    {
+        if (currentBridgeInvocation.Value is { } invocation && !webView.IsCurrentRequest(invocation))
+            throw new OperationCanceledException("The requesting document is no longer active.");
+    }
+
+    string RequestOrigin => currentBridgeInvocation.Value?.Context.Origin ?? new Uri(DApp.Url).GetLeftPart(UriPartial.Authority);
 
     async Task EmitEventAsync(string eventName, JsonObject? detial)
     {

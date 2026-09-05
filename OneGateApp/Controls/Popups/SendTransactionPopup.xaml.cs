@@ -13,6 +13,7 @@ namespace NeoOrder.OneGate.Controls.Popups;
 public partial class SendTransactionPopup : MyPopup<bool>
 {
     readonly WalletAuthorizationService walletAuthorizationService;
+    public string? RequestOrigin { get; set { field = value; OnPropertyChanged(); } }
 
     public string Title { get; set { field = value; OnPropertyChanged(); } } = Strings.SendTransaction;
     public string Message { get; set { field = value; OnPropertyChanged(); } } = Strings.SendTransactionText;

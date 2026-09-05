@@ -16,6 +16,7 @@
             <Button Grid.Column="1" StyleClass="Icon" Text="&#xe6b5;" FontSize="24" Margin="-10" Padding="10" Clicked="OnCancel" />
         </Grid>
         <Label Text="{x:Static og:Strings.SignMessageText}" />
+        <Label Text="{Binding RequestOrigin}" IsVisible="{Binding RequestOrigin, Converter={StaticResource IsNotNullConverter}}" FontAttributes="Bold" LineBreakMode="WordWrap" />
         <Border StrokeShape="RoundRectangle 8" BackgroundColor="#fdf0d5" Padding="10">
             <Grid ColumnDefinitions="auto,*" ColumnSpacing="10">
                 <Label StyleClass="Icon" Text="&#xe744;" FontSize="18" TextColor="#b8860b" VerticalOptions="Start" />

@@ -4,7 +4,6 @@ using Android.Webkit;
 using Android.Widget;
 using AndroidX.Core.View;
 using AndroidX.WebKit;
-using Java.Interop;
 using Microsoft.Maui;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Handlers;
@@ -14,20 +13,18 @@ namespace NeoOrder.OneGate.Controls.Handlers;
 
 partial class BridgeWebViewHandler
 {
-    class ScriptHandler(Action<string> onMessage, Func<string, string> onSyncMessage) : Java.Lang.Object
-    {
-        [JavascriptInterface]
-        [Export("invoke")]
-        public void Invoke(string payload)
-        {
-            onMessage(payload);
-        }
+    const string NativeBridgeName = "__OneGateNativeBridge";
+    const string SyncPrompt = "__OneGateBridgeSync";
+    readonly string syncToken = Convert.ToHexString(System.Security.Cryptography.RandomNumberGenerator.GetBytes(32));
+    ScriptHandler? scriptHandler;
 
-        [JavascriptInterface]
-        [Export("invokeSync")]
-        public string InvokeSync(string payload)
+    class ScriptHandler(BridgeWebViewHandler handler) : Java.Lang.Object, WebViewCompat.IWebMessageListener
+    {
+        public void OnPostMessage(Android.Webkit.WebView? view, WebMessageCompat? message, Android.Net.Uri? sourceOrigin, bool isMainFrame, JavaScriptReplyProxy? replyProxy)
         {
-            return onSyncMessage(payload);
+            if (!isMainFrame || message?.Type != WebMessageCompat.TypeString) return;
+            if (message?.Data is string payload)
+                handler.BridgeWebView.OnMessage(payload, sourceOrigin?.ToString(), view?.Url, isMainFrame);
         }
     }
 
@@ -38,6 +35,22 @@ partial class BridgeWebViewHandler
         ICustomViewCallback? fullscreenCallback;
         WindowInsetsControllerCompat? fullscreenInsetsController;
         bool wereSystemBarsVisible;
+
+        public override bool OnJsPrompt(Android.Webkit.WebView? view, string? url, string? message, string? defaultValue, JsPromptResult? result)
+        {
+            if (message?.StartsWith(SyncPrompt, StringComparison.Ordinal) != true)
+                return base.OnJsPrompt(view, url, message, defaultValue, result);
+            // Android prompts do not expose isMainFrame. Only the main-frame injection
+            // receives this private capability; the raw prompt remains origin-checked.
+            string? token = message.StartsWith(SyncPrompt + ":", StringComparison.Ordinal) ? message[(SyncPrompt.Length + 1)..] : null;
+            if (!handler.BridgeWebView.IsAuthorizedSyncSource(token, handler.syncToken, url, view?.Url))
+            {
+                result?.Cancel();
+                return true;
+            }
+            result?.Confirm(handler.BridgeWebView.OnSyncMessage(defaultValue ?? string.Empty, url, view?.Url, true));
+            return true;
+        }
 
         public override void OnShowCustomView(Android.Views.View? view, ICustomViewCallback? callback)
         {
@@ -195,14 +208,37 @@ partial class BridgeWebViewHandler
         platformView.Settings.DomStorageEnabled = true;
         platformView.Settings.JavaScriptEnabled = true;
         platformView.Settings.MediaPlaybackRequiresUserGesture = false;
-        platformView.AddJavascriptInterface(new ScriptHandler(BridgeWebView.OnMessage, BridgeWebView.OnSyncMessage), "__OneGateBridge");
-        if (WebViewFeature.IsFeatureSupported(WebViewFeature.DocumentStartScript))
+        if (WebViewFeature.IsFeatureSupported(WebViewFeature.DocumentStartScript)
+            && WebViewFeature.IsFeatureSupported(WebViewFeature.WebMessageListener))
         {
-            string script = Views.BridgeWebView.CreateRpcScript();
+            scriptHandler = new ScriptHandler(this);
+            // Messages include sourceOrigin and isMainFrame, verified before dispatch.
+            WebViewCompat.AddWebMessageListener(platformView, NativeBridgeName, ["*"], scriptHandler);
+            string script = $$"""
+                (function () {
+                    if (window.top !== window) return;
+                    const token = '{{syncToken}}';
+                    window.__OneGateBridge = {
+                        invoke: function(payload) { window.{{NativeBridgeName}}.postMessage(payload); },
+                        invokeSync: function(payload) { return window.prompt('{{SyncPrompt}}:' + token, payload); }
+                    };
+                })();
+                """ + Views.BridgeWebView.CreateRpcScript();
             if (!string.IsNullOrWhiteSpace(BridgeWebView.DocumentStartScript))
                 script += BridgeWebView.DocumentStartScript;
             WebViewCompat.AddDocumentStartJavaScript(platformView, script, ["*"]);
         }
+    }
+
+    protected override void DisconnectHandler(Android.Webkit.WebView platformView)
+    {
+        if (scriptHandler is not null)
+        {
+            WebViewCompat.RemoveWebMessageListener(platformView, NativeBridgeName);
+            scriptHandler.Dispose();
+            scriptHandler = null;
+        }
+        base.DisconnectHandler(platformView);
     }
 }
 #endif

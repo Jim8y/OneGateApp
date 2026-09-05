@@ -16,6 +16,7 @@
         <ScrollView MaximumHeightRequest="400">
             <VerticalStackLayout Spacing="15">
                 <Label Text="{Binding Message}" />
+                <Label Text="{Binding RequestOrigin}" IsVisible="{Binding RequestOrigin, Converter={StaticResource IsNotNullConverter}}" FontAttributes="Bold" LineBreakMode="WordWrap" />
                 <og:IntentsView Intents="{Binding Intents}" />
                 <Border StrokeShape="RoundRectangle 10" BackgroundColor="{toolkit:AppThemeResource Panel}">
                     <VerticalStackLayout Padding="10,0">

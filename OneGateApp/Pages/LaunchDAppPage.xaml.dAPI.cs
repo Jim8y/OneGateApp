@@ -41,11 +41,14 @@ partial class LaunchDAppPage
         }
         if (!payload.Domain.Equals(new Uri(DApp.Url).Host, StringComparison.OrdinalIgnoreCase))
             throw new DapiException(10002, "Domain mismatch");
+        EnsureCurrentBridgeRequest();
         if (IsRemoteDebugSession)
             await RequestRemoteApprovalAsync("authenticate", payload);
-        else if (!await walletAuthorizationService.RequestAuthorizationAsync(this, Strings.LoginRequest, Strings.LoginRequestText))
+        else if (!await walletAuthorizationService.RequestAuthorizationAsync(this, Strings.LoginRequest, $"{Strings.LoginRequestText}\n{RequestOrigin}"))
             throw new DapiException(10006, "Operation cancelled");
+        EnsureCurrentBridgeRequest();
         await activityLogService.RecordWalletAuthorizationAsync(DApp);
+        EnsureCurrentBridgeRequest();
         WalletAccount account = walletProvider.GetWallet()!.GetDefaultAccount()!;
         return payload.CreateResponse(account, protocolSettings);
     }
@@ -59,6 +62,7 @@ partial class LaunchDAppPage
     [RpcMethod]
     async Task<string> PickAddress(string? prompt)
     {
+        EnsureCurrentBridgeRequest();
         if (IsRemoteDebugSession)
         {
             RemoteDebugApprovalResult approval = await RequestRemoteApprovalAsync("pickAddress", prompt);
@@ -182,6 +186,7 @@ partial class LaunchDAppPage
             if (specific is not null) intent = specific;
             intents.Add(intent);
         }
+        EnsureCurrentBridgeRequest();
         if (IsRemoteDebugSession)
         {
             await RequestRemoteApprovalAsync("sign", context);
@@ -190,6 +195,7 @@ partial class LaunchDAppPage
         {
             var popup = serviceProvider.GetServiceOrCreateInstance<SendTransactionPopup>();
             popup.Title = Strings.SignTransaction;
+            popup.RequestOrigin = RequestOrigin;
             popup.Message = Strings.SignTransactionText;
             popup.Transaction = tx;
             popup.Intents = intents.ToArray();
@@ -197,6 +203,7 @@ partial class LaunchDAppPage
             var popup_result = await this.ShowPopupAsync<bool>(popup);
             if (!popup_result.Result) throw new OperationCanceledException();
         }
+        EnsureCurrentBridgeRequest();
         if (!walletProvider.GetWallet()!.Sign(context))
             throw new DapiException(10000, "Failed to sign transaction");
         await activityLogService.RecordSignatureAsync(DApp);
@@ -206,6 +213,7 @@ partial class LaunchDAppPage
     [RpcMethod]
     async Task<SignedMessage> SignMessage(string message, UInt160? account, SignOptions? options)
     {
+        EnsureCurrentBridgeRequest();
         if (options?.IsTypedData == true)
             throw new DapiException(10001, "Typed data signing is not supported");
         if (options?.IsLedgerCompatible == true)
@@ -218,6 +226,7 @@ partial class LaunchDAppPage
         else
         {
             var popup = serviceProvider.GetServiceOrCreateInstance<SignMessagePopup>();
+            popup.RequestOrigin = RequestOrigin;
             popup.Account = account?.ToAddress(protocolSettings.AddressVersion);
             popup.IsBase64Encoded = options?.IsBase64Encoded == true;
             popup.Message = message;
@@ -225,6 +234,7 @@ partial class LaunchDAppPage
             if (result.Result is null) throw new OperationCanceledException();
             account ??= result.Result.ToScriptHash(protocolSettings.AddressVersion);
         }
+        EnsureCurrentBridgeRequest();
         byte[] payload = options?.IsBase64Encoded == true
             ? Convert.FromBase64String(message)
             : Utility.StrictUTF8.GetBytes(message);
@@ -249,6 +259,7 @@ partial class LaunchDAppPage
             throw new DapiException(10001, "Only transaction relaying is supported");
         if (IsRemoteDebugSession)
             await RequestRemoteApprovalAsync("relay", context);
+        EnsureCurrentBridgeRequest();
         tx.Witnesses = context.GetWitnesses();
         UInt256 transactionHash = await rpcClient.SendRawTransaction(tx);
         await activityLogService.RecordTransactionAsync(DApp, transactionHash);
@@ -293,6 +304,7 @@ partial class LaunchDAppPage
 
     async Task<RemoteDebugApprovalResult> RequestRemoteApprovalAsync(string method, params object?[] parameters)
     {
+        EnsureCurrentBridgeRequest();
         if (remoteDebugSessionId is null || remoteDebugService is null)
             throw new InvalidOperationException("A remote debug session is required for remote approval.");
         JsonArray serializedParameters = new(parameters.Select(parameter => parameter is null
@@ -308,6 +320,7 @@ partial class LaunchDAppPage
             throw new OperationCanceledException();
         }
         if (!approval.Approved) throw new OperationCanceledException();
+        EnsureCurrentBridgeRequest();
         return approval;
     }
 
@@ -321,14 +334,17 @@ partial class LaunchDAppPage
                 if (specific != null) intents[i] = specific;
             }
         }
+        EnsureCurrentBridgeRequest();
         if (!IsRemoteDebugSession)
         {
             var popup = serviceProvider.GetServiceOrCreateInstance<SendTransactionPopup>();
+            popup.RequestOrigin = RequestOrigin;
             popup.Transaction = tx;
             popup.Intents = intents;
             var result = await this.ShowPopupAsync<bool>(popup);
             if (!result.Result) throw new OperationCanceledException();
         }
+        EnsureCurrentBridgeRequest();
         var context = new ContractParametersContext(null!, tx, protocolSettings.Network);
         if (!walletProvider.GetWallet()!.Sign(context))
             throw new DapiException(10000, "Failed to sign transaction");
