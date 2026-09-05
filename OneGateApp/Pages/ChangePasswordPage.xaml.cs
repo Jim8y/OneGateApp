@@ -52,7 +52,7 @@ public partial class ChangePasswordPage : ContentPage
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
-                errMsg.SetError(ex.Message);
+                errMsg.SetError(Strings.WalletPasswordSaveFailed);
                 return;
             }
             if (success)

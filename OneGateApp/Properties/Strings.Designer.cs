@@ -3491,6 +3491,10 @@ namespace NeoOrder.OneGate.Properties {
             }
         }
 
+        internal static string WalletPasswordSaveFailed {
+            get { return ResourceManager.GetString("WalletPasswordSaveFailed", resourceCulture); }
+        }
+
         internal static string RemoteDebug {
             get { return ResourceManager.GetString("RemoteDebug", resourceCulture); }
         }

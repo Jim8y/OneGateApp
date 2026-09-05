@@ -10,3 +10,9 @@ directory; no real wallet, credentials, network or funds are used.
 The essential invariant is that a success notification means a newly opened
 wallet file accepts the new password and rejects the old password. Biometric
 configuration must remain intact when a password change is not committed.
+
+PR review regressions also exercise a real failing file replacement through the
+page (show a generic localized message, never a filesystem path), independence
+from external locks on the public wallet object, and serialization of two
+password changes using the private per-wallet gate. Injected cleanup failures
+cover both I/O and access-denied errors without masking the original save error.

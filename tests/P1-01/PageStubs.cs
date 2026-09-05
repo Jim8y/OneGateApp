@@ -18,15 +18,21 @@ namespace NeoOrder.OneGate.Pages
     public partial class ChangePasswordPage
     {
         readonly ErrorMessage errMsg = new();
+        public string? ErrorForTest => errMsg.LastError;
         void InitializeComponent() { }
         public async Task SubmitForTestAsync()
         {
             CommunityToolkit.Maui.Alerts.Toast.Shown = new(TaskCreationOptions.RunContinuationsAsynchronously);
             OnSubmitted(new Submit(), EventArgs.Empty);
-            await CommunityToolkit.Maui.Alerts.Toast.Shown.Task.WaitAsync(TimeSpan.FromSeconds(30));
+            await Task.WhenAny(CommunityToolkit.Maui.Alerts.Toast.Shown.Task, errMsg.Shown.Task).WaitAsync(TimeSpan.FromSeconds(30));
         }
     }
-    public sealed class ErrorMessage { public void SetError(string message) { } }
+    public sealed class ErrorMessage
+    {
+        public string? LastError { get; private set; }
+        public TaskCompletionSource Shown { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        public void SetError(string message) { LastError = message; Shown.TrySetResult(); }
+    }
 }
 namespace NeoOrder.OneGate.Controls { public sealed class Placeholder { } }
 namespace NeoOrder.OneGate.Controls.Views
@@ -54,6 +60,7 @@ namespace NeoOrder.OneGate.Properties
         public const string BiometricResetText = "Biometric reset";
         public const string PasswordChanged = "Password changed";
         public const string ErrorMessageIncorrectPassword = "Incorrect password";
+        public const string WalletPasswordSaveFailed = "Could not save the new password. Your current password is unchanged. Please try again.";
     }
 }
 namespace Plugin.Maui.ScreenSecurity
