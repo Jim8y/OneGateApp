@@ -5,6 +5,24 @@ using Xunit;
 
 public class PaymentActionTests
 {
+    [Fact]
+    public void Protocol_amount_at_character_limit_is_preserved()
+    {
+        string amount = new string('0', 1023) + "1";
+        var action = Assert.IsType<PaymentAction>(PaymentAction.TryCreate("neo:synthetic-recipient?amount=" + amount));
+        Assert.Equal(amount, action.Amount);
+    }
+
+    [Theory]
+    [InlineData(1025)]
+    [InlineData(16384)]
+    public void Overlong_protocol_amount_is_rejected(int length)
+    {
+        string amount = new string('0', length - 1) + "1";
+        Assert.Null(PaymentAction.TryCreate("neo:synthetic-recipient?amount=" + amount));
+        Assert.Null(AppLinkAction.TryCreate("neo:synthetic-recipient?amount=" + amount));
+    }
+
     [Theory]
     [InlineData("en-US", "1.5")]
     [InlineData("de-DE", "1.5")]

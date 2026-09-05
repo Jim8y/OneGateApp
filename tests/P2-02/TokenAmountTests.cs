@@ -6,6 +6,51 @@ using Xunit;
 public class TokenAmountTests
 {
     [Theory]
+    [InlineData("en-US", ".")]
+    [InlineData("de-DE", ",")]
+    [InlineData("fr-FR", ",")]
+    public void Input_at_character_limit_still_preserves_exact_units(string locale, string separator)
+    {
+        string text = new string('0', 1021) + "1" + separator + "5";
+        Assert.Equal(1024, text.Length);
+        Assert.True(TokenAmount.TryParse(text, 8, out var units, new CultureInfo(locale)));
+        Assert.Equal(new BigInteger(150_000_000), units);
+    }
+
+    [Theory]
+    [InlineData(1025)]
+    [InlineData(16384)]
+    public void Overlong_input_is_rejected_before_leading_zeroes_are_parsed(int length)
+    {
+        Assert.False(TokenAmount.TryParse(new string('0', length - 1) + "1", 8, out var units, CultureInfo.InvariantCulture));
+        Assert.Equal(BigInteger.Zero, units);
+    }
+
+    [Fact]
+    public void Raw_character_limit_applies_before_trimming()
+    {
+        Assert.False(TokenAmount.TryParse(new string(' ', 1024) + "1", 8, out var units, CultureInfo.InvariantCulture));
+        Assert.Equal(BigInteger.Zero, units);
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData(" \t\r\n")]
+    public void Null_empty_and_whitespace_input_remain_invalid(string? text)
+    {
+        Assert.False(TokenAmount.TryParse(text, 8, out var units, CultureInfo.InvariantCulture));
+        Assert.Equal(BigInteger.Zero, units);
+    }
+
+    [Fact]
+    public void Sixty_decimal_places_remain_exact()
+    {
+        Assert.True(TokenAmount.TryParse("0." + new string('0', 59) + "1", 60, out var units, CultureInfo.InvariantCulture));
+        Assert.Equal(BigInteger.One, units);
+    }
+
+    [Theory]
     [InlineData("en-US", "1.5")]
     [InlineData("de-DE", "1,5")]
     [InlineData("fr-FR", "1,5")]

@@ -12,6 +12,12 @@ outside System.Decimal's precision/range. Navigation alone is doubled. QR scan
 routing preserves that same string. There are no wallet, RPC or network operations
 in these tests.
 
+Raw amount input is limited to 1024 characters before trimming or numeric
+parsing, including URI/QR amounts. Tests accept the exact boundary, reject 1025
+and 16384 characters (including otherwise valid leading-zero amounts), and keep
+60-decimal-place values exact. The follow-up regression failed five cases before
+adding the early length guard.
+
 Before the fix, a temporary characterization adapter using the audited
 `decimal.Parse(BigDecimal.ToString())` and `BigDecimal.TryParse` expressions
 reproduced the German `1.5 -> 15` error, French parsing failure, local minimum

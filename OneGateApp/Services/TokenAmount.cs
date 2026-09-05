@@ -5,6 +5,10 @@ namespace NeoOrder.OneGate.Services;
 
 static class TokenAmount
 {
+    // Generous enough for token precision, but bounds work on untrusted QR/link
+    // amounts before trimming, splitting, padding or parsing a BigInteger.
+    const int MaxInputLength = 1024;
+
     public static string Format(BigInteger units, byte decimals, CultureInfo? culture = null)
     {
         culture ??= CultureInfo.CurrentCulture;
@@ -18,7 +22,7 @@ static class TokenAmount
     public static bool TryParse(string? text, byte decimals, out BigInteger units, CultureInfo? culture = null)
     {
         units = BigInteger.Zero;
-        if (string.IsNullOrWhiteSpace(text)) return false;
+        if (text is null || text.Length > MaxInputLength || string.IsNullOrWhiteSpace(text)) return false;
         culture ??= CultureInfo.CurrentCulture;
         string[] parts = text.Trim().Split(culture.NumberFormat.NumberDecimalSeparator, StringSplitOptions.None);
         if (parts.Length > 2) return false;
