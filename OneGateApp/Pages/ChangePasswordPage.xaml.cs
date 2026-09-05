@@ -4,6 +4,7 @@ using NeoOrder.OneGate.Controls;
 using NeoOrder.OneGate.Controls.Views;
 using NeoOrder.OneGate.Data;
 using NeoOrder.OneGate.Properties;
+using NeoOrder.OneGate.Services;
 using Plugin.Maui.ScreenSecurity;
 
 namespace NeoOrder.OneGate.Pages;
@@ -44,7 +45,16 @@ public partial class ChangePasswordPage : ContentPage
         Submit submit = (Submit)sender;
         using (submit.EnterBusyState())
         {
-            bool success = await Task.Run(() => wallet.ChangePassword(CurrentPassword, Password));
+            bool success;
+            try
+            {
+                success = await Task.Run(() => WalletPasswordService.ChangePassword(wallet, CurrentPassword, Password));
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                errMsg.SetError(ex.Message);
+                return;
+            }
             if (success)
             {
                 await Shell.Current.GoToAsync("..");
