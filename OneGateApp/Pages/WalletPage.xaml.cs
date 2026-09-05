@@ -87,7 +87,7 @@ public partial class WalletPage : ContentPage
         nftSession = session;
         NFTs.Clear();
         NftLoadFailed = false;
-        HasMoreNFTs = true;
+        HasMoreNFTs = false;
         IsLoadingNFTs = false;
         if (previous is not null) await CloseNftSessionAsync(previous);
         await LoadNFTPageAsync(session);
@@ -124,6 +124,7 @@ public partial class WalletPage : ContentPage
 
     async void OnLoadMoreNFTs(object sender, EventArgs e)
     {
+        if (!HasMoreNFTs || IsLoadingNFTs) return;
         if (nftSession is not null) await LoadNFTPageAsync(nftSession);
     }
 
