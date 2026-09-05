@@ -1288,4 +1288,7 @@ It is recommended to store the NEP-2 key and password separately and back them u
   <data name="RemoteDebugWaiting" xml:space="preserve"><value>Waiting for a trusted remote debugger</value></data>
   <data name="RemoteDebugPairingTitle" xml:space="preserve"><value>Pair remote debugger</value></data>
   <data name="RemoteDebugPairingPrompt" xml:space="preserve"><value>Remote debugger “{0}” is requesting access. Fingerprint: {1}. Authorize only if you trust this remote debugger.</value></data>
+  <data name="PartialAssetValuation" xml:space="preserve">
+    <value>$ {0:N2} (partial)</value>
+  </data>
 </root>

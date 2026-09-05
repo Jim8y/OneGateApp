@@ -5,7 +5,6 @@ using NeoOrder.OneGate.Data;
 using NeoOrder.OneGate.Models;
 using NeoOrder.OneGate.Resources;
 using NeoOrder.OneGate.Services.RPC;
-using System.Net.Http.Json;
 using System.Numerics;
 
 namespace NeoOrder.OneGate.Services;
@@ -30,8 +29,6 @@ public class TokenManager(ApplicationDbContext dbContext, IWalletProvider wallet
         var tokens = await LoadTokensAsync(true);
         TokenInfo token = tokens.FirstOrDefault(p => p.Hash == assetId) ?? await rpcClient.GetTokenInfo(assetId);
         BigInteger balance = await rpcClient.BalanceOf(assetId, account.ScriptHash);
-        Ticker[] tickers = (await httpClient.GetFromJsonAsync<Ticker[]>($"/api/ticker/price?symbol={token.Symbol}USDT"))!;
-        token.Price = tickers.FirstOrDefault()?.Price;
         return new AssetInfo
         {
             Token = token,
@@ -49,16 +46,10 @@ public class TokenManager(ApplicationDbContext dbContext, IWalletProvider wallet
             .Zip(balance, (x, y) => new AssetInfo { Token = x, Balance = y })
             .Where(p => p.Balance > 0 || p.Token.Hash == NativeContract.NEO.Hash || p.Token.Hash == NativeContract.GAS.Hash)
             .ToArray();
-        string query = string.Join('&', assets.Select(p => $"symbol={p.Token.Symbol}USDT"));
-        string url = $"/api/ticker/price?{query}";
-        Ticker[] tickers = (await httpClient.GetFromJsonAsync<Ticker[]>(url))!;
-        foreach (Ticker ticker in tickers)
-        {
-            var asset = assets.First(p => p.Token.Symbol == ticker.Symbol[0..^4]);
-            asset.Token.Price = ticker.Price;
-        }
         return assets;
     }
+
+    public Task RefreshPricesAsync(IReadOnlyList<AssetInfo> assets) => TokenPrices.RefreshAsync(httpClient, assets);
 
     public async Task<IReadOnlyList<Nep11TokenInfo>> LoadNep11TokensAsync(bool includeHiddens = false)
     {

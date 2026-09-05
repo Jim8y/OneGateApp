@@ -6,6 +6,7 @@ using NeoOrder.OneGate.Data;
 using NeoOrder.OneGate.Models;
 using NeoOrder.OneGate.Properties;
 using NeoOrder.OneGate.Services;
+using System.ComponentModel;
 
 namespace NeoOrder.OneGate.Pages;
 
@@ -19,7 +20,19 @@ public partial class WalletPage : ContentPage
     public bool ShowBalance { get; set { field = value; OnPropertyChanged(); } }
     public WalletAccount DefaultAccount => Wallet.GetDefaultAccount()!;
     public UInt160 ScriptHash => DefaultAccount.ScriptHash;
-    public IReadOnlyList<AssetInfo>? Assets { get; set { field = value; OnPropertyChanged(); } }
+    public IReadOnlyList<AssetInfo>? Assets
+    {
+        get;
+        set
+        {
+            if (field is not null)
+                foreach (AssetInfo asset in field) asset.PropertyChanged -= OnAssetPriceChanged;
+            field = value;
+            if (field is not null)
+                foreach (AssetInfo asset in field) asset.PropertyChanged += OnAssetPriceChanged;
+            OnPropertyChanged();
+        }
+    }
     public IReadOnlyList<NFT>? NFTs { get; set { field = value; OnPropertyChanged(); } }
     public string TotalValuation { get; set { field = value; OnPropertyChanged(); } } = "N/A";
 
@@ -55,11 +68,25 @@ public partial class WalletPage : ContentPage
 
     async Task LoadAssetsAsync()
     {
-        Assets = await tokenManager.LoadAssetsAsync();
-        decimal totalValuation = Assets
-            .Where(p => p.Valuation.HasValue)
-            .Sum(p => p.Valuation!.Value);
-        TotalValuation = $"$ {totalValuation:N2}";
+        IReadOnlyList<AssetInfo> assets = await tokenManager.LoadAssetsAsync();
+        Assets = assets;
+        UpdateTotalValuation(assets);
+        await tokenManager.RefreshPricesAsync(assets);
+        if (ReferenceEquals(Assets, assets)) UpdateTotalValuation(assets);
+    }
+
+    void UpdateTotalValuation(IReadOnlyList<AssetInfo> assets)
+    {
+        var total = TokenPrices.Total(assets);
+        TotalValuation = total.Value is null ? Strings.Unavailable
+            : total.IsPartial ? string.Format(Strings.PartialAssetValuation, total.Value.Value)
+            : $"$ {total.Value.Value:N2}";
+    }
+
+    void OnAssetPriceChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(AssetInfo.Token) && Assets is not null)
+            UpdateTotalValuation(Assets);
     }
 
     async Task LoadNFTsAsync()

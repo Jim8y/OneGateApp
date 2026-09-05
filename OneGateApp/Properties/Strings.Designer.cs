@@ -3531,6 +3531,10 @@ namespace NeoOrder.OneGate.Properties {
             get { return ResourceManager.GetString("RemoteDebugPairingTitle", resourceCulture); }
         }
 
+        internal static string PartialAssetValuation {
+            get { return ResourceManager.GetString("PartialAssetValuation", resourceCulture); }
+        }
+
         internal static string RemoteDebugPairingPrompt {
             get { return ResourceManager.GetString("RemoteDebugPairingPrompt", resourceCulture); }
         }

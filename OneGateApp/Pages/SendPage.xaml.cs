@@ -146,6 +146,12 @@ public partial class SendPage : ContentPage, IQueryAttributable
             }
             SelectedAsset = Assets.FirstOrDefault(p => p.Token.Hash == NativeContract.NEO.Hash) ?? Assets[0];
         }
+        // Input and on-chain amounts are already available. Quotes are optional and
+        // refresh after binding, including direct asset/deep-link entry points.
+        if (Assets is not null)
+            await tokenManager.RefreshPricesAsync(Assets);
+        else if (SelectedAsset is not null)
+            await tokenManager.RefreshPricesAsync([SelectedAsset]);
     }
 
     protected override async void OnAppearing()
