@@ -78,6 +78,28 @@ public class OfflineCatalogTests
         Assert.Equal(1, Assert.Single(Recent(page)).Id);
     }
 
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task SettingsFailureStillLoadsDiskCatalogWithRestrictedDefaults(bool games)
+    {
+        var catalog = new CachedCollection<DApp>();
+        catalog.Load = () =>
+        {
+            catalog.Add(new DApp { Id = 7, IsGamingApp = games });
+            catalog.Add(new DApp { Id = 8, IsGamingApp = games, Warnings = (ContentWarnings)1 });
+            return Task.CompletedTask;
+        };
+        var database = new ApplicationDbContext();
+        database.Settings.FailureKey = DAppCatalogPolicy.AllowRestrictedContentKey;
+        object page = games ? new GamingPage(new TestServices(catalog), database) : new DAppsPage(new TestServices(catalog), database);
+
+        await Idle(Loading(page));
+
+        Assert.True(Loading(page).HasError);
+        Assert.Equal(7, Assert.Single(Items(page)).Id);
+    }
+
     static async Task<(CachedCollection<DApp>, ApplicationDbContext)> PermissiveCatalog(bool games)
     {
         var catalog = new CachedCollection<DApp>

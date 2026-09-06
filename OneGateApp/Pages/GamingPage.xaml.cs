@@ -3,6 +3,7 @@ using NeoOrder.OneGate.Models;
 using NeoOrder.OneGate.Properties;
 using NeoOrder.OneGate.Services;
 using System.Collections.ObjectModel;
+using System.Runtime.ExceptionServices;
 using TabBar = NeoOrder.OneGate.Controls.Views.TabBar;
 
 namespace NeoOrder.OneGate.Pages;
@@ -64,7 +65,9 @@ public partial class GamingPage : ContentPage
         allowRestrictedContent = false;
         developerModeEnabled = false;
         OnDataLoaded(this, EventArgs.Empty);
+        Exception? settingsFailure = null;
         try { await LoadSettingsAsync(); }
+        catch (Exception ex) { settingsFailure = ex; }
         finally
         {
             // An already loaded/shared collection will not send another disk-load
@@ -72,6 +75,8 @@ public partial class GamingPage : ContentPage
             OnDataLoaded(this, EventArgs.Empty);
         }
         await LoadDAppsAsync();
+        if (settingsFailure is not null)
+            ExceptionDispatchInfo.Capture(settingsFailure).Throw();
     }
 
     async Task LoadSettingsAsync()
