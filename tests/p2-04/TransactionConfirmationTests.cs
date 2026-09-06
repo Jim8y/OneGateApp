@@ -16,7 +16,7 @@ public class TransactionConfirmationTests
     {
         int attempts = 0;
         var methods = new List<string>();
-        Task<JsonObject> Read(string method)
+        Task<JsonObject> Read(string method, CancellationToken _)
         {
             methods.Add(method);
             if (method == "getapplicationlog")
@@ -46,7 +46,7 @@ public class TransactionConfirmationTests
     [InlineData("{\"executions\":[{\"vmstate\":\"HALT\"}]}", true)]
     public async Task UnknownExecutionIsPending(string log, bool? expected)
     {
-        var poller = new TransactionConfirmation(method => Task.FromResult(JsonNode.Parse(
+        var poller = new TransactionConfirmation((method, _) => Task.FromResult(JsonNode.Parse(
             method == "getrawtransaction" ? "{\"blocktime\":42}" : log)!.AsObject()), NoDelay);
         var result = await poller.PollAsync(CancellationToken.None);
         Assert.Equal(expected, result.Succeeded);
@@ -55,7 +55,7 @@ public class TransactionConfirmationTests
     [Fact]
     public async Task NullResultRemainsPending()
     {
-        var poller = new TransactionConfirmation(_ => Task.FromResult<JsonObject>(null!), NoDelay);
+        var poller = new TransactionConfirmation((_, _) => Task.FromResult<JsonObject>(null!), NoDelay);
         Assert.Null((await poller.PollAsync(CancellationToken.None)).Succeeded);
     }
 
@@ -63,11 +63,18 @@ public class TransactionConfirmationTests
     public async Task CancelStopsInFlightReadAndAnotherPollCanStart()
     {
         var blocked = new TaskCompletionSource<JsonObject>();
+        CancellationToken observedToken = default;
         using var cancellation = new CancellationTokenSource();
-        var first = new TransactionConfirmation(_ => blocked.Task, NoDelay).PollAsync(cancellation.Token);
+        var first = new TransactionConfirmation((_, token) =>
+        {
+            observedToken = token;
+            token.Register(() => blocked.TrySetCanceled(token));
+            return blocked.Task;
+        }, NoDelay).PollAsync(cancellation.Token);
         cancellation.Cancel();
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() => first);
-        var next = new TransactionConfirmation(_ => Task.FromException<JsonObject>(new RpcException(-100, "not found")), NoDelay);
+        Assert.True(observedToken.CanBeCanceled);
+        var next = new TransactionConfirmation((_, _) => Task.FromException<JsonObject>(new RpcException(-100, "not found")), NoDelay);
         Assert.Null((await next.PollAsync(CancellationToken.None)).Succeeded);
     }
 }

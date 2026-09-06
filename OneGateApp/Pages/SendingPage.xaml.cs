@@ -87,9 +87,9 @@ public partial class SendingPage : ContentPage, IQueryAttributable
         try
         {
             TimedOut = false;
-            var poller = new TransactionConfirmation(method => method == "getrawtransaction"
-                ? rpcClient.RpcSendAsync<JsonObject>(method, Transaction.Hash, true)
-                : rpcClient.RpcSendAsync<JsonObject>(method, Transaction.Hash));
+            var poller = new TransactionConfirmation((method, token) => method == "getrawtransaction"
+                ? rpcClient.RpcSendAsync<JsonObject>(method, token, Transaction.Hash, true)
+                : rpcClient.RpcSendAsync<JsonObject>(method, token, Transaction.Hash));
             ConfirmationResult result = await poller.PollAsync(cancellation.Token);
             cancellation.Token.ThrowIfCancellationRequested();
             BlockTime = result.BlockTime;
