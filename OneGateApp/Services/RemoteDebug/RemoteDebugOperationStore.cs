@@ -63,7 +63,10 @@ sealed class RemoteDebugOperationStore<T> : IDisposable
         {
             bool ownsEntry;
             lock (gate) ownsEntry = entries.Remove(id);
-            entry.Completion.TrySetException(ex);
+            if (ex is OperationCanceledException)
+                entry.Completion.TrySetCanceled();
+            else
+                entry.Completion.TrySetException(ex);
             if (ownsEntry) entry.Cancellation.Dispose();
             throw;
         }
@@ -72,7 +75,7 @@ sealed class RemoteDebugOperationStore<T> : IDisposable
     static async Task CompleteAsync(Entry entry, Task<T> task)
     {
         try { entry.Completion.TrySetResult(await task.WaitAsync(entry.Token)); }
-        catch (OperationCanceledException) { entry.Completion.TrySetCanceled(entry.Token); }
+        catch (OperationCanceledException) { entry.Completion.TrySetCanceled(); }
         catch (Exception ex) { entry.Completion.TrySetException(ex); }
     }
 
@@ -124,7 +127,7 @@ sealed class RemoteDebugOperationStore<T> : IDisposable
     {
         foreach (var entry in removed)
         {
-            entry.Completion.TrySetCanceled(entry.Token);
+            entry.Completion.TrySetCanceled();
             try { entry.Cancellation.Cancel(); }
             // A failing consumer callback must not prevent cleanup of the rest.
             catch (AggregateException) { }

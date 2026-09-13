@@ -413,7 +413,7 @@ public sealed class RemoteDebugService(IServiceProvider serviceProvider) : IAsyn
         IRemoteDebugSessionHost host = RequireHost(parameters);
         if (parameters["defer"]?.GetValue<bool>() != true)
             return new JsonObject { ["value"] = await host.EvaluateRemoteAsync(expression) };
-        string operationId = operations.Start(session.Id, token => host.EvaluateRemoteAsync(expression).WaitAsync(token));
+        string operationId = operations.Start(session.Id, _ => host.EvaluateRemoteAsync(expression));
         // A disconnect can remove the session while the UI starts evaluation.
         if (!sessions.ContainsKey(session.Id)) operations.RemoveSession(session.Id);
         return new JsonObject { ["deferred"] = true, ["operationId"] = operationId };
