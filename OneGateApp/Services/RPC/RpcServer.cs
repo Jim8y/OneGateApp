@@ -107,17 +107,21 @@ class RpcServer(object host)
             {
                 if (parameter.Position >= args.Count)
                 {
+                    if (parameter.ParameterType.IsValueType && Nullable.GetUnderlyingType(parameter.ParameterType) is null)
+                        throw new DapiException(10002, $"Invalid parameter: {parameter.Name}");
                     arguments.Add(null);
                 }
                 else
                 {
                     JsonNode? node = args[parameter.Position];
+                    if (node is null && parameter.ParameterType.IsValueType && Nullable.GetUnderlyingType(parameter.ParameterType) is null)
+                        throw new DapiException(10002, $"Invalid parameter: {parameter.Name}");
                     object? argument;
                     try
                     {
                         argument = node?.Deserialize(parameter.ParameterType, SharedOptions.JsonSerializerOptions);
                     }
-                    catch (Exception ex) when (ex is JsonException or FormatException or ArgumentException or OverflowException)
+                    catch (Exception ex) when (ex is JsonException or FormatException or ArgumentException or OverflowException or NotSupportedException)
                     {
                         throw new DapiException(10002, $"Invalid parameter: {parameter.Name}");
                     }
@@ -132,6 +136,10 @@ class RpcServer(object host)
         catch (TargetParameterCountException)
         {
             throw new DapiException(10002, "Invalid parameter count");
+        }
+        catch (ArgumentException)
+        {
+            throw new DapiException(10002, "Invalid parameter");
         }
         if (result is Task task)
         {

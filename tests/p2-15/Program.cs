@@ -26,6 +26,9 @@ Error("invalid JSON parameter type", "Number", ["not-an-int"], 10002);
 Error("converter format error", "Converted", ["not-a-number"], 10002);
 Error("converter numeric overflow", "Converted", ["999999999999999999999999"], 10002);
 Error("converter token mismatch", "Converted", [new JsonObject()], 10002);
+Error("unsupported parameter target type", "Unsupported", [1], 10002);
+Error("null for non-nullable value type", "Number", [null], 10002);
+Error("missing non-nullable value", "Number", [], 10002);
 Error("missing parameter list", "Number", null, 10002);
 Error("unsupported method", "DoesNotExist", [], 10001);
 Error("synchronous business error", "ThrowSync", [], 10003, new DapiException(10003, "Account not found"));
@@ -138,6 +141,9 @@ public sealed class TestHost
 
     [RpcMethod]
     internal int Converted(StrictInteger value) => value.Value;
+
+    [RpcMethod]
+    internal int Unsupported(Stream value) => value.Length > 0 ? 1 : 0;
 
     [RpcMethod]
     public string NoArguments() => "ok";
