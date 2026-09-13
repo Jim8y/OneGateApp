@@ -13,6 +13,7 @@ public partial class GlobalSearchPage : ContentPage
 
     readonly ApplicationDbContext dbContext;
     readonly TokenManager tokenManager;
+    readonly object searchErrorLock = new();
 
     bool hasLoaded;
     int searchVersion;
@@ -114,10 +115,13 @@ public partial class GlobalSearchPage : ContentPage
         }
         catch (Exception)
         {
-            string message = $"{group}: {Strings.Unavailable}";
-            SearchErrorText = string.IsNullOrEmpty(SearchErrorText)
-                ? message
-                : $"{SearchErrorText}{Environment.NewLine}{message}";
+            lock (searchErrorLock)
+            {
+                string message = $"{group}: {Strings.Unavailable}";
+                SearchErrorText = string.IsNullOrEmpty(SearchErrorText)
+                    ? message
+                    : $"{SearchErrorText}{Environment.NewLine}{message}";
+            }
         }
         finally
         {
@@ -135,6 +139,9 @@ public partial class GlobalSearchPage : ContentPage
 
     async Task LoadSearchDAppsAsync(List<int> recentDAppIds, bool developerModeEnabled)
     {
+        Dictionary<int, int> recentDAppRanks = [];
+        for (int i = 0; i < recentDAppIds.Count; i++)
+            recentDAppRanks.TryAdd(recentDAppIds[i], i);
         try
         {
             await DApps.LoadAsync("/api/dapps", TimeSpan.FromDays(1));
@@ -146,8 +153,8 @@ public partial class GlobalSearchPage : ContentPage
             dappIndex = DApps
                 .Where(p => p.IsRegularApp && DAppCatalogPolicy.IsDiscoverable(p, developerModeEnabled))
                 .Select(p => new GlobalSearchIndex<DApp>(
-                    p,
-                    recentDAppIds.IndexOf(p.Id),
+                p,
+                    recentDAppRanks.GetValueOrDefault(p.Id, -1),
                     p.NameLocalizer.Localize(),
                     p.DescriptionLocalizer?.Localize(),
                     p.Url,

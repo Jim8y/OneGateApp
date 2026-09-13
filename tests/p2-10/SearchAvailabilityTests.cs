@@ -119,6 +119,20 @@ public class SearchAvailabilityTests
     }
 
     [Fact]
+    public async Task ConcurrentGroupFailuresKeepEachErrorMessage()
+    {
+        var catalog = new CachedCollection<DApp> { Load = () => throw new HttpRequestException() };
+        var tokens = new TokenManager { Load = () => throw new HttpRequestException() };
+        var page = new GlobalSearchPage(new TestServices(catalog), new(), tokens);
+        page.ChangeQueryForTest("anything");
+
+        await page.LoadForTestAsync();
+
+        Assert.Contains("Asset: Unavailable", page.SearchErrorText);
+        Assert.Contains("Apps: Unavailable", page.SearchErrorText);
+    }
+
+    [Fact]
     public async Task RetryClearsErrorsAndSuccessfulNoMatchesShowsEmptyState()
     {
         var tokens = new TokenManager { Load = () => throw new HttpRequestException() };
