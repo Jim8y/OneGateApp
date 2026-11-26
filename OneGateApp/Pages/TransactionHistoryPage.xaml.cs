@@ -4,6 +4,7 @@ using Neo.Wallets;
 using NeoOrder.OneGate.Models;
 using NeoOrder.OneGate.Properties;
 using NeoOrder.OneGate.Services;
+using System.Diagnostics;
 using System.Globalization;
 using System.Numerics;
 using System.Text.Json.Nodes;
@@ -23,8 +24,7 @@ public partial class TransactionHistoryPage : ContentPage
     public bool IsLoading { get; set { field = value; OnPropertyChanged(); OnPropertyChanged(nameof(IsEmpty)); } }
     public bool IsRefreshing { get; set { field = value; OnPropertyChanged(); } }
     public bool HasLoadError { get; set { field = value; OnPropertyChanged(); OnPropertyChanged(nameof(IsEmpty)); } }
-    public string LoadErrorMessage { get; set { field = value; OnPropertyChanged(); } } = "";
-    public bool IsEmpty => !IsLoading && !HasLoadError && Transactions.Count == 0;
+    public bool IsEmpty => hasLoaded && !IsLoading && !HasLoadError && Transactions.Count == 0;
     public ICommand RefreshCommand { get; }
 
     public TransactionHistoryPage(IWalletProvider walletProvider, ProtocolSettings protocolSettings, TransactionHistoryDataSource transactionHistoryDataSource)
@@ -54,17 +54,22 @@ public partial class TransactionHistoryPage : ContentPage
         {
             WalletAccount account = walletProvider.GetWallet()!.GetDefaultAccount()!;
             string address = account.ScriptHash.ToAddress(protocolSettings.AddressVersion);
-            IReadOnlyList<TransactionHistoryItem> accountTransactions = await LoadAccountTransactionsAsync(
+            IReadOnlyList<TransactionHistoryItem>? accountTransactions = await LoadAccountTransactionsAsync(
                 account.ScriptHash,
                 address,
                 isRefresh,
                 partialTransactions => Transactions = partialTransactions);
+            if (accountTransactions is null)
+            {
+                HasLoadError = true;
+                return;
+            }
             Transactions = accountTransactions;
             hasLoaded = true;
         }
         catch (Exception ex)
         {
-            LoadErrorMessage = ex.Message;
+            Debug.WriteLine(ex);
             HasLoadError = true;
         }
         finally
@@ -75,14 +80,14 @@ public partial class TransactionHistoryPage : ContentPage
         }
     }
 
-    async Task<IReadOnlyList<TransactionHistoryItem>> LoadAccountTransactionsAsync(
+    async Task<IReadOnlyList<TransactionHistoryItem>?> LoadAccountTransactionsAsync(
         UInt160 scriptHash,
         string address,
         bool forceRefresh,
         Action<IReadOnlyList<TransactionHistoryItem>> publishPartial)
     {
         TransactionHistoryDataSource.RequestSet requests = transactionHistoryDataSource.GetRequests(scriptHash.ToString(), address, forceRefresh);
-        var pendingTasks = new List<Task<IReadOnlyList<RawAccountTransaction>>>
+        var pendingTasks = new List<Task<IReadOnlyList<RawAccountTransaction>?>>
         {
             ParseHistoryAsync(requests.OneGateSigned, EnumerateAccountTransactions),
             ParseHistoryAsync(requests.OneGateNep17, result => EnumerateAccountTransfers(result, scriptHash, address)),
@@ -91,12 +96,16 @@ public partial class TransactionHistoryPage : ContentPage
             ParseHistoryAsync(requests.N3IndexTransfers, result => EnumerateAccountTransfers(result, scriptHash, address))
         };
         var accumulatedTransactions = new List<RawAccountTransaction>();
+        bool hasSuccessfulSource = false;
 
         while (pendingTasks.Count > 0)
         {
-            Task<IReadOnlyList<RawAccountTransaction>> completedTask = await Task.WhenAny(pendingTasks);
+            Task<IReadOnlyList<RawAccountTransaction>?> completedTask = await Task.WhenAny(pendingTasks);
             pendingTasks.Remove(completedTask);
-            IReadOnlyList<RawAccountTransaction> completedTransactions = await completedTask;
+            IReadOnlyList<RawAccountTransaction>? completedTransactions = await completedTask;
+            if (completedTransactions is null)
+                continue;
+            hasSuccessfulSource = true;
             if (completedTransactions.Count == 0)
                 continue;
 
@@ -104,14 +113,15 @@ public partial class TransactionHistoryPage : ContentPage
             publishPartial(CreateTransactionItems(accumulatedTransactions));
         }
 
-        return CreateTransactionItems(accumulatedTransactions);
+        return hasSuccessfulSource ? CreateTransactionItems(accumulatedTransactions) : null;
     }
 
-    static async Task<IReadOnlyList<RawAccountTransaction>> ParseHistoryAsync(
+    static async Task<IReadOnlyList<RawAccountTransaction>?> ParseHistoryAsync(
         Task<JsonArray?> source,
-        Func<JsonArray?, IEnumerable<RawAccountTransaction>> parser)
+        Func<JsonArray, IEnumerable<RawAccountTransaction>> parser)
     {
-        return parser(await source).ToArray();
+        JsonArray? transactions = await source;
+        return transactions is null ? null : parser(transactions).ToArray();
     }
 
     static IReadOnlyList<TransactionHistoryItem> CreateTransactionItems(IEnumerable<RawAccountTransaction> rawTransactions)
@@ -135,11 +145,8 @@ public partial class TransactionHistoryPage : ContentPage
             .ToArray();
     }
 
-    static IEnumerable<RawAccountTransaction> EnumerateAccountTransactions(JsonArray? transactions)
+    static IEnumerable<RawAccountTransaction> EnumerateAccountTransactions(JsonArray transactions)
     {
-        if (transactions is null)
-            yield break;
-
         foreach (JsonNode? node in transactions)
         {
             if (node is not JsonObject transaction)
@@ -163,11 +170,8 @@ public partial class TransactionHistoryPage : ContentPage
         }
     }
 
-    IEnumerable<RawAccountTransaction> EnumerateAccountTransfers(JsonArray? transfers, UInt160 scriptHash, string address)
+    IEnumerable<RawAccountTransaction> EnumerateAccountTransfers(JsonArray transfers, UInt160 scriptHash, string address)
     {
-        if (transfers is null)
-            yield break;
-
         foreach (JsonNode? node in transfers)
         {
             if (node is not JsonObject transfer)
