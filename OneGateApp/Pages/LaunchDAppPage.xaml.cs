@@ -10,36 +10,41 @@ using NeoOrder.OneGate.Models.AppLinks;
 using NeoOrder.OneGate.Properties;
 using NeoOrder.OneGate.Services;
 using NeoOrder.OneGate.Services.RPC;
+using NeoOrder.OneGate.Services.RemoteDebug;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json.Nodes;
 
 namespace NeoOrder.OneGate.Pages;
 
-public partial class LaunchDAppPage : ContentPage, IQueryAttributable
+public partial class LaunchDAppPage : ContentPage, IQueryAttributable, IRemoteDebugSessionHost
 {
     readonly IServiceProvider serviceProvider;
     readonly ProtocolSettings protocolSettings;
     readonly IWalletProvider walletProvider;
     readonly WalletAuthorizationService walletAuthorizationService;
-    readonly ApplicationDbContext dbContext;
+    readonly DAppUsageService dappUsage;
     readonly ActivityLogService activityLogService;
     readonly HttpClient httpClient;
     readonly RpcServer rpcServer;
     readonly RpcClient rpcClient;
+    RemoteDebugService? remoteDebugService;
+    string? remoteDebugSessionId;
+    bool hasLaunchParameters;
 
     public required DApp DApp { get; set { field = value; OnPropertyChanged(); } }
     public required string Url { get; set { field = value; OnPropertyChanged(); } }
     public bool IsFavorite { get; set { field = value; OnPropertyChanged(); } }
     public bool IsDeveloperToolsEnabled { get; set { field = value; OnPropertyChanged(); } }
+    bool IsRemoteDebugSession => remoteDebugSessionId is not null;
 
-    public LaunchDAppPage(IServiceProvider serviceProvider, ProtocolSettings protocolSettings, IWalletProvider walletProvider, WalletAuthorizationService walletAuthorizationService, ApplicationDbContext dbContext, ActivityLogService activityLogService, HttpClient httpClient, RpcClient rpcClient, IHomeShortcutService homeShortcutService)
+    public LaunchDAppPage(IServiceProvider serviceProvider, ProtocolSettings protocolSettings, IWalletProvider walletProvider, WalletAuthorizationService walletAuthorizationService, ApplicationDbContext dbContext, DAppUsageService dappUsage, ActivityLogService activityLogService, HttpClient httpClient, RpcClient rpcClient, IHomeShortcutService homeShortcutService)
     {
         this.serviceProvider = serviceProvider;
         this.protocolSettings = protocolSettings;
         this.walletProvider = walletProvider;
         this.walletAuthorizationService = walletAuthorizationService;
-        this.dbContext = dbContext;
+        this.dappUsage = dappUsage;
         this.activityLogService = activityLogService;
         this.httpClient = httpClient;
         this.rpcServer = new(this);
@@ -53,13 +58,120 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
             ToolbarItems.Remove(developerToolsButton);
     }
 
+    internal void ConfigureRemoteDebug(string sessionId, RemoteDebugService service)
+    {
+        remoteDebugSessionId = sessionId;
+        remoteDebugService = service;
+        service.AttachSessionHost(sessionId, this);
+        webView.RemoteConsoleMessageReceived += OnRemoteConsoleMessageReceived;
+        webView.DocumentStartScript += CreateRemoteConsoleInjectionScript();
+    }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        if (remoteDebugSessionId is not null && remoteDebugService is not null)
+            remoteDebugService.NotifySessionHostClosed(remoteDebugSessionId, this);
+    }
+
+    static string CreateRemoteConsoleInjectionScript()
+    {
+        return $$"""
+            (function () {
+                if (window.__OneGateRemoteConsoleInstalled) return;
+                window.__OneGateRemoteConsoleInstalled = true;
+                function serialize(value) {
+                    if (value instanceof Error) return { name: value.name, message: value.message, stack: value.stack };
+                    try { return JSON.parse(JSON.stringify(value)); }
+                    catch (_) { return String(value); }
+                }
+                ["debug", "info", "log", "warn", "error"].forEach(function(level) {
+                    const original = console[level];
+                    console[level] = function() {
+                        const values = Array.prototype.map.call(arguments, serialize);
+                        original.apply(console, arguments);
+                        try { window.__OneGateSystemInvoke("remoteDebug.console", [level, values]).catch(function() {}); }
+                        catch (_) {}
+                    };
+                });
+            })();
+            """.ReplaceLineEndings("");
+    }
+
+    void OnRemoteConsoleMessageReceived(object? sender, JsonObject message)
+    {
+        if (remoteDebugSessionId is null || remoteDebugService is null) return;
+        string level = message["level"]?.GetValue<string>() ?? "log";
+        JsonArray values = message["values"] as JsonArray ?? [];
+        remoteDebugService.RecordConsole(remoteDebugSessionId, level, values);
+    }
+
+    public async Task<JsonObject> GetRemoteStatusAsync()
+    {
+        string? statusJson = await webView.EvaluateJavaScriptAsync("JSON.stringify({href:location.href,origin:location.origin,title:document.title,readyState:document.readyState})");
+        JsonObject status;
+        try
+        {
+            status = JsonNode.Parse(statusJson ?? "{}") as JsonObject ?? new();
+        }
+        catch
+        {
+            status = new();
+        }
+        status["sessionId"] = remoteDebugSessionId;
+        status["target"] = "onegate";
+        status["state"] = "active";
+        status["href"] ??= Url;
+        status["origin"] ??= new Uri(Url).GetLeftPart(UriPartial.Authority);
+        return status;
+    }
+
+    public async Task<JsonNode?> EvaluateRemoteAsync(string expression)
+    {
+        string script = $"(async function(){{const value=await ({expression});return JSON.stringify({{value:value}});}})()";
+        string? result = await webView.EvaluateJavaScriptAsync(script);
+        try
+        {
+            return (JsonNode.Parse(result ?? "{}") as JsonObject)?["value"]?.DeepClone();
+        }
+        catch
+        {
+            return JsonValue.Create(result);
+        }
+    }
+
+    public Task<byte[]> CaptureRemoteScreenshotAsync() => webView.CaptureViewportAsync();
+
+    public Task ReloadRemoteAsync(bool ignoreCache)
+    {
+        webView.Reload();
+        return Task.CompletedTask;
+    }
+
+    public Task StopRemoteAsync()
+    {
+        if (remoteDebugSessionId is not null && remoteDebugService is not null)
+            remoteDebugService.DetachSessionHost(remoteDebugSessionId, this);
+        webView.RemoteConsoleMessageReceived -= OnRemoteConsoleMessageReceived;
+        if (Window is Window window)
+            Application.Current!.CloseWindow(window);
+        return Task.CompletedTask;
+    }
+
     public async void ApplyQueryAttributes(IDictionary<string, object> query)
     {
+        if (hasLaunchParameters || (!query.ContainsKey("dapp") && !query.ContainsKey("uri")))
+            return;
+
+        // Shell reapplies launch parameters when a popup closes. Reassigning Url
+        // reloads the WebView and loses the pending wallet authorization request.
+        // Claim the parameters before awaiting so initialization cannot reenter.
+        hasLaunchParameters = true;
+
         if (query.TryGetValue("dapp", out var value))
         {
             DApp = (DApp)value;
             Url = DApp.Url;
-            UpdateReportButton();
         }
         else
         {
@@ -77,7 +189,6 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
                     Url = DApp.Url;
                 else
                     Url = DApp.Url + uri.Query;
-                UpdateReportButton();
             }
             else
             {
@@ -90,21 +201,22 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
                     Languages = ["en"]
                 };
                 Url = uri.AbsoluteUri;
-                UpdateReportButton();
             }
         }
+        if (DApp.Id > 0 && !DAppCatalogPolicy.IsSupportedOnCurrentPlatform(DApp))
+        {
+            await Toast.Show(Strings.DAppUnavailableOnCurrentPlatform);
+            await this.GoBackOrCloseAsync();
+            return;
+        }
+        UpdateFeedbackAndReportButtons();
         if (DApp.Id > 0)
         {
-            List<int>? favorites = await dbContext.Settings.GetAsync<List<int>>("dapps/favorite");
-            IsFavorite = favorites?.Contains(DApp.Id) ?? false;
-            List<int> recents = await dbContext.Settings.GetAsync<List<int>>("dapps/recent") ?? [];
-            recents.Remove(DApp.Id);
-            recents.Insert(0, DApp.Id);
-            while (recents.Count > 10)
-                recents.RemoveAt(recents.Count - 1);
-            await dbContext.Settings.PutAsync("dapps/recent", recents);
-            if (DApp.IsRegularApp) GlobalStates.Invalidate<DAppsPage>();
-            if (DApp.IsGamingApp) GlobalStates.Invalidate<GamingPage>();
+            IsFavorite = await dappUsage.IsFavoriteAsync(DApp.Id);
+            await dappUsage.RecordOpenedAsync(DApp.Id, DApp.IsGamingApp);
+            GlobalStates.Invalidate<DAppsPage>();
+            GlobalStates.Invalidate<GamingPage>();
+            GlobalStates.Invalidate<GlobalSearchPage>();
         }
         await activityLogService.RecordDAppConnectionAsync(DApp);
     }
@@ -129,6 +241,14 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
         catch
         {
         }
+    }
+
+    async void OnFeedbackClicked(object sender, EventArgs e)
+    {
+        if (!DApp.CanFeedback) return;
+        var popup = serviceProvider.GetServiceOrCreateInstance<DAppFeedbackPopup>();
+        popup.DApp = DApp;
+        await this.ShowPopupAsync<bool>(popup);
     }
 
     async void OnReportClicked(object sender, EventArgs e)
@@ -811,15 +931,24 @@ public partial class LaunchDAppPage : ContentPage, IQueryAttributable
         return true;
     }
 
-    void UpdateReportButton()
+    void UpdateFeedbackAndReportButtons()
     {
+        if (!DApp.CanFeedback)
+            ToolbarItems.Remove(feedbackButton);
         if (!DApp.CanReport)
             ToolbarItems.Remove(reportButton);
     }
 
     async void OnInvokedFromJavaScript(BridgeWebView webView, JsonObject request)
     {
-        var response = await rpcServer.HandleRequestAsync(request);
+        string method = request["method"] is JsonValue methodValue && methodValue.TryGetValue(out string? methodName)
+            ? methodName
+            : "unknown";
+        if (remoteDebugSessionId is not null && remoteDebugService is not null)
+            remoteDebugService.RecordDapiRequest(remoteDebugSessionId, method, request["params"]);
+        JsonObject response = await rpcServer.HandleRequestAsync(request);
+        if (remoteDebugSessionId is not null && remoteDebugService is not null)
+            remoteDebugService.RecordDapiResponse(remoteDebugSessionId, method, response);
         await webView.SendRpcRepsonseAsync(response);
     }
 

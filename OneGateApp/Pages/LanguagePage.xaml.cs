@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NeoOrder.OneGate.Controls;
 using NeoOrder.OneGate.Controls.Popups;
 using NeoOrder.OneGate.Data;
+using NeoOrder.OneGate.Models;
 using NeoOrder.OneGate.Properties;
 using NeoOrder.OneGate.Services;
 using System.Globalization;
@@ -53,7 +54,7 @@ public partial class LanguagePage : ContentPage
         var result = await this.ShowPopupAsync<bool>(popup);
         if (!result.Result) return;
         await dbContext.Settings.PutAsync("preference/language", lang);
-        await cacheDbContextFactory.DeleteSettingIfExistsAsync("caching/last_update/news");
+        await CachedCollection<News>.InvalidateAsync(cacheDbContextFactory);
         CultureInfo culture = string.IsNullOrEmpty(lang)
             ? CultureInfo.InstalledUICulture
             : new CultureInfo(lang);
@@ -63,6 +64,7 @@ public partial class LanguagePage : ContentPage
         CultureInfo.DefaultThreadCurrentUICulture = culture;
         httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
         httpClient.DefaultRequestHeaders.AcceptLanguage.ParseAdd(culture.Name);
+        serviceProvider.GetRequiredService<NeoOrder.OneGate.Services.Notifications.PushGatewayService>().RequestSync(force: true);
         await Toast.Show(Strings.LanguageChanged);
 #if ANDROID
         Platform.CurrentActivity!.Recreate();

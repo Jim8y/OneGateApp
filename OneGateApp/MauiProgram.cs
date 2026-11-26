@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using Meshline.Interactions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Neo;
@@ -8,6 +9,9 @@ using NeoOrder.OneGate.Controls.Views;
 using NeoOrder.OneGate.Data;
 using NeoOrder.OneGate.Resources;
 using NeoOrder.OneGate.Services;
+using NeoOrder.OneGate.Services.Messaging;
+using NeoOrder.OneGate.Services.Notifications;
+using NeoOrder.OneGate.Services.RemoteDebug;
 using NeoOrder.OneGate.Services.RPC;
 using Plugin.Maui.ScreenSecurity;
 using ZXing.Net.Maui.Controls;
@@ -30,6 +34,10 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
+#if MACCATALYST
+        Platforms.MacCatalyst.DAppWindow.ConfigureHandler();
+#endif
+
         var builder = MauiApp.CreateBuilder()
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit(ConfigureMauiCommunityToolkit)
@@ -40,6 +48,9 @@ public static class MauiProgram
             {
                 Controls.Handlers.Border.ConfigureHandlers();
                 handlers.AddHandler<BridgeWebView, BridgeWebViewHandler>();
+#if ANDROID || IOS || MACCATALYST
+                handlers.AddHandler<AppShell, OneGateShellRenderer>();
+#endif
 #if ANDROID
                 handlers.AddHandler<DatePicker, OneGateDatePickerHandler>();
 #endif
@@ -106,14 +117,40 @@ public static class MauiProgram
             using var stream = EmbeddedResource.Open("protocol.json");
             return ProtocolSettings.Load(stream);
         });
+        builder.Services.AddSingleton<IRelayRegistry>(sp => new CachedRelayRegistry(new RpcRelayRegistry(sp.GetRequiredService<HttpClient>(), new RpcRelayRegistryOptions
+        {
+            Context = new()
+            {
+                Reference = sp.GetRequiredService<ProtocolSettings>().Network,
+                Registry = SharedOptions.MeshlineRegistryHash
+            },
+            RpcUrl = SharedOptions.RpcServerUri
+        })));
         builder.Services.AddSingleton<IWalletProvider, WalletProvider>();
         builder.Services.AddSingleton<TransactionHistoryDataSource>();
         builder.Services.AddTransient<WalletAuthorizationService>();
         builder.Services.AddTransient<AddressBookService>();
+        builder.Services.AddSingleton<DAppUsageService>();
+        builder.Services.AddSingleton<MessagingService>();
+        builder.Services.AddSingleton<Services.Translation.IChatTranslationService, Services.Translation.ChatTranslationService>();
+        builder.Services.AddSingleton<Services.Translation.TranslationScheduler>();
+        builder.Services.AddSingleton<Services.Translation.TranslationPreferences>();
+        builder.Services.AddSingleton<ChatAvatarService>();
+        builder.Services.AddSingleton<Services.Files.FileUploadClient>();
+        builder.Services.AddSingleton<PushRegistrationService>();
+        builder.Services.AddSingleton<IPushGatewayStore, SecurePushGatewayStore>();
+        builder.Services.AddSingleton(_ => PushGatewayConfiguration.Load());
+        builder.Services.AddSingleton(sp => new PushGatewayClient(
+            new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }) { Timeout = TimeSpan.FromSeconds(15) },
+            sp.GetRequiredService<PushGatewayOptions>(), sp.GetRequiredService<IPushGatewayStore>(), System.TimeProvider.System));
+        builder.Services.AddSingleton<PushGatewayService>();
+        builder.Services.AddSingleton<PushNavigationService>();
         builder.Services.AddSingleton<TokenManager>();
         builder.Services.AddSingleton<ActivityLogService>();
         builder.Services.AddSingleton<RpcClient>();
+        builder.Services.AddSingleton(System.TimeProvider.System);
         builder.Services.AddSingleton<UpdateService>();
+        builder.Services.AddSingleton<RemoteDebugService>();
         builder.Services.AddSingleton<IHomeShortcutService, HomeShortcutService>();
         return builder;
     }

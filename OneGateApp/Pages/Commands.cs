@@ -4,7 +4,6 @@ using NeoOrder.OneGate.Data;
 using NeoOrder.OneGate.Models;
 using NeoOrder.OneGate.Properties;
 using NeoOrder.OneGate.Services;
-using ZXing.Net.Maui;
 
 namespace NeoOrder.OneGate.Pages;
 
@@ -45,18 +44,13 @@ static class Commands
 
     public static AsyncCommand<string> ScanQRCode { get; } = new(static async query =>
     {
-        if (BarcodeScanning.IsSupported)
-            await Shell.Current.GoToAsync("scan" + query);
-        else
-            await Toast.Show(Strings.ErrorMessageCameraFailure);
+        await Shell.Current.GoToAsync("scan" + query);
     });
 
     public static AsyncCommand<DApp> AddToFavorites { get; } = new(static async dapp =>
     {
-        var dbContext = Application.Current!.Handler.GetRequiredService<ApplicationDbContext>();
-        List<int> favorites = await dbContext.Settings.GetAsync<List<int>>("dapps/favorite") ?? [];
-        if (!favorites.Remove(dapp.Id)) favorites.Insert(0, dapp.Id);
-        await dbContext.Settings.PutAsync("dapps/favorite", favorites);
+        var dappUsage = Application.Current!.Handler.GetRequiredService<DAppUsageService>();
+        await dappUsage.ToggleFavoriteAsync(dapp.Id);
         if (dapp.IsRegularApp) GlobalStates.Invalidate<DAppsPage>();
     });
 
@@ -71,6 +65,11 @@ static class Commands
         DApp? dapp = parameter as DApp;
         Uri? uri = parameter as Uri;
         if (dapp is null && uri is null) throw new ArgumentException("Invalid parameter type.");
+        if (dapp is not null && !DAppCatalogPolicy.IsSupportedOnCurrentPlatform(dapp))
+        {
+            await Toast.Show(Strings.DAppUnavailableOnCurrentPlatform);
+            return;
+        }
         uri ??= new($"https://{SharedOptions.OneGateDomain}/app/{dapp!.Id}");
 #if ANDROID
         var activity = Platform.CurrentActivity!;
@@ -99,7 +98,11 @@ static class Commands
             {
                 LaunchDAppPage page = Application.Current!.Handler.GetServiceProvider().GetServiceOrCreateInstance<LaunchDAppPage>();
                 page.ApplyQueryAttributes(parameters);
-                Application.Current!.OpenWindow(new Window(new NavigationPage(page)));
+#if MACCATALYST
+                Application.Current.OpenWindow(Platforms.MacCatalyst.DAppWindow.Create(page));
+#else
+                Application.Current.OpenWindow(new Window(new NavigationPage(page)));
+#endif
             }
             else
             {
@@ -117,11 +120,11 @@ static class Commands
         bool updateAvailable;
         try
         {
-            updateAvailable = await service.CheckForUpdatesAsync();
+            updateAvailable = await service.CheckForUpdatesAsync(automatic: silent);
         }
         catch
         {
-            if (!silent) await Toast.Show(Strings.NoUpdatesAvailable);
+            if (!silent) await Toast.Show(Strings.OperationFailed);
             return;
         }
         if (updateAvailable)

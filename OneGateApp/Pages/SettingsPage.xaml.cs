@@ -9,16 +9,18 @@ namespace NeoOrder.OneGate.Pages;
 public partial class SettingsPage : ContentPage
 {
     readonly ApplicationDbContext dbContext;
+    readonly WalletAuthorizationService walletAuthorizationService;
     readonly TokenManager tokenManager;
     readonly ActivityLogService activityLogService;
 
     public LoadingService LoadingService { get; set { field = value; OnPropertyChanged(); } }
     public SettingEntryGroup[]? SettingEntries { get; set { field = value; OnPropertyChanged(); } }
 
-    public SettingsPage(ApplicationDbContext dbContext, TokenManager tokenManager, ActivityLogService activityLogService)
+    public SettingsPage(ApplicationDbContext dbContext, WalletAuthorizationService walletAuthorizationService, TokenManager tokenManager, ActivityLogService activityLogService)
     {
         this.LoadingService = new(LoadSettingsAsync);
         this.dbContext = dbContext;
+        this.walletAuthorizationService = walletAuthorizationService;
         this.tokenManager = tokenManager;
         this.activityLogService = activityLogService;
         InitializeComponent();
@@ -47,6 +49,16 @@ public partial class SettingsPage : ContentPage
             CurrentValue = await GetCurrentLanguageNameAsync(),
             Command = Commands.GotoPage,
             CommandParameter = "//home/settings/language"
+        });
+        yield return (Strings.General, new SettingEntry(Strings.NotificationSettings)
+        {
+            Command = Commands.GotoPage,
+            CommandParameter = "//home/settings/notifications"
+        });
+        yield return (Strings.General, new SettingEntry(Strings.ChatSettings)
+        {
+            Command = Commands.GotoPage,
+            CommandParameter = "//home/settings/chat-settings"
         });
         yield return (Strings.General, new SettingEntry(Strings.NewsCategories)
         {
@@ -84,7 +96,7 @@ public partial class SettingsPage : ContentPage
         });
         if (await DataProtectionService.CheckAvailabilityAsync())
         {
-            bool enabled = await dbContext.Settings.ExistsAsync("biometric/credential");
+            bool enabled = await walletAuthorizationService.IsBiometricEnabledAsync();
             yield return (Strings.Security, new SettingEntry(Strings.BiometricAuthentication)
             {
                 CurrentValue = enabled ? Strings.Enabled : null,

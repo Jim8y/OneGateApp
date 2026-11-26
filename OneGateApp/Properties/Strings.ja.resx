@@ -270,6 +270,9 @@
   <data name="DAppRecentlyOpened" xml:space="preserve">
     <value>このデバイスで最近開きました</value>
   </data>
+  <data name="DAppUnavailableOnCurrentPlatform" xml:space="preserve">
+    <value>このDAppは現在のプラットフォームでは利用できません。</value>
+  </data>
   <data name="DAppTags" xml:space="preserve">
     <value>タグ</value>
   </data>
@@ -281,9 +284,6 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
-  </data>
-  <data name="ErrorMessageCameraFailure" xml:space="preserve">
-    <value>カメラにアクセスできません</value>
   </data>
   <data name="ErrorMessageUnsupportedQRCode" xml:space="preserve">
     <value>サポートされていないQRコードの内容：{0}</value>
@@ -359,6 +359,7 @@
   <data name="OperationCancelled" xml:space="preserve">
     <value>操作がキャンセルされました</value>
   </data>
+  <data name="OperationFailed" xml:space="preserve"><value>現在、操作を完了できません。</value></data>
   <data name="BiometricUnavailableText" xml:space="preserve">
     <value>生体認証は一時的に利用できません</value>
   </data>
@@ -517,9 +518,6 @@
   <data name="ReceiveQRCodeTitle" xml:space="preserve">
     <value>QRコードをスキャンして送金してください</value>
   </data>
-  <data name="ReceiveQRCodeText" xml:space="preserve">
-    <value>このアドレスはNeoプラットフォーム上のすべての資産を受け取ることができます。</value>
-  </data>
   <data name="SaveToPhotoLibrary" xml:space="preserve">
     <value>アルバムに保存</value>
   </data>
@@ -550,9 +548,6 @@
   <data name="ReceivingAddress" xml:space="preserve">
     <value>受取アドレス</value>
   </data>
-  <data name="AddressBook" xml:space="preserve">
-    <value>アドレス帳</value>
-  </data>
   <data name="NoAddress" xml:space="preserve">
     <value>アドレスはありません</value>
   </data>
@@ -560,7 +555,7 @@
     <value>アドレス帳は空です</value>
   </data>
   <data name="AddNewAddress" xml:space="preserve">
-    <value>アドレスを追加</value>
+    <value>連絡先を追加</value>
   </data>
   <data name="ScreenshotFailed" xml:space="preserve">
     <value>スクリーンショットに失敗しました</value>
@@ -575,11 +570,12 @@
     <value>アドレスは既に存在します</value>
   </data>
   <data name="EditContact" xml:space="preserve">
-    <value>アドレスを編集</value>
+    <value>連絡先を編集</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>削除</value>
   </data>
+  <data name="ContactNameSyncFailed" xml:space="preserve"><value>連絡先はこの端末に保存されています。名前が同期されたかどうかは、現在確認できません。</value></data>
   <data name="ContactUpdatedSuccessfully" xml:space="preserve">
     <value>アドレスを更新しました</value>
   </data>
@@ -751,9 +747,6 @@
   </data>
   <data name="AuthenticationInProgress" xml:space="preserve">
     <value>ログインリクエストを承認中…</value>
-  </data>
-  <data name="SigningIn" xml:space="preserve">
-    <value>ログイン中</value>
   </data>
   <data name="Domain" xml:space="preserve">
     <value>ドメイン名</value>
@@ -959,32 +952,32 @@ NEP-2 とパスワードは別々に保管し、それぞれを安全にバッ�
   <data name="DeveloperTools" xml:space="preserve">
     <value>開発者センター</value>
   </data>
+  <data name="DeveloperMode" xml:space="preserve">
+    <value>開発者モード</value>
+  </data>
   <data name="DAppDebugPanel" xml:space="preserve">
     <value>DApp デバッグパネル</value>
   </data>
-  <data name="DAppTesting" xml:space="preserve">
-    <value>DAppテスト</value>
+  <data name="DebugTools" xml:space="preserve">
+    <value>デバッグツール</value>
+  </data>
+  <data name="QuickLaunch" xml:space="preserve">
+    <value>クイック起動</value>
+  </data>
+  <data name="QuickLaunchDescription" xml:space="preserve">
+    <value>任意の DApp URL を OneGate で開いてテストします。</value>
   </data>
   <data name="DAppSubmission" xml:space="preserve">
     <value>DApp 提出</value>
   </data>
-  <data name="DAppSubmissionEmailSubject" xml:space="preserve">
-    <value>DApp 提出: {0}</value>
-  </data>
-  <data name="ProjectName" xml:space="preserve">
-    <value>プロジェクト名</value>
-  </data>
   <data name="DAppUrl" xml:space="preserve">
     <value>URL</value>
   </data>
-  <data name="OfficialWebsite" xml:space="preserve">
-    <value>公式サイト</value>
+  <data name="RequestListing" xml:space="preserve">
+    <value>掲載を申請</value>
   </data>
-  <data name="ContactInformation" xml:space="preserve">
-    <value>連絡先</value>
-  </data>
-  <data name="SubmitByEmail" xml:space="preserve">
-    <value>メールで送信</value>
+  <data name="DAppSubmissionDescription" xml:space="preserve">
+    <value>プロジェクト情報を送信し、OneGate の審査を受けます。</value>
   </data>
   <data name="Reload" xml:space="preserve">
     <value>再読み込み</value>
@@ -1032,6 +1025,39 @@ NEP-2 とパスワードは別々に保管し、それぞれを安全にバッ�
     <value>著作権の問題</value>
   </data>
   <data name="ReportReasonOther" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>フィードバック</value>
+  </data>
+  <data name="FeedbackDAppText" xml:space="preserve">
+    <value>この DApp への提案や問題点をお知らせください。返信を希望する場合のみメールアドレスを入力してください。</value>
+  </data>
+  <data name="FeedbackType" xml:space="preserve">
+    <value>フィードバックの種類</value>
+  </data>
+  <data name="FeedbackMessage" xml:space="preserve">
+    <value>フィードバックの詳細</value>
+  </data>
+  <data name="FeedbackEmail" xml:space="preserve">
+    <value>メールアドレス（任意）</value>
+  </data>
+  <data name="FeedbackSubmitted" xml:space="preserve">
+    <value>フィードバックを送信しました</value>
+  </data>
+  <data name="FeedbackRetryLater" xml:space="preserve">
+    <value>現在フィードバックを送信できません。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="FeedbackFailed" xml:space="preserve">
+    <value>フィードバックを送信できません。もう一度お試しください。</value>
+  </data>
+  <data name="FeedbackTypeSuggestion" xml:space="preserve">
+    <value>提案</value>
+  </data>
+  <data name="FeedbackTypeProblem" xml:space="preserve">
+    <value>問題</value>
+  </data>
+  <data name="FeedbackTypeOther" xml:space="preserve">
     <value>その他</value>
   </data>
   <data name="Available" xml:space="preserve">
@@ -1244,4 +1270,312 @@ NEP-2 とパスワードは別々に保管し、それぞれを安全にバッ�
   <data name="NeoSignIn" xml:space="preserve">
     <value>Neo ログイン</value>
   </data>
+  <data name="RemoteDebug" xml:space="preserve"><value>リモートデバッグ</value></data>
+  <data name="RemoteDebugDescription" xml:space="preserve"><value>ローカルネットワーク上の信頼済みリモートデバッガーに実際の DApp ウィンドウのデバッグを許可します。</value></data>
+  <data name="RemoteDebugPairDebugger" xml:space="preserve"><value>リモートデバッガーをペアリング</value></data>
+  <data name="RemoteDebugTrustedDebuggers" xml:space="preserve"><value>信頼済みリモートデバッガー</value></data>
+  <data name="RemoteDebugNoTrustedDebuggers" xml:space="preserve"><value>信頼済みリモートデバッガーはありません</value></data>
+  <data name="RemoteDebugForgetDebugger" xml:space="preserve"><value>削除</value></data>
+  <data name="RemoteDebugForgetPrompt" xml:space="preserve"><value>このリモートデバッガーを削除し、再ペアリングを必須にしますか？</value></data>
+  <data name="RemoteDebugConnected" xml:space="preserve"><value>接続済み: {0}</value></data>
+  <data name="RemoteDebugWaiting" xml:space="preserve"><value>信頼済みリモートデバッガーを待機中</value></data>
+  <data name="RemoteDebugPairingTitle" xml:space="preserve"><value>リモートデバッガーをペアリング</value></data>
+  <data name="RemoteDebugPairingPrompt" xml:space="preserve"><value>リモートデバッガー「{0}」がアクセスを要求しています。フィンガープリント: {1}。このリモートデバッガーを信頼する場合のみ許可してください。</value></data>
+  <data name="HomeMessages" xml:space="preserve"><value>メッセージ</value></data>
+  <data name="HomeContacts" xml:space="preserve"><value>連絡先</value></data>
+  <data name="HomeNews" xml:space="preserve"><value>ニュース</value></data>
+  <data name="HomeMessagesTitle" xml:space="preserve"><value>Neoアドレスでチャットを始めよう</value></data>
+  <data name="HomeAddressOnly" xml:space="preserve"><value>アドレスのみ保存</value></data>
+  <data name="HomeNoMatchingContacts" xml:space="preserve"><value>一致する連絡先が見つかりません</value></data>
+  <data name="HomeNoMatchingContactsHint" xml:space="preserve"><value>別の名前、アドレス、メモで検索してください。</value></data>
+  <data name="ContactDetails" xml:space="preserve"><value>連絡先の詳細</value></data>
+  <data name="ChatEnable" xml:space="preserve"><value>チャットを有効にする</value></data>
+  <data name="ChatEnabling" xml:space="preserve"><value>チャットを有効化中…</value></data>
+  <data name="ChatSetupDescription" xml:space="preserve"><value>有効にすると、友だちを追加してメッセージを送受信できます。</value></data>
+  <data name="ChatAllowAddressDiscovery" xml:space="preserve"><value>Neoアドレスを使った友だち申請を許可する</value></data>
+  <data name="ChatDiscoveryAllowedHint" xml:space="preserve"><value>他の人があなたのNeoアドレスを使って友だち申請を送信できます。</value></data>
+  <data name="ChatInvitationOnlyHint" xml:space="preserve"><value>他の人があなたに友だち申請を送るには、あなたのチャット招待が必要です。</value></data>
+  <data name="ChatSetupPending" xml:space="preserve"><value>チャットの有効化が完了していません。もう一度お試しください。選択した設定は保持されます。</value></data>
+  <data name="ChatAuthorizationMessage" xml:space="preserve"><value>この端末があなたのNeoアドレスでメッセージを送受信することを許可します。
+アドレス：{0}</value></data>
+  <data name="ChatReplaceDeviceTitle" xml:space="preserve"><value>チャット端末を入れ替える</value></data>
+  <data name="ChatDeviceLimitHint" xml:space="preserve"><value>1つのアカウントに追加できるチャット端末は{0}台までで、現在その上限に達しています。この端末でチャットを有効にするには、入れ替える端末を選んでください。入れ替えられた端末ではメッセージを送受信できなくなります。</value></data>
+  <data name="ChatReplaceDevice" xml:space="preserve"><value>この端末を入れ替える</value></data>
+  <data name="ChatDeviceValidUntil" xml:space="preserve"><value>認証の有効期限：{0}</value></data>
+  <data name="ChatDeviceExpired" xml:space="preserve"><value>期限切れ</value></data>
+  <data name="ChatDeviceReplacementUnavailable" xml:space="preserve"><value>この端末を入れ替えると、既存の友だち関係に影響する可能性があります。別の端末を選んでください。</value></data>
+  <data name="ChatRequest" xml:space="preserve"><value>チャットを申請</value></data>
+  <data name="ChatSendRequest" xml:space="preserve"><value>友だち申請を送信</value></data>
+  <data name="ChatRequestNote" xml:space="preserve"><value>申請メッセージ</value></data>
+  <data name="ChatRequestNoteHint" xml:space="preserve"><value>この申請メッセージは相手に表示されます。</value></data>
+  <data name="ChatRequestSending" xml:space="preserve"><value>友だち申請を送信中…</value></data>
+  <data name="ChatContactConnected" xml:space="preserve"><value>チャットの友だち</value></data>
+  <data name="ChatRequestWaiting" xml:space="preserve"><value>相手の承認待ち</value></data>
+  <data name="ChatStatusUnavailable" xml:space="preserve"><value>現在、友だち登録の状態を確認できません</value></data>
+  <data name="ChatEnableFirst" xml:space="preserve"><value>まずホームの「メッセージ」でチャットを有効にしてください。</value></data>
+  <data name="ChatAccountChanged" xml:space="preserve"><value>ウォレットのアカウントが切り替わりました。このページを開き直してください。</value></data>
+  <data name="ChatAddressNotDiscoverable" xml:space="preserve"><value>このアドレスでは相手を友だちに追加できません。相手にチャットの招待を送ってもらってください。</value></data>
+  <data name="ChatInvalidAddress" xml:space="preserve"><value>有効なNeo N3アドレスを入力してください。</value></data>
+  <data name="ChatCannotAddSelf" xml:space="preserve"><value>自分のアドレスに友だち申請を送ることはできません。</value></data>
+  <data name="ChatRequestNoteTooLong" xml:space="preserve"><value>申請メッセージが長すぎます。短くしてから送信してください。</value></data>
+  <data name="ChatRequests" xml:space="preserve"><value>友だち申請</value></data>
+  <data name="ChatRequestsIncoming" xml:space="preserve"><value>受信した申請</value></data>
+  <data name="ChatRequestsOutgoing" xml:space="preserve"><value>送信した申請</value></data>
+  <data name="ChatRequestsEmpty" xml:space="preserve"><value>友だち申請はありません</value></data>
+  <data name="ChatRequestReceived" xml:space="preserve"><value>あなたの対応待ち</value></data>
+  <data name="ChatViewRequest" xml:space="preserve"><value>申請を確認</value></data>
+  <data name="ChatAcceptRequest" xml:space="preserve"><value>承認</value></data>
+  <data name="ChatIgnoreRequest" xml:space="preserve"><value>無視</value></data>
+  <data name="ChatRequestAccepting" xml:space="preserve"><value>友だち申請を承認中…</value></data>
+  <data name="ChatRequestIgnoring" xml:space="preserve"><value>友だち申請を無視しています…</value></data>
+  <data name="ChatRequestAccepted" xml:space="preserve"><value>友だちに追加しました</value></data>
+  <data name="ChatRequestIgnored" xml:space="preserve"><value>申請を無視しました</value></data>
+  <data name="ChatRequestChanged" xml:space="preserve"><value>友だち申請の内容が変わりました。申請一覧に戻って確認してください。</value></data>
+  <data name="ChatOpen" xml:space="preserve"><value>チャットを開く</value></data>
+  <data name="ChatConversation" xml:space="preserve"><value>個別チャット</value></data>
+  <data name="ChatContactRequired" xml:space="preserve"><value>友だちになるとメッセージを送信できます。</value></data>
+  <data name="ChatHistorySyncIncomplete" xml:space="preserve"><value>チャット履歴の読み込みが完了していません。一部のメッセージがまだ表示されていない可能性があります。</value></data>
+  <data name="ChatDeviceAuthenticationFailed" xml:space="preserve"><value>この端末のチャット認証情報を確認できません。</value></data>
+  <data name="ChatHistoryStorageFailed" xml:space="preserve"><value>チャット履歴の読み込みや保存ができません。</value></data>
+  <data name="ChatMessageVerificationFailed" xml:space="preserve"><value>メッセージの検証に失敗しました。一部のメッセージは現在表示できません。</value></data>
+  <data name="ChatLoadEarlier" xml:space="preserve"><value>以前のメッセージを読み込む</value></data>
+  <data name="ChatHistoryEmpty" xml:space="preserve"><value>チャット履歴はありません</value></data>
+  <data name="ChatHistoryEmptyHint" xml:space="preserve"><value>最初のメッセージを送ってチャットを始めましょう。</value></data>
+  <data name="ChatNonTextMessage" xml:space="preserve"><value>[テキスト以外のメッセージ]</value></data>
+  <data name="ChatAttachmentsNotShown" xml:space="preserve"><value>添付ファイルの表示にはまだ対応していません</value></data>
+  <data name="ChatMessagePlaceholder" xml:space="preserve"><value>メッセージを入力…</value></data>
+  <data name="ChatMessageEmpty" xml:space="preserve"><value>メッセージを入力してから送信してください。</value></data>
+  <data name="ChatSend" xml:space="preserve"><value>送信</value></data>
+  <data name="ChatMessageQueued" xml:space="preserve"><value>送信待ち</value></data>
+  <data name="ChatMessageSending" xml:space="preserve"><value>送信中</value></data>
+  <data name="ChatMessageUnconfirmed" xml:space="preserve"><value>未確認</value></data>
+  <data name="ChatMessageSent" xml:space="preserve"><value>送信済み</value></data>
+  <data name="ChatMessageFailed" xml:space="preserve"><value>送信失敗</value></data>
+  <data name="ChatMessageStatusUnavailable" xml:space="preserve"><value>状態不明</value></data>
+  <data name="ChatDraft" xml:space="preserve"><value>[下書き]</value></data>
+  <data name="ChatBackToLatest" xml:space="preserve"><value>最新のメッセージに戻る ↓</value></data>
+  <data name="ChatNewMessages" xml:space="preserve"><value>新着メッセージ：{0}件 ↓</value></data>
+  <data name="ChatCopyText" xml:space="preserve"><value>コピー</value></data>
+  <data name="ChatConnectionUnavailable" xml:space="preserve"><value>接続に問題があります。メッセージの送受信が遅れる可能性があります。</value></data>
+  <data name="ChatMarkAsRead" xml:space="preserve"><value>既読にする</value></data>
+  <data name="ChatEditFailedMessage" xml:space="preserve"><value>再編集</value></data>
+  <data name="ChatReplaceDraft" xml:space="preserve"><value>下書きを置き換える</value></data>
+  <data name="ChatReplaceDraftPrompt" xml:space="preserve"><value>現在の下書きをこのメッセージに置き換えますか？</value></data>
+  <data name="ChatMyInvitation" xml:space="preserve"><value>自分のQRコード</value></data>
+  <data name="ChatInvitationDescription" xml:space="preserve"><value>招待を共有すると、相手があなたに友だち申請を送れます。</value></data>
+  <data name="ChatInvitationExpiry" xml:space="preserve"><value>有効期限：{0}</value></data>
+  <data name="ChatInvitationExpired" xml:space="preserve"><value>この招待は有効期限が切れています。新しい招待を作成してください。</value></data>
+  <data name="ChatCopyInvitation" xml:space="preserve"><value>招待をコピー</value></data>
+  <data name="ChatRefreshInvitation" xml:space="preserve"><value>新しい招待を作成</value></data>
+  <data name="ChatInvitationRefreshHint" xml:space="preserve"><value>招待の有効期間は最長24時間です。新しい招待を作成しても、以前の招待は有効期限まで利用できます。</value></data>
+  <data name="ChatInvitationAccountChanged" xml:space="preserve"><value>ウォレットのアカウントが切り替わりました。「自分のQRコード」を開き直してください。</value></data>
+  <data name="ChatInvalidInvitation" xml:space="preserve"><value>このチャットの招待は無効です。相手に新しい招待を送ってもらってください。</value></data>
+  <data name="ChatReceivedInvitationExpired" xml:space="preserve"><value>この招待は有効期限が切れています。相手に新しい招待を送ってもらってください。</value></data>
+  <data name="ChatInvitationNetworkMismatch" xml:space="preserve"><value>この招待は現在のMeshlineネットワークでは使用できません。</value></data>
+  <data name="ContactAddressOrInvitation" xml:space="preserve"><value>Neoアドレスまたはチャットの招待</value></data>
+  <data name="ContactInputHint" xml:space="preserve"><value>Neoアドレスを入力するか、チャットの招待を貼り付けてください</value></data>
+  <data name="ContactPaste" xml:space="preserve"><value>貼り付け</value></data>
+  <data name="ContactAddressOnlyHint" xml:space="preserve"><value>このアドレスでは相手を友だちに追加できません。送金用にアドレスを保存するか、相手にチャットの招待を送ってもらってください。</value></data>
+  <data name="ContactChatDisabledHint" xml:space="preserve"><value>チャットはまだ有効になっていませんが、送金用の連絡先は保存できます。</value></data>
+  <data name="ContactSaveAddressOnly" xml:space="preserve"><value>アドレスのみ保存</value></data>
+  <data name="ChatSettings" xml:space="preserve"><value>チャット設定</value></data>
+  <data name="ChatSettingsSaving" xml:space="preserve"><value>チャット設定を保存中…</value></data>
+  <data name="ChatSettingsSaveFailed" xml:space="preserve"><value>保存できたかどうかを確認できません。もう一度お試しください。</value></data>
+  <data name="ChatNoMatchingConversations" xml:space="preserve"><value>一致する会話がありません</value></data>
+  <data name="ChatNickname" xml:space="preserve"><value>チャットのニックネーム</value></data>
+  <data name="ChatNoNickname" xml:space="preserve"><value>ニックネーム未設定</value></data>
+  <data name="ChatNicknameTooLong" xml:space="preserve"><value>ニックネームが長すぎます。短くしてからもう一度お試しください。</value></data>
+  <data name="ChatBioTooLong" xml:space="preserve"><value>自己紹介が長すぎます。短くしてからもう一度お試しください。</value></data>
+  <data name="ChatProfileInvalid" xml:space="preserve"><value>プロフィールに無効な内容があります。修正してからもう一度お試しください。</value></data>
+  <data name="ChatNicknameHint" xml:space="preserve"><value>ニックネームは他の人にも表示されます。削除するには、空欄にして確定してください。</value></data>
+  <data name="ChatOpenLinkFailed" xml:space="preserve"><value>リンクを開けませんでした。</value></data>
+  <data name="ChatUnreadOnly" xml:space="preserve"><value>未読</value></data>
+  <data name="ChatNoUnreadConversations" xml:space="preserve"><value>未読の会話はありません</value></data>
+  <data name="ChatShowAllConversations" xml:space="preserve"><value>すべての会話を表示</value></data>
+  <data name="ChatPinConversation" xml:space="preserve"><value>会話を固定</value></data>
+  <data name="ChatUnpinConversation" xml:space="preserve"><value>固定を解除</value></data>
+  <data name="ChatPinned" xml:space="preserve"><value>固定</value></data>
+  <data name="ChatQuotedMessage" xml:space="preserve"><value>引用メッセージ</value></data>
+  <data name="ChatQuotedMessageFrom" xml:space="preserve"><value>引用 · {0}</value></data>
+  <data name="ChatQuotedMessageUnavailable" xml:space="preserve"><value>元のメッセージを表示できません</value></data>
+  <data name="ChatYou" xml:space="preserve"><value>自分</value></data>
+  <data name="ChatReply" xml:space="preserve"><value>返信</value></data>
+  <data name="ChatCancelReply" xml:space="preserve"><value>返信をキャンセル</value></data>
+  <data name="ChatViewQuotedMessage" xml:space="preserve"><value>元のメッセージを表示</value></data>
+  <data name="ChatFindingQuotedMessage" xml:space="preserve"><value>元のメッセージを検索中…</value></data>
+  <data name="ChatReturnToPosition" xml:space="preserve"><value>元の位置に戻る</value></data>
+  <data name="ChatViewFullText" xml:space="preserve"><value>全文を表示</value></data>
+  <data name="ChatSearchMessages" xml:space="preserve"><value>チャット履歴を検索</value></data>
+  <data name="ChatSearchEarlier" xml:space="preserve"><value>さらに過去のメッセージを検索</value></data>
+  <data name="ChatSearchLocalHint" xml:space="preserve"><value>キーワード、送信者、期間で、この端末のチャット履歴を検索できます。</value></data>
+  <data name="ChatSearchEmpty" xml:space="preserve"><value>一致するメッセージが見つかりませんでした。</value></data>
+  <data name="ChatReturnToSearchResults" xml:space="preserve"><value>検索結果に戻る</value></data>
+  <data name="ChatSearchSender" xml:space="preserve"><value>送信者</value></data>
+  <data name="ChatOtherParticipant" xml:space="preserve"><value>相手</value></data>
+  <data name="ChatViewInConversation" xml:space="preserve"><value>会話内で表示</value></data>
+  <data name="ChatForwardText" xml:space="preserve"><value>転送</value></data>
+  <data name="ChatForwardNoContacts" xml:space="preserve"><value>チャットの友だちを追加すると、メッセージを転送できます。</value></data>
+  <data name="ChatConversationFilter" xml:space="preserve"><value>会話を絞り込む</value></data>
+  <data name="ChatSearchFilters" xml:space="preserve"><value>絞り込み</value></data>
+  <data name="ChatSearchPeriod" xml:space="preserve"><value>期間</value></data>
+  <data name="ChatLast7Days" xml:space="preserve"><value>過去7日間</value></data>
+  <data name="ChatLast30Days" xml:space="preserve"><value>過去30日間</value></data>
+  <data name="ChatClearSearchFilters" xml:space="preserve"><value>絞り込みを解除</value></data>
+  <data name="ChatLinksOnly" xml:space="preserve"><value>リンクを含む</value></data>
+  <data name="ChatBio" xml:space="preserve"><value>自己紹介</value></data>
+  <data name="ChatBioHint" xml:space="preserve"><value>自己紹介は他の人にも表示されます。削除するには、空欄にして保存してください。</value></data>
+  <data name="ChatSaveBio" xml:space="preserve"><value>保存</value></data>
+  <data name="ChatRemoveContact" xml:space="preserve"><value>チャットの友だちを削除</value></data>
+  <data name="ChatRemoveContactPrompt" xml:space="preserve"><value>「{0}」をチャットの友だちから削除しますか？チャット履歴と保存済みのアドレスは残ります。送信済みのメッセージは取り消されません。</value></data>
+  <data name="ChatEnableNotifications" xml:space="preserve">
+    <value>メッセージ通知を有効にする</value>
+  </data>
+  <data name="ChatPushSetupPrompt" xml:space="preserve">
+    <value>チャット通知を有効にするには、ウォレットでの承認が必要です。続けますか？</value>
+  </data>
+  <data name="ChatPushSetupFailed" xml:space="preserve">
+    <value>通知の設定が完了していません。通知設定から再試行してください。</value>
+  </data>
+  <data name="ChatPushOtherAccount" xml:space="preserve">
+    <value>この通知は別のアカウント宛てです。対応するウォレットのアカウントに切り替えて確認してください。</value>
+  </data>
+  <data name="ChatNotificationNewMessage" xml:space="preserve"><value>新しいメッセージがあります</value></data>
+  <data name="ChatNotificationGroup" xml:space="preserve"><value>グループメッセージ</value></data>
+  <data name="ChatNotificationSenderMessage" xml:space="preserve"><value>{0} からメッセージが届きました</value></data>
+  <data name="NotificationSettings" xml:space="preserve"><value>通知設定</value></data>
+  <data name="NotificationPermission" xml:space="preserve"><value>システム通知</value></data>
+  <data name="NotificationPermissionHint" xml:space="preserve"><value>システム設定で、OneGate による通知の表示を許可するかどうかを管理できます。</value></data>
+  <data name="NotificationPermissionPending" xml:space="preserve"><value>通知はまだ許可されていません</value></data>
+  <data name="NotificationOpenSettings" xml:space="preserve"><value>システム設定を開く</value></data>
+  <data name="NotificationAllow" xml:space="preserve"><value>通知を許可</value></data>
+  <data name="NotificationChat" xml:space="preserve"><value>チャットメッセージ</value></data>
+  <data name="NotificationSetupNeeded" xml:space="preserve"><value>設定を完了すると、メッセージの通知を受け取れます。</value></data>
+  <data name="NotificationChatReady" xml:space="preserve"><value>新しいメッセージが届いたら通知します。</value></data>
+  <data name="NotificationConnecting" xml:space="preserve"><value>メッセージ通知を設定中…</value></data>
+  <data name="NotificationAllowHint" xml:space="preserve"><value>メッセージの通知を受け取るには、システム通知を許可してください。</value></data>
+  <data name="NotificationUnavailable" xml:space="preserve"><value>現在、メッセージの通知を受け取れません。</value></data>
+  <data name="NotificationRetryHint" xml:space="preserve"><value>通知を設定できませんでした。接続を確認して、もう一度お試しください。</value></data>
+  <data name="NotificationLocalOnly" xml:space="preserve"><value>OneGate の起動中に新しいメッセージを通知します。</value></data>
+  <data name="NotificationSettingsFailed" xml:space="preserve"><value>通知設定を更新できませんでした。もう一度お試しください。</value></data>
+  <data name="NotificationReceive" xml:space="preserve"><value>通知を受け取る</value></data>
+  <data name="NotificationOnDevice" xml:space="preserve"><value>このデバイスで通知を受け取ります。</value></data>
+  <data name="NotificationPaused" xml:space="preserve"><value>通知はオフです</value></data>
+  <data name="NotificationOfflineHint" xml:space="preserve"><value>現在オフラインです。通知設定は接続が戻ると自動で同期されます。初回設定はオンラインになってから再試行してください。</value></data>
+  <data name="NotificationCompleteSetup" xml:space="preserve"><value>設定を完了</value></data>
+  <data name="NotificationUpdatePending" xml:space="preserve"><value>通知の承認手続きが完了していません。もう一度お試しください。</value></data>
+  <data name="ChatAvatar" xml:space="preserve"><value>プロフィール画像</value></data>
+  <data name="ChatAvatarChange" xml:space="preserve"><value>プロフィール画像を変更</value></data>
+  <data name="ChatAvatarChoose" xml:space="preserve"><value>写真を選択</value></data>
+  <data name="ChatAvatarRemove" xml:space="preserve"><value>プロフィール画像を削除</value></data>
+  <data name="ChatAvatarCrop" xml:space="preserve"><value>プロフィール画像を切り抜く</value></data>
+  <data name="ChatAvatarCropHint" xml:space="preserve"><value>写真をドラッグして位置を調整します。2本指またはスライダーで拡大・縮小できます。</value></data>
+  <data name="ChatAvatarZoom" xml:space="preserve"><value>写真の拡大・縮小</value></data>
+  <data name="ChatAvatarSave" xml:space="preserve"><value>保存</value></data>
+  <data name="ChatAvatarInvalidImage" xml:space="preserve"><value>この写真は使用できません。20 MB未満の静止画像を選んでください。</value></data>
+  <data name="ChatAvatarSaveFailed" xml:space="preserve"><value>プロフィール画像の保存が完了していません。もう一度お試しください。</value></data>
+  <data name="ChatSettingsLoadFailed" xml:space="preserve"><value>チャット設定を読み込めませんでした。もう一度お試しください。</value></data>
+  <data name="ChatAvatarUploadExpired" xml:space="preserve"><value>このプロフィール画像は保存できなくなりました。写真を選び直してください。</value></data>
+  <data name="ChatTranslation" xml:space="preserve">
+    <value>チャット翻訳</value>
+  </data>
+  <data name="TranslateMessage" xml:space="preserve">
+    <value>翻訳</value>
+  </data>
+  <data name="TranslateWithGoogle" xml:space="preserve">
+    <value>Google で翻訳</value>
+  </data>
+  <data name="TranslationCopy" xml:space="preserve">
+    <value>訳文をコピー</value>
+  </data>
+  <data name="TranslationHide" xml:space="preserve">
+    <value>訳文を折りたたむ</value>
+  </data>
+  <data name="TranslationShow" xml:space="preserve">
+    <value>訳文を展開</value>
+  </data>
+  <data name="TranslationTarget" xml:space="preserve">
+    <value>翻訳先の言語</value>
+  </data>
+  <data name="TranslationFollowLanguage" xml:space="preserve">
+    <value>アプリの言語に合わせる</value>
+  </data>
+  <data name="TranslationLanguagesLoadFailed" xml:space="preserve">
+    <value>利用可能な言語を読み込めませんでした。</value>
+  </data>
+  <data name="TranslationChooseSource" xml:space="preserve">
+    <value>メッセージの言語を選択</value>
+  </data>
+  <data name="TranslationChooseTarget" xml:space="preserve">
+    <value>対応する翻訳先の言語を選択</value>
+  </data>
+  <data name="TranslationLanguageUnsupported" xml:space="preserve">
+    <value>選択した翻訳先の言語または文字体系には対応していません。別の言語を選択してください。</value>
+  </data>
+  <data name="TranslationSourceLanguageUnsupported" xml:space="preserve">
+    <value>{0}からの翻訳には対応していません。</value>
+  </data>
+  <data name="TranslationLanguagePairUnsupported" xml:space="preserve">
+    <value>{0}から{1}への翻訳には対応していません。</value>
+  </data>
+  <data name="TranslationLanguagesUnsupported" xml:space="preserve">
+    <value>この言語の組み合わせには対応していません。</value>
+  </data>
+  <data name="TranslationDownloadPrompt" xml:space="preserve">
+    <value>以下の言語モデルをダウンロードしますか？各モデルは約30 MBです。Wi-Fiでのダウンロードをおすすめします。</value>
+  </data>
+  <data name="TranslationWifi" xml:space="preserve">
+    <value>Wi-Fiでダウンロード</value>
+  </data>
+  <data name="TranslationAnyNetwork" xml:space="preserve">
+    <value>今回はモバイルデータを使用</value>
+  </data>
+  <data name="TranslationDeleteConfirm" xml:space="preserve">
+    <value>{0}の言語モデルを削除しますか？このモデルが再び必要になったときに、再ダウンロードの案内が表示されます。</value>
+  </data>
+  <data name="TranslationModelReadFailed" xml:space="preserve">
+    <value>ダウンロード済みの言語モデルを読み込めませんでした。</value>
+  </data>
+  <data name="TranslationModelDeleteFailed" xml:space="preserve">
+    <value>言語モデルを削除できませんでした。</value>
+  </data>
+  <data name="TranslationNoModels" xml:space="preserve">
+    <value>言語モデルはまだダウンロードされていません。</value>
+  </data>
+  <data name="TranslationAppleModels" xml:space="preserve">
+    <value>言語のダウンロードはAppleが管理します。ダウンロード済みの言語はシステムの言語・翻訳設定で管理できます。</value>
+  </data>
+  <data name="TranslationDeviceOnly" xml:space="preserve">
+    <value>必要な言語パックをダウンロードすると、メッセージを翻訳サービスに送信せずに、このデバイス上でオフライン翻訳できます。</value>
+  </data>
+  <data name="TranslationGoogleDisclaimer" xml:space="preserve">
+    <value>本サービスには {0} が提供する翻訳が含まれる場合があります。Google は、翻訳の正確性、信頼性、商品性、特定目的への適合性、権利の非侵害を含め、明示または黙示を問わず一切の保証を行いません。 {1}</value>
+  </data>
+  <data name="TranslationGoogleDisclaimerLink" xml:space="preserve">
+    <value>免責事項</value>
+  </data>
+  <data name="TranslationFailed" xml:space="preserve">
+    <value>翻訳に失敗しました。もう一度お試しください。</value>
+  </data>
+  <data name="TranslationDownloadFailed" xml:space="preserve">
+    <value>言語モデルをダウンロードできませんでした。接続を確認して再試行してください。</value>
+  </data>
+  <data name="TranslationDownloadWifiRequired" xml:space="preserve">
+    <value>このダウンロードには Wi-Fi が必要です。Wi-Fi に接続して再試行してください。</value>
+  </data>
+  <data name="TranslationDownloadWifiMayBeRequired" xml:space="preserve">
+    <value>ダウンロードがタイムアウトしました。Wi-Fi のみで開始した場合は、Wi-Fi に接続して再試行してください。</value>
+  </data>
+  <data name="TranslationNoText" xml:space="preserve">
+    <value>このメッセージには翻訳できるテキストがありません。</value>
+  </data>
+  <data name="TranslationSameLanguage" xml:space="preserve">
+    <value>このメッセージはすでに翻訳先の言語です。</value>
+  </data>
+  <data name="ChatPrivacyAndContacts" xml:space="preserve"><value>プライバシーと連絡先</value></data>
+  <data name="ChatPreferences" xml:space="preserve"><value>チャットの環境設定</value></data>
+  <data name="ChatDiscardBioTitle" xml:space="preserve"><value>自己紹介の変更を破棄しますか？</value></data>
+  <data name="ChatDiscardBioMessage" xml:space="preserve"><value>自己紹介の変更は保存されていません。変更を破棄してこのページを離れますか？</value></data>
+  <data name="ChatDiscardBio" xml:space="preserve"><value>変更を破棄</value></data>
+  <data name="TranslationLanguageModels" xml:space="preserve"><value>言語モデル</value></data>
+  <data name="ChatProfileEmpty" xml:space="preserve"><value>なし</value></data>
 </root>

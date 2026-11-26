@@ -14,6 +14,7 @@ public partial class GamingPage : ContentPage
     const int MaxGameColumns = 3;
 
     readonly ApplicationDbContext dbContext;
+    readonly DAppUsageService dappUsage;
     bool allowRestrictedContent;
     bool developerModeEnabled;
 
@@ -27,10 +28,11 @@ public partial class GamingPage : ContentPage
     public string[] GameTypes { get; private set { field = value; OnPropertyChanged(); } } = [Strings.All];
     public bool HasGameTypeFilters { get; private set { field = value; OnPropertyChanged(); } }
 
-    public GamingPage(IServiceProvider serviceProvider, ApplicationDbContext dbContext)
+    public GamingPage(IServiceProvider serviceProvider, ApplicationDbContext dbContext, DAppUsageService dappUsage)
     {
         this.LoadingService = new(LoadSettingsAsync, LoadDAppsAsync);
         this.dbContext = dbContext;
+        this.dappUsage = dappUsage;
         this.DApps = serviceProvider.GetServiceOrCreateInstance<CachedCollection<DApp>>();
         InitializeComponent();
 #if WINDOWS
@@ -60,7 +62,7 @@ public partial class GamingPage : ContentPage
     {
         allowRestrictedContent = await DAppCatalogPolicy.GetAllowRestrictedContentAsync(dbContext);
         developerModeEnabled = await DAppCatalogPolicy.GetDeveloperModeEnabledAsync(dbContext);
-        GamesIdRecent = await dbContext.Settings.GetAsync<List<int>>("dapps/recent") ?? [];
+        GamesIdRecent = await dappUsage.GetRecentIdsAsync(isGame: true);
     }
 
     async Task LoadDAppsAsync()
@@ -70,7 +72,7 @@ public partial class GamingPage : ContentPage
 
     void OnGameTypeChanged(object sender, EventArgs e)
     {
-        ApplyGameTypeFilter(((TabBar)sender).SelectedTab);
+        ApplyGameTypeFilter((TabBar)sender);
     }
 
     void UpdateGamesItemsLayout(double pageWidth)
@@ -98,7 +100,7 @@ public partial class GamingPage : ContentPage
             .Prepend(Strings.All)
             .ToArray();
         HasGameTypeFilters = GameTypes.Length > 2;
-        ApplyGameTypeFilter(gameTypeTabBar.SelectedTab);
+        ApplyGameTypeFilter(gameTypeTabBar);
         LoadRecentGames();
     }
 
@@ -110,16 +112,28 @@ public partial class GamingPage : ContentPage
         HasRecentGames = GamesRecent.Count > 0;
     }
 
-    void ApplyGameTypeFilter(string? selectedGameType)
+    void ApplyGameTypeFilter(TabBar tabBar)
     {
-        if (string.IsNullOrEmpty(selectedGameType) || selectedGameType == Strings.All)
+        if (tabBar.Tabs is not { Count: > 0 } tabs)
+        {
+            GamesFiltered = Games;
+            return;
+        }
+
+        if (tabBar.SelectedTab is null)
+        {
+            tabBar.SelectedTab = tabs[0];
+            return;
+        }
+
+        if (tabBar.SelectedTab == tabs[0])
         {
             GamesFiltered = Games;
             return;
         }
 
         GamesFiltered = Games
-            .Where(p => string.Equals(p.GameTypeDisplayName, selectedGameType, StringComparison.CurrentCulture))
+            .Where(p => string.Equals(p.GameTypeDisplayName, tabBar.SelectedTab, StringComparison.CurrentCulture))
             .ToArray();
     }
 
